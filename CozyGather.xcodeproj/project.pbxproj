@@ -13,6 +13,7 @@
 		0F05E6BB2B62B4D3009EBE91 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F05E6BA2B62B4D3009EBE91 /* Preview Assets.xcassets */; };
 		0F05E6CE2B62B662009EBE91 /* SecondScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6CD2B62B662009EBE91 /* SecondScreen.swift */; };
 		0F05E6D02B62B670009EBE91 /* ThirdScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6CF2B62B670009EBE91 /* ThirdScreen.swift */; };
+		0F05E6D22B62B9D9009EBE91 /* VendorListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6D12B62B9D9009EBE91 /* VendorListing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		0F05E6BA2B62B4D3009EBE91 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0F05E6CD2B62B662009EBE91 /* SecondScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreen.swift; sourceTree = "<group>"; };
 		0F05E6CF2B62B670009EBE91 /* ThirdScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreen.swift; sourceTree = "<group>"; };
+		0F05E6D12B62B9D9009EBE91 /* VendorListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorListing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		0F05E6CB2B62B551009EBE91 /* Vendor Listing */ = {
 			isa = PBXGroup;
 			children = (
+				0F05E6D12B62B9D9009EBE91 /* VendorListing.swift */,
 			);
 			path = "Vendor Listing";
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F05E6B62B62B4D2009EBE91 /* ContentView.swift in Sources */,
+				0F05E6D22B62B9D9009EBE91 /* VendorListing.swift in Sources */,
 				0F05E6B42B62B4D2009EBE91 /* CozyGatherApp.swift in Sources */,
 				0F05E6CE2B62B662009EBE91 /* SecondScreen.swift in Sources */,
 				0F05E6D02B62B670009EBE91 /* ThirdScreen.swift in Sources */,
