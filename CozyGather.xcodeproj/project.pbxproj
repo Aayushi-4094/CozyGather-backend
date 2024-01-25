@@ -11,6 +11,8 @@
 		0F05E6B62B62B4D2009EBE91 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6B52B62B4D2009EBE91 /* ContentView.swift */; };
 		0F05E6B82B62B4D3009EBE91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F05E6B72B62B4D3009EBE91 /* Assets.xcassets */; };
 		0F05E6BB2B62B4D3009EBE91 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F05E6BA2B62B4D3009EBE91 /* Preview Assets.xcassets */; };
+		0F05E6CE2B62B662009EBE91 /* SecondScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6CD2B62B662009EBE91 /* SecondScreen.swift */; };
+		0F05E6D02B62B670009EBE91 /* ThirdScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6CF2B62B670009EBE91 /* ThirdScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		0F05E6B52B62B4D2009EBE91 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0F05E6B72B62B4D3009EBE91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F05E6BA2B62B4D3009EBE91 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0F05E6CD2B62B662009EBE91 /* SecondScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreen.swift; sourceTree = "<group>"; };
+		0F05E6CF2B62B670009EBE91 /* ThirdScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +55,11 @@
 		0F05E6B22B62B4D2009EBE91 /* CozyGather */ = {
 			isa = PBXGroup;
 			children = (
+				0F05E6C12B62B4FE009EBE91 /* Components */,
 				0F05E6B32B62B4D2009EBE91 /* CozyGatherApp.swift */,
 				0F05E6B52B62B4D2009EBE91 /* ContentView.swift */,
+				0F05E6CD2B62B662009EBE91 /* SecondScreen.swift */,
+				0F05E6CF2B62B670009EBE91 /* ThirdScreen.swift */,
 				0F05E6B72B62B4D3009EBE91 /* Assets.xcassets */,
 				0F05E6B92B62B4D3009EBE91 /* Preview Content */,
 			);
@@ -65,6 +72,93 @@
 				0F05E6BA2B62B4D3009EBE91 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0F05E6C12B62B4FE009EBE91 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0F05E6CB2B62B551009EBE91 /* Vendor Listing */,
+				0F05E6C92B62B549009EBE91 /* Supplier profile */,
+				0F05E6CA2B62B54D009EBE91 /* Guest management */,
+				0F05E6CC2B62B604009EBE91 /* Messages */,
+				0F05E6C82B62B543009EBE91 /* Orders */,
+				0F05E6C62B62B528009EBE91 /* Supplier Home */,
+				0F05E6C52B62B517009EBE91 /* User Profile */,
+				0F05E6C42B62B513009EBE91 /* SignIn & SignUp */,
+				0F05E6C32B62B50E009EBE91 /* Events */,
+				0F05E6C22B62B508009EBE91 /* User Home */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		0F05E6C22B62B508009EBE91 /* User Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "User Home";
+			sourceTree = "<group>";
+		};
+		0F05E6C32B62B50E009EBE91 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		0F05E6C42B62B513009EBE91 /* SignIn & SignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "SignIn & SignUp";
+			sourceTree = "<group>";
+		};
+		0F05E6C52B62B517009EBE91 /* User Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "User Profile";
+			sourceTree = "<group>";
+		};
+		0F05E6C62B62B528009EBE91 /* Supplier Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supplier Home";
+			sourceTree = "<group>";
+		};
+		0F05E6C82B62B543009EBE91 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
+		0F05E6C92B62B549009EBE91 /* Supplier profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supplier profile";
+			sourceTree = "<group>";
+		};
+		0F05E6CA2B62B54D009EBE91 /* Guest management */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Guest management";
+			sourceTree = "<group>";
+		};
+		0F05E6CB2B62B551009EBE91 /* Vendor Listing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Vendor Listing";
+			sourceTree = "<group>";
+		};
+		0F05E6CC2B62B604009EBE91 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +233,8 @@
 			files = (
 				0F05E6B62B62B4D2009EBE91 /* ContentView.swift in Sources */,
 				0F05E6B42B62B4D2009EBE91 /* CozyGatherApp.swift in Sources */,
+				0F05E6CE2B62B662009EBE91 /* SecondScreen.swift in Sources */,
+				0F05E6D02B62B670009EBE91 /* ThirdScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
