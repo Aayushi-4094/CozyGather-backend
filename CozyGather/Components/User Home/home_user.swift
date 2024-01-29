@@ -96,6 +96,7 @@ struct UserHomeView: View {
             }
             
             Spacer()
+            Toolbar()
         }
         .navigationBarHidden(true)
         .padding(.horizontal, 16)

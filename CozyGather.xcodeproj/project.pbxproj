@@ -13,7 +13,6 @@
 		0F05E6BB2B62B4D3009EBE91 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F05E6BA2B62B4D3009EBE91 /* Preview Assets.xcassets */; };
 		0F05E6CE2B62B662009EBE91 /* SecondScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6CD2B62B662009EBE91 /* SecondScreen.swift */; };
 		0F05E6D02B62B670009EBE91 /* ThirdScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6CF2B62B670009EBE91 /* ThirdScreen.swift */; };
-		0F05E6D22B62B9D9009EBE91 /* VendorListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6D12B62B9D9009EBE91 /* VendorListing.swift */; };
 		0F05E6D42B62BA23009EBE91 /* SupplierProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6D32B62BA23009EBE91 /* SupplierProfile.swift */; };
 		0F05E6D62B62BA39009EBE91 /* GuestMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6D52B62BA39009EBE91 /* GuestMain.swift */; };
 		0F05E6D82B62BA47009EBE91 /* messagelist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6D72B62BA47009EBE91 /* messagelist.swift */; };
@@ -23,9 +22,8 @@
 		0F05E6E02B62BA7F009EBE91 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6DF2B62BA7F009EBE91 /* SignIn.swift */; };
 		0F05E6E22B62BA8C009EBE91 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6E12B62BA8C009EBE91 /* SignUp.swift */; };
 		0F05E6E42B62BA98009EBE91 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6E32B62BA98009EBE91 /* Events.swift */; };
-		0F05E6E62B62BAA5009EBE91 /* UserHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6E52B62BAA5009EBE91 /* UserHome.swift */; };
+		0F0DF8BC2B680BB40016E3FB /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0DF8BB2B680BB40016E3FB /* Toolbar.swift */; };
 		0F7B53252B67B320008E6E4D /* home_user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53242B67B320008E6E4D /* home_user.swift */; };
-		0F7B53272B67B6ED008E6E4D /* seeall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53262B67B6ED008E6E4D /* seeall.swift */; };
 		0F7B532A2B67BDCF008E6E4D /* box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53292B67BDCF008E6E4D /* box.swift */; };
 		0F7B532C2B67BE14008E6E4D /* taskprogress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B532B2B67BE14008E6E4D /* taskprogress.swift */; };
 		0F7B532E2B67BFB1008E6E4D /* task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B532D2B67BFB1008E6E4D /* task.swift */; };
@@ -64,7 +62,6 @@
 		0F05E6BA2B62B4D3009EBE91 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0F05E6CD2B62B662009EBE91 /* SecondScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreen.swift; sourceTree = "<group>"; };
 		0F05E6CF2B62B670009EBE91 /* ThirdScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreen.swift; sourceTree = "<group>"; };
-		0F05E6D12B62B9D9009EBE91 /* VendorListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorListing.swift; sourceTree = "<group>"; };
 		0F05E6D32B62BA23009EBE91 /* SupplierProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfile.swift; sourceTree = "<group>"; };
 		0F05E6D52B62BA39009EBE91 /* GuestMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMain.swift; sourceTree = "<group>"; };
 		0F05E6D72B62BA47009EBE91 /* messagelist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messagelist.swift; sourceTree = "<group>"; };
@@ -74,9 +71,8 @@
 		0F05E6DF2B62BA7F009EBE91 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		0F05E6E12B62BA8C009EBE91 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		0F05E6E32B62BA98009EBE91 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
-		0F05E6E52B62BAA5009EBE91 /* UserHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHome.swift; sourceTree = "<group>"; };
+		0F0DF8BB2B680BB40016E3FB /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		0F7B53242B67B320008E6E4D /* home_user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = home_user.swift; sourceTree = "<group>"; };
-		0F7B53262B67B6ED008E6E4D /* seeall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seeall.swift; sourceTree = "<group>"; };
 		0F7B53292B67BDCF008E6E4D /* box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = box.swift; sourceTree = "<group>"; };
 		0F7B532B2B67BE14008E6E4D /* taskprogress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskprogress.swift; sourceTree = "<group>"; };
 		0F7B532D2B67BFB1008E6E4D /* task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = task.swift; sourceTree = "<group>"; };
@@ -159,6 +155,7 @@
 		0F05E6C12B62B4FE009EBE91 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0F0DF8BA2B680BA40016E3FB /* Toolbar */,
 				0F05E6CB2B62B551009EBE91 /* Vendor Listing */,
 				0F05E6C92B62B549009EBE91 /* Supplier profile */,
 				0F05E6CA2B62B54D009EBE91 /* Guest management */,
@@ -176,13 +173,10 @@
 		0F05E6C22B62B508009EBE91 /* User Home */ = {
 			isa = PBXGroup;
 			children = (
-				0F88BE712B67729800D81A29 /* add event */,
 				0F88BE7F2B6788E400D81A29 /* vendrnoti */,
-				0F05E6E52B62BAA5009EBE91 /* UserHome.swift */,
 				0FA693F62B6755CC006B18C6 /* Notification.swift */,
 				0FA693F82B6755EF006B18C6 /* CustomNotificationBox.swift */,
 				0F7B53242B67B320008E6E4D /* home_user.swift */,
-				0F7B53262B67B6ED008E6E4D /* seeall.swift */,
 			);
 			path = "User Home";
 			sourceTree = "<group>";
@@ -190,6 +184,7 @@
 		0F05E6C32B62B50E009EBE91 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				0F88BE712B67729800D81A29 /* add event */,
 				0F05E6E32B62BA98009EBE91 /* Events.swift */,
 				0FA693FA2B67565F006B18C6 /* CustomManageBox.swift */,
 			);
@@ -251,7 +246,6 @@
 		0F05E6CB2B62B551009EBE91 /* Vendor Listing */ = {
 			isa = PBXGroup;
 			children = (
-				0F05E6D12B62B9D9009EBE91 /* VendorListing.swift */,
 				0FA693EC2B6754A8006B18C6 /* VendorList.swift */,
 				0FA693EE2B6754F8006B18C6 /* VendorListCustomBox.swift */,
 				0FA693F02B675538006B18C6 /* FilterScreen.swift */,
@@ -268,6 +262,14 @@
 				0F88BE7D2B6788B700D81A29 /* messageboxsample.swift */,
 			);
 			path = Messages;
+			sourceTree = "<group>";
+		};
+		0F0DF8BA2B680BA40016E3FB /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				0F0DF8BB2B680BB40016E3FB /* Toolbar.swift */,
+			);
+			path = Toolbar;
 			sourceTree = "<group>";
 		};
 		0F7B53282B67BD5B008E6E4D /* task */ = {
@@ -410,7 +412,6 @@
 				0F88BE862B6789AE00D81A29 /* MainOrders.swift in Sources */,
 				0F7B53322B67BFCF008E6E4D /* completed.swift in Sources */,
 				0F88BE7E2B6788B700D81A29 /* messageboxsample.swift in Sources */,
-				0F05E6D22B62B9D9009EBE91 /* VendorListing.swift in Sources */,
 				0F05E6B42B62B4D2009EBE91 /* CozyGatherApp.swift in Sources */,
 				0F88BE832B67891400D81A29 /* CustomNotificationBox1.swift in Sources */,
 				0FA693ED2B6754A8006B18C6 /* VendorList.swift in Sources */,
@@ -418,7 +419,6 @@
 				0F88BE8A2B6789F600D81A29 /* FilterScreen1.swift in Sources */,
 				0F05E6DE2B62BA72009EBE91 /* UserProfile.swift in Sources */,
 				0F05E6CE2B62B662009EBE91 /* SecondScreen.swift in Sources */,
-				0F05E6E62B62BAA5009EBE91 /* UserHome.swift in Sources */,
 				0F7B53252B67B320008E6E4D /* home_user.swift in Sources */,
 				0F05E6E02B62BA7F009EBE91 /* SignIn.swift in Sources */,
 				0F88BE932B678B3500D81A29 /* detail.swift in Sources */,
@@ -426,6 +426,7 @@
 				0F05E6E42B62BA98009EBE91 /* Events.swift in Sources */,
 				0F7B53302B67BFC6008E6E4D /* add.swift in Sources */,
 				0F88BE7C2B67887600D81A29 /* Profile.swift in Sources */,
+				0F0DF8BC2B680BB40016E3FB /* Toolbar.swift in Sources */,
 				0F05E6D02B62B670009EBE91 /* ThirdScreen.swift in Sources */,
 				0F7B532A2B67BDCF008E6E4D /* box.swift in Sources */,
 				0FA693F92B6755EF006B18C6 /* CustomNotificationBox.swift in Sources */,
@@ -444,7 +445,6 @@
 				0F88BE8C2B678A7F00D81A29 /* ViewDetails.swift in Sources */,
 				0F05E6D42B62BA23009EBE91 /* SupplierProfile.swift in Sources */,
 				0FA693EF2B6754F8006B18C6 /* VendorListCustomBox.swift in Sources */,
-				0F7B53272B67B6ED008E6E4D /* seeall.swift in Sources */,
 				0F88BE882B6789DE00D81A29 /* CustomCard.swift in Sources */,
 				0FA693F32B67556B006B18C6 /* View1.swift in Sources */,
 			);

@@ -1,4 +1,4 @@
-// SecondView.swift
+// SecondScreen.swift
 import SwiftUI
 
 struct SecondScreen: View {
@@ -19,6 +19,7 @@ struct SecondScreen: View {
                 }
             }
             .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true) // Hide the back button
         }
     }
 }

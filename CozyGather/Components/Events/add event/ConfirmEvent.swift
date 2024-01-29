@@ -126,6 +126,8 @@ struct FilterButton: View {
         .background(isSelected ? Color.blue.opacity(0.2) : Color.clear)
         .cornerRadius(10)
         .onTapGesture(perform: action)
+        
+        
     }
 }
 
@@ -135,4 +137,3 @@ struct ConfirmEvent_Previews: PreviewProvider {
         ConfirmEvent()
     }
 }
-

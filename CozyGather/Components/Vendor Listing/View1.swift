@@ -8,7 +8,7 @@ struct View1: View {
         ScrollView {
             VStack(spacing: 16) {
                 // Top Section
-                Image("vendr1")
+                Image("venrd1")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 350, height: 200)

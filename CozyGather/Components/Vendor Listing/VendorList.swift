@@ -5,113 +5,113 @@ struct VendorList: View {
     @State private var searchText: String = ""
     @State private var isFilterScreenPresented = false
 
-
     var body: some View {
-        VStack {
-   
-            
-            HStack {
-                Button(action: {
-                    // Add action for when the back button is tapped
-                }) {
-                    Image(systemName: "chevron.left")
-                        .font(.title)
-                        .foregroundColor(.blue) // Adjust color as needed
-                }
-                .position(CGPoint(x: 30.0, y: 10.0))
-
-                Spacer()
-
-                Label("Vendors", systemImage: "")
-                    .font(Font.custom("AirbnbCereal_W_Md", size: 24))
-                    .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
-                    .padding(.bottom, 20)
-                    .position(CGPoint(x: -30, y: 20))
-
-                Spacer()
-
-            }
-            .padding()
-
-            TextField("Search", text: $searchText)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
-                .padding(.horizontal)
-                .position(CGPoint(x: 195.0, y: -80.0))
-            
-            
+        ZStack {
+            // Content
             VStack {
+                // Header
                 HStack {
-                    // ... (existing code)
-
-                    // Filter Button
                     Button(action: {
-                        isFilterScreenPresented.toggle()
+                        // Add action for when the back button is tapped
                     }) {
-                        Capsule()
-                            .fill(Color.blue)
-                            .frame(width: 80, height: 40)
-                            .overlay(
-                                Text("Filter")
-                                    .foregroundColor(.white)
-                                    .font(.headline)
-                            )
+                        Image(systemName: "chevron.left")
+                            .font(.title)
+                            .foregroundColor(.blue)
                     }
-                    .padding(.horizontal)
+                    .padding(.leading, 16)
+
+                    Spacer()
+
+                    Text("Vendors")
+                        .font(.title)
+                        .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
+
+                    Spacer()
                 }
                 .padding()
-                .position(CGPoint(x: 300.0, y: 100.0))
 
+                // Search TextField
+                TextField("Search", text: $searchText)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+                    .padding(.horizontal, 16)
+
+                // Filter Button
+                Button(action: {
+                    isFilterScreenPresented.toggle()
+                }) {
+                    HStack {
+                        Image(systemName: "slider.horizontal.3")
+                            .foregroundColor(.white)
+                        Text("Filter")
+                            .foregroundColor(.white)
+                            .font(.headline)
+                    }
+                    .frame(width: 120, height: 40)
+                    .background(Color.blue)
+                    .cornerRadius(20)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 8)
+                }
+                .sheet(isPresented: $isFilterScreenPresented) {
+                    FilterScreen()
+                }
+
+                // Vendor List
+                ScrollView {
+                    VStack(spacing: 8) {
+                        VendorListCustomBox(
+                            imageName: "vendr1",
+                            title: "Product Title",
+                            description: "Product description goes here.",
+                            numberOfStars: 5,
+                            price: "$19.99",
+                            hyperlinkText: "Details"
+                        )
+
+                        VendorListCustomBox(
+                            imageName: "vendr1",
+                            title: "Product Title",
+                            description: "Product description goes here.",
+                            numberOfStars: 5,
+                            price: "$19.99",
+                            hyperlinkText: "Details"
+                        )
+
+                        VendorListCustomBox(
+                            imageName: "vendr1",
+                            title: "Product Title",
+                            description: "Product description goes here.",
+                            numberOfStars: 5,
+                            price: "$19.99",
+                            hyperlinkText: "Details"
+                        )
+
+                        VendorListCustomBox(
+                            imageName: "vendr1",
+                            title: "Product Title",
+                            description: "Product description goes here.",
+                            numberOfStars: 5,
+                            price: "$19.99",
+                            hyperlinkText: "Details"
+                        )
+                    }
+                    .padding(.horizontal, 16)
+                }
+                .background(Color.gray.opacity(0.1)) // Set a background color to demonstrate separation
             }
-            .sheet(isPresented: $isFilterScreenPresented) {
-               FilterScreen()
-            }.position(CGPoint(x: 200.0, y: -220.0))
             
+            // Toolbar
             VStack {
-              
-                    VendorListCustomBox(
-                        imageName: "vendr1",
-                        title: "Product Title",
-                        description: "Product description goes here.",
-                        numberOfStars: 5,
-                        price: "$19.99",
-                        hyperlinkText: "View Details"
-                    )
-                
-                VendorListCustomBox(
-                    imageName: "vendr1",
-                    title: "Product Title",
-                    description: "Product description goes here.",
-                    numberOfStars: 5,
-                    price: "$19.99",
-                    hyperlinkText: "View Details"
-                )
-                VendorListCustomBox(
-                    imageName: "vendr1",
-                    title: "Product Title",
-                    description: "Product description goes here.",
-                    numberOfStars: 5,
-                    price: "$19.99",
-                    hyperlinkText: "View Details"
-                )
-                VendorListCustomBox(
-                    imageName: "vendr1",
-                    title: "Product Title",
-                    description: "Product description goes here.",
-                    numberOfStars: 5,
-                    price: "$19.99",
-                    hyperlinkText: "View Details"
-                )
-
+                Spacer() // Push the toolbar to the bottom
+                Toolbar()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                    .padding(.horizontal)
+                    .padding(.bottom)
             }
-            .frame(width: 400, height: 10)
-            .padding()
-            .position(CGPoint(x: 190.0, y: -120.0))
         }
-        
-        
-        
-        
     }
 }
 
@@ -120,6 +120,3 @@ struct VendorList_Previews: PreviewProvider {
         VendorList()
     }
 }
-
-
-

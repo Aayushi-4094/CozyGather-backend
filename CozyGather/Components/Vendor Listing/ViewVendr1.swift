@@ -10,8 +10,7 @@ struct ViewVendr1: View {
                         // Add action for when the back button is tapped
                     }) {
                         Image(systemName: "chevron.left")
-                            .font(.title)
-                            .foregroundColor(.blue) // Adjust color as needed
+                            .font(.title)                            .foregroundColor(.blue) // Adjust color as needed
                     }
                     .position(CGPoint(x: 30.0, y: 10.0))
 
