@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct VendorList: View {
-    
     @State private var searchText: String = ""
     @State private var isFilterScreenPresented = false
 
@@ -25,37 +24,50 @@ struct VendorList: View {
                     Text("Vendors")
                         .font(.title)
                         .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
+                        .fontWeight(.bold)
 
                     Spacer()
                 }
                 .padding()
 
-                // Search TextField
-                TextField("Search", text: $searchText)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
-                    .padding(.horizontal, 16)
-
-                // Filter Button
-                Button(action: {
-                    isFilterScreenPresented.toggle()
-                }) {
+                // Search and Filter
+                HStack {
+                    // Search TextField
                     HStack {
-                        Image(systemName: "slider.horizontal.3")
-                            .foregroundColor(.white)
-                        Text("Filter")
-                            .foregroundColor(.white)
-                            .font(.headline)
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.blue)
+                            .padding(.leading, 10)
+                        
+                        TextField("Search", text: $searchText)
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
                     }
-                    .frame(width: 120, height: 40)
-                    .background(Color.blue)
-                    .cornerRadius(20)
-                    .padding(.horizontal, 16)
-                    .padding(.top, 8)
+
+
+                    // Spacer to push Filter button to the right
+                    Spacer()
+
+                    // Filter Button
+                    Button(action: {
+                        isFilterScreenPresented.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: "slider.horizontal.3")
+                                .foregroundColor(.white)
+                            Text("Filter")
+                                .foregroundColor(.white)
+                                .font(.headline)
+                        }
+                        .frame(width: 100, height: 60)
+                        .background(Color.blue)
+                        .cornerRadius(20)
+                        .padding(.horizontal, 16)
+                    }
+                    .sheet(isPresented: $isFilterScreenPresented) {
+                        FilterScreen()
+                    }
                 }
-                .sheet(isPresented: $isFilterScreenPresented) {
-                    FilterScreen()
-                }
+                .padding(.horizontal, 16)
 
                 // Vendor List
                 ScrollView {
@@ -100,8 +112,8 @@ struct VendorList: View {
                 }
                 .background(Color.gray.opacity(0.1)) // Set a background color to demonstrate separation
             }
-            
-            // Toolbar
+
+            // Toolbar at the bottom
             VStack {
                 Spacer() // Push the toolbar to the bottom
                 Toolbar()
@@ -109,7 +121,6 @@ struct VendorList: View {
                     .cornerRadius(10)
                     .shadow(radius: 5)
                     .padding(.horizontal)
-                    .padding(.bottom)
             }
         }
     }
