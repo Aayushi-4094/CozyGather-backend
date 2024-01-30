@@ -6,6 +6,7 @@ struct Toolbar: View {
     @State private var isCreateEventViewActive = false
     @State private var isCreateVendorList = false
     @State private var isBudgetApp = false
+    @State private var isGuestManagement = false
 
 
     
@@ -84,10 +85,15 @@ struct Toolbar: View {
                     .foregroundColor(selectedTab == .guests ? Color.blue : Color.gray)
             }
             .frame(width: 393 / 5, height: 83)
-            .onTapGesture {
-                selectedTab = .guests
-                // Add navigation or perform actions related to the Guests tab
-            }
+            
+                .onTapGesture {
+                    selectedTab = .budget
+                    isGuestManagement.toggle()
+                }
+                .fullScreenCover(isPresented: $isGuestManagement) {
+                    GuestMain()
+                }
+
             
             VStack {
                 Image(systemName: selectedTab == .budget ? "dollarsign.circle.fill" : "dollarsign.circle")

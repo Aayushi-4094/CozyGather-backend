@@ -1,9 +1,8 @@
 
 
-
 import SwiftUI
 
-struct CustomManageBox: View {
+struct guestbox: View {
     var imageName: String
     var date: String
     var description: String
@@ -58,9 +57,9 @@ struct CustomManageBox: View {
     }
 }
 
-struct CustomManageBox_Previews: PreviewProvider {
+struct guestbox_Previews: PreviewProvider {
     static var previews: some View {
-        CustomManageBox(
+        guestbox(
             imageName: "venrd1",
             date: "Product Title",
             description: "Product description goes here.",
