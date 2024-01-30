@@ -5,6 +5,7 @@ struct Toolbar: View {
     @State private var isHomeUserViewActive = false
     @State private var isCreateEventViewActive = false
     @State private var isCreateVendorList = false
+    @State private var isBudgetApp = false
 
 
     
@@ -102,7 +103,10 @@ struct Toolbar: View {
             .frame(width: 393 / 5, height: 83)
             .onTapGesture {
                 selectedTab = .budget
-                // Add navigation or perform actions related to the Budget tab
+                isBudgetApp.toggle()
+            }
+            .fullScreenCover(isPresented: $isBudgetApp) {
+                BudgetApp()
             }
         }
         .background(Color.white)
