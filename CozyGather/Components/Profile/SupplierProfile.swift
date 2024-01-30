@@ -1,9 +1,10 @@
 import SwiftUI
 
-struct Profile: View {
+struct SupplierProfile: View {
     @State private var emailText = ""
     @State private var PhoneNumber = ""
-    @State private var Address = ""
+    @State private var Location = ""
+    @State private var Negotiation = ""
     @State private var isToggleOn = false
     @State private var selectedService = "Services"
     @State private var isPopoverVisible = false
@@ -28,7 +29,7 @@ struct Profile: View {
 
                 Spacer()
             }
-            .padding()
+            .padding([.horizontal, .top])
             .background(Color.white)
             .offset(y: 20) // Adjust the offset as needed
 
@@ -56,64 +57,48 @@ struct Profile: View {
             .cornerRadius(12)
 
             // Phone Number and Address
-            ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(Color.white)
-                    .frame(width: 317, height: 56)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .inset(by: 0.5)
-                            .stroke(Color(red: 0.9, green: 0.87, blue: 0.87), lineWidth: 1)
-                    )
+            VStack(spacing: 10) {
+                HStack {
+                    Image(systemName: "phone")
+                        .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
+                        .padding(.leading, 10)
 
-                TextField("Phone Number", text: $PhoneNumber)
-                    .padding(.horizontal, 10)
-                    .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
+                    TextField("Phone Number", text: $PhoneNumber)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 12).stroke(Color(red: 0.9, green: 0.87, blue: 0.87), lineWidth: 1))
+                }
+                .padding([.horizontal, .bottom])
+
+                HStack {
+                    Image(systemName: "mappin.and.ellipse")
+                        .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
+                        .padding(.leading, 10)
+
+                    TextField("Location", text: $Location)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 12).stroke(Color(red: 0.9, green: 0.87, blue: 0.87), lineWidth: 1))
+                }
+                .padding([.horizontal, .bottom])
+
+                HStack {
+                    Toggle("", isOn: $isToggleOn)
+                        .labelsHidden()
+
+                    Image(systemName: "dollarsign")
+                        .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
+                        .padding(.leading, 10)
+
+                    Text("Open to negotiation")
+                        .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
+                        .padding(.trailing, 10)
+                    
+                    Spacer() // Align Toggle to the right
+                }
+                .padding([.horizontal, .bottom])
             }
-            .padding(.bottom, 20)
-
-            ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(Color.white)
-                    .frame(width: 317, height: 56)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .inset(by: 0.5)
-                            .stroke(Color(red: 0.9, green: 0.87, blue: 0.87), lineWidth: 1)
-                    )
-
-                TextField("Address", text: $Address)
-                    .padding(.horizontal, 10)
-                    .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
-            }
-            .padding(.bottom, 20)
-
-            // Toggle for Open to Negotiable Rates
-            Rectangle()
-                .frame(width: 300, height: 50)
-                .foregroundColor(Color.white)
-                .cornerRadius(12)
-                .overlay(
-                    HStack {
-                        Text("$")
-                            .font(.headline)
-                            .foregroundColor(.black)
-
-                        Text("Open to negotiable rates")
-                            .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
-                            .padding(.horizontal, 10)
-
-                        Spacer()
-
-                        Toggle("", isOn: $isToggleOn)
-                            .labelsHidden()
-                    }
-                    .padding()
-                )
-                .padding(.bottom, 20)
 
             // Services
-            VStack {
+            VStack(spacing: 10) {
                 Button {
                     isPopoverVisible.toggle()
                 } label: {
@@ -145,19 +130,22 @@ struct Profile: View {
                     .cornerRadius(10)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
                 }
+                .padding(.bottom, 20)
             }
-            .padding(.bottom, 20)
 
             Spacer() // Leave space at the bottom for navigation control bar
+            Toolbar()
         }
         .padding(.horizontal)
         .background(Color.white)
         .navigationBarHidden(true) // Hide the navigation bar
+        
+       
     }
 }
 
-struct Profile_Previews: PreviewProvider {
+struct SupplierProfile_Previews: PreviewProvider {
     static var previews: some View {
-        Profile()
+        SupplierProfile()
     }
 }

@@ -101,7 +101,7 @@ struct VendorToolbar: View {
                 isBudgetApp.toggle()
             }
             .fullScreenCover(isPresented: $isBudgetApp) {
-                Profile()
+                SupplierProfile()
             }
             Spacer()
             Spacer()
