@@ -2,34 +2,42 @@ import SwiftUI
 
 struct Toolbar: View {
     @State private var selectedTab: Tab = .home
+    @State private var isHomeUserViewActive = false
+    @State private var isCreateEventViewActive = false
+    @State private var isCreateVendorList = false
+
+
     
     var body: some View {
         HStack(spacing: 0) {
             
             VStack {
-                Image(systemName: selectedTab == .home ? "house.fill" : "house")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(selectedTab == .home ? Color.blue : Color.gray)
-                Text("Home")
-                    .font(.system(size: 10, weight: .regular, design: .default))
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .foregroundColor(selectedTab == .home ? Color.blue : Color.gray)
-            }
-            .frame(width: 393 / 5, height: 83)
-            .onTapGesture {
-                selectedTab = .home
-                // Add navigation or perform actions related to the Home tab
-            }
+                            Image(systemName: selectedTab == .home ? "house.fill" : "house")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(selectedTab == .home ? Color.blue : Color.gray)
+                            Text("Home")
+                                .font(.system(size: 10, weight: .regular, design: .default))
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundColor(selectedTab == .home ? Color.blue : Color.gray)
+                        }
+                        .frame(width: 393 / 5, height: 83)
+                        .onTapGesture {
+                            selectedTab = .home
+                            isHomeUserViewActive.toggle()
+                        }
+                        .fullScreenCover(isPresented: $isHomeUserViewActive) {
+                            UserHomeView()
+                        }
             
             VStack {
-                Image(systemName: selectedTab == .events ? "calendar.fill" : "calendar")
+                Image(systemName: selectedTab == .events ? "calendar.badge.plus ": "calendar.badge.plus")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 24, height: 24)
                     .foregroundColor(selectedTab == .events ? Color.blue : Color.gray)
-                Text("Events")
+                Text("Create Event")
                     .font(.system(size: 10, weight: .regular, design: .default))
                     .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundColor(selectedTab == .events ? Color.blue : Color.gray)
@@ -37,7 +45,10 @@ struct Toolbar: View {
             .frame(width: 393 / 5, height: 83)
             .onTapGesture {
                 selectedTab = .events
-                // Add navigation or perform actions related to the Events tab
+                isCreateEventViewActive.toggle()
+            }
+            .fullScreenCover(isPresented: $isCreateEventViewActive) {
+                CreateEvent()
             }
             
             VStack {
@@ -53,8 +64,11 @@ struct Toolbar: View {
             }
             .frame(width: 393 / 5, height: 83)
             .onTapGesture {
-                selectedTab = .vendorListing
-                // Add navigation or perform actions related to the Vendor Listing tab
+                selectedTab = .events
+                isCreateVendorList.toggle()
+            }
+            .fullScreenCover(isPresented: $isCreateVendorList) {
+                VendorList()
             }
             
             VStack {
