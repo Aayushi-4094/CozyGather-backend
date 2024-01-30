@@ -2,6 +2,8 @@ import SwiftUI
 
 struct SignInPage: View {
     @State private var rememberMe = false
+    @State private var isHomeUserActive = false
+
     
     var body: some View {
         ZStack {
@@ -73,7 +75,11 @@ struct SignInPage: View {
                         }
                     }
                     
-                    Button(action: {}) {
+                    Button(action: {
+                        withAnimation {
+                            isHomeUserActive.toggle()
+                        }
+                    }) {
                         Text("SIGN IN")
                             .foregroundColor(.white)
                             .padding()
@@ -82,7 +88,9 @@ struct SignInPage: View {
                             .cornerRadius(5.0)
                             .shadow(radius: 2.0)
                     }
-                    .padding(.top, 10)
+                    .fullScreenCover(isPresented: $isHomeUserActive, content: {
+                        UserHomeView()
+                    })
                     
                     Text("OR")
                     

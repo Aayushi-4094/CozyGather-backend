@@ -9,6 +9,7 @@ struct SignUpPage: View {
     @State private var phoneNumber = ""
     @State private var countryCode = ""
     @State private var isSignInPageActive = false // Add state to control navigation
+// Add state to control navigation
     
     var body: some View {
         NavigationView {
@@ -158,18 +159,22 @@ struct SignUpPage: View {
                             Text("Already have an account?")
                                 .font(.subheadline)
                             
-                            // Button(action: {}) {
-                            //    Text("Sign In")
-                            //         .foregroundColor(.blue)
-                            //         .font(.subheadline)
-                            
-                            NavigationLink(destination: SignInPage()){
+                            Button(action: {
+                                withAnimation {
+                                    isSignInPageActive.toggle()
+                                }
+                            }) {
                                 Text("Sign In")
                                     .foregroundColor(.blue)
                                     .font(.subheadline)
                             }
+                            .fullScreenCover(isPresented: $isSignInPageActive, content: {
+                                SignInPage()
+                            })
+                            .transition(.move(edge: .trailing))
                         }
                     }
+                    .padding()
                     .padding()
                 }
             }

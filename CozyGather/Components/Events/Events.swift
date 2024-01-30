@@ -60,11 +60,9 @@ struct Events: View {
             .position(CGPoint(x: 200.0, y: -140.0))
 
             VStack(spacing: 20) {
-                CustomNotificationBox(imageName: "vendr3", date: "January 25, 2024", description: "Hi.", timeButtonText: "View")
-                    .frame(width: 400 , height: 100)
+                CustomManageBox(imageName: "venrd1", date: "24 jan 2024", description: "hi", hyperlinkText: "view details")
 
-                CustomNotificationBox(imageName: "vendr4", date: "February 2, 2024", description: "Hello.", timeButtonText: "View")
-                    .frame(width: 400 , height: 100)
+
             }
             .padding()
             .background(Color.white)
