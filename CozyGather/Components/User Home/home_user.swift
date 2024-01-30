@@ -133,7 +133,7 @@ struct GridView: View {
     }
 }
 
-struct UserHomeView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         UserHomeView()
     }

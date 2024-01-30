@@ -90,6 +90,8 @@ struct MainOrders: View {
                     CustomCard(imageName: "order4", date: "January 28, 2024", description: "Description 4", hyperlinkText: "View Details")
                 }
                 
+                VendorToolbar()
+                
 
             }
             .frame(width: 400, height: 10)
@@ -98,7 +100,7 @@ struct MainOrders: View {
         }
         
         
-        
+ 
         
     }
 }

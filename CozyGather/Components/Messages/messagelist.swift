@@ -14,7 +14,7 @@ struct messagelist: View {
                 }
                 Spacer()
 
-                Label("Notification", systemImage: "")
+                Label("Messaging", systemImage: "")
                     .font(Font.custom("AirbnbCereal_W_Md", size: 24))
                     .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
                     .padding(.bottom, 20)
@@ -60,7 +60,7 @@ struct messagelist: View {
 
 struct messagelist_preview: PreviewProvider {
     static var previews: some View {
-        Notification()
+        messagelist()
     }
 }
 
