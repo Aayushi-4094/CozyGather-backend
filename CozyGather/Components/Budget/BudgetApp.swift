@@ -53,13 +53,29 @@ struct BudgetApp: View {
                     SpendingChart()
                     
                     ExpensesList()
+                    
+                    // Add a Spacer to separate main content and Toolbar
+                    Spacer()
                 }
                 .padding()
             }
             .navigationBarHidden(true)
+            
+            // Add the Toolbar at the bottom of the screen
+            .overlay(
+                Toolbar()
+                    .frame(maxWidth: .infinity, maxHeight: 90)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                    .padding()
+                    .ignoresSafeArea(edges: .bottom)
+                , alignment: .bottom
+            )
         }
     }
 }
+
 
 struct BoxView: View {
     var body: some View {
@@ -122,6 +138,7 @@ struct ExpensesList: View {
             }
         }
         .padding()
+        
     }
 }
 
@@ -130,5 +147,6 @@ struct BudgetApp_Previews: PreviewProvider {
         BudgetApp()
     }
 }
+
 
 // Add appropriate styles and actions based on your actual requirements

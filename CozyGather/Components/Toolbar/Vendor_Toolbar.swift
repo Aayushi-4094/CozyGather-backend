@@ -19,7 +19,7 @@ struct VendorToolbar: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 24, height: 24)
                     .foregroundColor(selectedTab == .homevendr ? Color.blue : Color.gray)
-                Text("Homevendr")
+                Text("Home")
                     .font(.system(size: 10, weight: .regular, design: .default))
                     .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundColor(selectedTab == .homevendr ? Color.blue : Color.gray)

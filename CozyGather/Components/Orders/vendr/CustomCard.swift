@@ -14,7 +14,7 @@ struct CustomCard: View {
                 .frame(width: 50, height: 50)
                 .padding()
 
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(date)
                     .font(.headline)
                     .foregroundColor(.black)
@@ -24,13 +24,14 @@ struct CustomCard: View {
 
                 Spacer()
 
-
+                Text(hyperlinkText)
+                    .foregroundColor(.blue)
+                    .underline()
+                    
             }
             .padding()
-            
-            Text(hyperlinkText)
-                .foregroundColor(.blue)
-                .underline()
+
+            Spacer()
         }
         .frame(maxWidth: .infinity)
         .background(Color.white)
@@ -42,9 +43,6 @@ struct CustomCard: View {
         )
         .padding()
     }
-    
-    
-    
 }
 
 struct CustomCard_Previews: PreviewProvider {
@@ -53,4 +51,3 @@ struct CustomCard_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 }
-

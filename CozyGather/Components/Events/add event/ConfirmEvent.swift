@@ -32,9 +32,7 @@ struct ConfirmEvent: View {
             Image("nametheevent")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 200)
-
-       //     CountdownTimer()
+                .frame(width: 500, height: 200)
 
             HStack {
                 FilterButton(imageName: "person", label: "Select Co-Host", isSelected: false) {

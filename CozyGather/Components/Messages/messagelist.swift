@@ -55,6 +55,9 @@ struct messagelist: View {
          // This line looks suspicious, you might want to review it
 
         // Hide the navigation bar
+        .overlay(
+            VendorToolbar()
+        )
     }
 }
 

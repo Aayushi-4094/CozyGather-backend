@@ -10,6 +10,7 @@ struct VendorHomeBox: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
+                
                 Text(title)
                     .font(.headline)
                     .fontWeight(.bold)
@@ -48,30 +49,43 @@ struct VendorHomePage: View {
                 
                 ZStack{
                     VStack {
-                        HStack {
+                        HStack {Image(systemName: "line.3.horizontal")
+                                .imageScale(.large)
+                                .padding(.leading, 16)
+                                .foregroundColor(.blue)
+                            
                             Spacer()
                             Text("Vendor Home Page")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .padding()
+                            Spacer()
+                            Image(systemName: "bell")
+                                .imageScale(.large)
+                                .padding(.trailing, 16)
+                                .foregroundColor(.blue)
+                        
+                        .padding(.top, 10)
+                            
+                            
                         }
                         
-                        Button(action: {
-                            isOverviewButtonPressed.toggle()
-                        }) {
-                            Text("Overview")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(isOverviewButtonPressed ? Color.purple : Color.gray)
-                                .cornerRadius(20)
-                        }
-                        .padding()
-                        .padding(.top, 10) // Add padding to separate the button from the box
+                        //Button(action: {
+                         //   isOverviewButtonPressed.toggle()
+                        //}) {
+                        //    Text("Overview")
+                         //       .foregroundColor(.white)
+                        //        .padding()
+                         //       .background(isOverviewButtonPressed ? Color.purple : Color.gray)
+                         //       .cornerRadius(20)
+                       // }
+                       // .padding()
+                       // .padding(.top, 10) // Add padding to separate the button from the box
                         
                         // Use the VendorHomeBox structure
                         VendorHomeBox(
-                            title: "Custom Title",
-                            description: "Custom Description",
+                            title: "Order Management",
+                            description: "Here you can manage the orders",
                             imageName: "venrd1",
                             isOverviewButtonPressed: $isOverviewButtonPressed,
                             percentage: $percentage
@@ -81,8 +95,8 @@ struct VendorHomePage: View {
                         VStack{
                             HStack{
                                 VendorHomeBox(
-                                    title: "Custom Title",
-                                    description: "Custom Description",
+                                    title: "Products",
+                                    description: "Description",
                                     imageName: "venrd1",
                                     isOverviewButtonPressed: $isOverviewButtonPressed,
                                     percentage: $percentage
@@ -90,8 +104,8 @@ struct VendorHomePage: View {
                                 
                                 Spacer()
                                 VendorHomeBox(
-                                    title: "Custom Title",
-                                    description: "Custom Description",
+                                    title: "Inbox",
+                                    description: "Description",
                                     imageName: "venrd1",
                                     isOverviewButtonPressed: $isOverviewButtonPressed,
                                     percentage: $percentage

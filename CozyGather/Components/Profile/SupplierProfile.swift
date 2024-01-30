@@ -134,7 +134,7 @@ struct SupplierProfile: View {
             }
 
             Spacer() // Leave space at the bottom for navigation control bar
-            Toolbar()
+            VendorToolbar()
         }
         .padding(.horizontal)
         .background(Color.white)
