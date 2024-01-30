@@ -36,7 +36,6 @@
 		0F88BE752B6786B200D81A29 /* DateAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE742B6786B200D81A29 /* DateAndTime.swift */; };
 		0F88BE772B6786DB00D81A29 /* ConfirmEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE762B6786DB00D81A29 /* ConfirmEvent.swift */; };
 		0F88BE792B6786F800D81A29 /* SelectCoHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE782B6786F800D81A29 /* SelectCoHost.swift */; };
-		0F88BE7C2B67887600D81A29 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE7B2B67887600D81A29 /* Profile.swift */; };
 		0F88BE7E2B6788B700D81A29 /* messageboxsample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE7D2B6788B700D81A29 /* messageboxsample.swift */; };
 		0F88BE812B6788EE00D81A29 /* Notification1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE802B6788EE00D81A29 /* Notification1.swift */; };
 		0F88BE832B67891400D81A29 /* CustomNotificationBox1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE822B67891400D81A29 /* CustomNotificationBox1.swift */; };
@@ -88,7 +87,6 @@
 		0F88BE742B6786B200D81A29 /* DateAndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTime.swift; sourceTree = "<group>"; };
 		0F88BE762B6786DB00D81A29 /* ConfirmEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEvent.swift; sourceTree = "<group>"; };
 		0F88BE782B6786F800D81A29 /* SelectCoHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCoHost.swift; sourceTree = "<group>"; };
-		0F88BE7B2B67887600D81A29 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		0F88BE7D2B6788B700D81A29 /* messageboxsample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messageboxsample.swift; sourceTree = "<group>"; };
 		0F88BE802B6788EE00D81A29 /* Notification1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification1.swift; sourceTree = "<group>"; };
 		0F88BE822B67891400D81A29 /* CustomNotificationBox1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationBox1.swift; sourceTree = "<group>"; };
@@ -164,12 +162,11 @@
 				0F7B53332B68B805008E6E4D /* Budget */,
 				0F0DF8BA2B680BA40016E3FB /* Toolbar */,
 				0F05E6CB2B62B551009EBE91 /* Vendor Listing */,
-				0F05E6C92B62B549009EBE91 /* Supplier profile */,
+				0F05E6C92B62B549009EBE91 /* Profile */,
 				0F05E6CA2B62B54D009EBE91 /* Guest management */,
 				0F05E6CC2B62B604009EBE91 /* Messages */,
 				0F05E6C82B62B543009EBE91 /* Orders */,
 				0F05E6C62B62B528009EBE91 /* Supplier Home */,
-				0F05E6C52B62B517009EBE91 /* User Profile */,
 				0F05E6C42B62B513009EBE91 /* SignIn & SignUp */,
 				0F05E6C32B62B50E009EBE91 /* Events */,
 				0F05E6C22B62B508009EBE91 /* User Home */,
@@ -207,15 +204,6 @@
 			path = "SignIn & SignUp";
 			sourceTree = "<group>";
 		};
-		0F05E6C52B62B517009EBE91 /* User Profile */ = {
-			isa = PBXGroup;
-			children = (
-				0F05E6DD2B62BA72009EBE91 /* UserProfile.swift */,
-				0F88BE7A2B67885F00D81A29 /* vendr */,
-			);
-			path = "User Profile";
-			sourceTree = "<group>";
-		};
 		0F05E6C62B62B528009EBE91 /* Supplier Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,12 +223,13 @@
 			path = Orders;
 			sourceTree = "<group>";
 		};
-		0F05E6C92B62B549009EBE91 /* Supplier profile */ = {
+		0F05E6C92B62B549009EBE91 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				0F05E6D32B62BA23009EBE91 /* SupplierProfile.swift */,
+				0F05E6DD2B62BA72009EBE91 /* UserProfile.swift */,
 			);
-			path = "Supplier profile";
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		0F05E6CA2B62B54D009EBE91 /* Guest management */ = {
@@ -319,14 +308,6 @@
 				0F7B53282B67BD5B008E6E4D /* task */,
 			);
 			path = "add event";
-			sourceTree = "<group>";
-		};
-		0F88BE7A2B67885F00D81A29 /* vendr */ = {
-			isa = PBXGroup;
-			children = (
-				0F88BE7B2B67887600D81A29 /* Profile.swift */,
-			);
-			path = vendr;
 			sourceTree = "<group>";
 		};
 		0F88BE7F2B6788E400D81A29 /* vendrnoti */ = {
@@ -453,7 +434,6 @@
 				0F88BE752B6786B200D81A29 /* DateAndTime.swift in Sources */,
 				0F05E6E42B62BA98009EBE91 /* Events.swift in Sources */,
 				0F7B53302B67BFC6008E6E4D /* add.swift in Sources */,
-				0F88BE7C2B67887600D81A29 /* Profile.swift in Sources */,
 				0F0DF8BC2B680BB40016E3FB /* Toolbar.swift in Sources */,
 				0F05E6D02B62B670009EBE91 /* ThirdScreen.swift in Sources */,
 				0F7B532A2B67BDCF008E6E4D /* box.swift in Sources */,
