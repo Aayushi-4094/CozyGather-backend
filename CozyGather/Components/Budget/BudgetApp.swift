@@ -68,7 +68,7 @@ struct BudgetApp: View {
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(radius: 5)
-                    .padding()
+                    .padding() 
                     .ignoresSafeArea(edges: .bottom)
                 , alignment: .bottom
             )

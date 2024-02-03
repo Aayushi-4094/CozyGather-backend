@@ -95,25 +95,27 @@ struct SignInPage: View {
                     Text("OR")
                     
                     VStack(spacing: 15) {
-                        Button(action: {}) {
-                            HStack {
-                                Image("google_logo")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                
-                                Text("Login with Google")
-                                    .font(.subheadline)
+                        HStack{
+                            Button(action: {}) {
+                                HStack {
+                                    Image("google_logo")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                    
+                                    //Text("Login with Google")
+                                    // .font(.subheadline)
+                                }
                             }
-                        }
-                        
-                        Button(action: {}) {
-                            HStack {
-                                Image("apple_logo")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                
-                                Text("Login with Apple")
-                                    .font(.subheadline)
+                            
+                            Button(action: {}) {
+                                HStack {
+                                    Image("apple_logo")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                    
+                                    //Text("Login with Apple")
+                                    //.font(.subheadline)
+                                }
                             }
                         }
                     }

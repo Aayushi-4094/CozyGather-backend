@@ -137,19 +137,19 @@ struct SignUpPage: View {
                                         .resizable()
                                         .frame(width: 30, height: 30)
                                     
-                                    Text("Sign Up with Google")
-                                        .font(.subheadline)
+                                    //Text("Sign Up with Google")
+                                    //.font(.subheadline)
+                                    
                                 }
-                            }
                             
-                            Button(action: {}) {
-                                HStack {
+                                Button(action: {}) {
+                                    
                                     Image("apple_logo")
                                         .resizable()
                                         .frame(width: 30, height: 30)
                                     
-                                    Text("Sign Up with Apple")
-                                        .font(.subheadline)
+                                    //ext("Sign Up with Apple")
+                                    //.font(.subheadline)
                                 }
                             }
                         }

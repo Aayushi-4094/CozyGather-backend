@@ -7,39 +7,40 @@ struct ThirdScreen: View {
             VStack {
                 Text("Choose your Profile")
                     .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.top, 20)
+                    .fontWeight(.semibold)
+                    .padding(.top, 120)
 
                 Spacer()
 
-                HStack(spacing: 0) {
+                HStack//(spacing: 0)
+                {
                     VStack {
                         NavigationLink(destination: SignUpPage()) { // Change destination to SignUpPage
                             Image("supplier_logo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.height / 4)
+                                .frame(width: UIScreen.main.bounds.width / 5, height: UIScreen.main.bounds.height / 5)
                                 .cornerRadius(10)
                         }
 
                         Text("Supplier")
-                            .font(.subheadline)
-                            .padding(.top, 5)
+                            .font(.title)
+                            .padding(.top, 10)
                     }
 
                     Divider()
 
                     VStack {
-                        NavigationLink(destination: SignUpPage()) { // Change destination to SignUpPage
+                        NavigationLink(destination: SignUpPage()) { 
                             Image("user_logo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.height / 4)
+                                .frame(width: UIScreen.main.bounds.width / 5, height: UIScreen.main.bounds.height / 5)
                                 .cornerRadius(10)
                         }
 
                         Text("User")
-                            .font(.caption)
+                            .font(.title)
                             .padding(.top, 5)
                     }
                 }

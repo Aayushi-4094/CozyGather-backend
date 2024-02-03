@@ -7,12 +7,19 @@ struct UserHomeView: View {
 
     var body: some View {
         VStack {
+            Spacer()
             HStack {
+                
                 Image(systemName: "line.3.horizontal")
                     .imageScale(.large)
                     .padding(.leading, 16)
                     .foregroundColor(.blue)
                 
+                Spacer()
+                Text("Hi Aayushi!!")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.leading, 16)
                 Spacer()
                 
                 Image(systemName: "bell")
@@ -22,10 +29,7 @@ struct UserHomeView: View {
             }
             .padding(.top, 10)
             
-            Text("Hi Aayushi!!")
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.leading, 16)
+            
             
             Spacer().frame(height: 16)
             
@@ -58,6 +62,7 @@ struct UserHomeView: View {
                             .frame(width: 300, height: 250)
                             .cornerRadius(12)
                             .padding(8)
+                        
                     }
                 }
             }
