@@ -15,7 +15,7 @@ struct ThirdScreen: View {
                 HStack//(spacing: 0)
                 {
                     VStack {
-                        NavigationLink(destination: SignUpPage()) { // Change destination to SignUpPage
+                        NavigationLink(destination: VendrSignUp()) { // Change destination to SignUpPage
                             Image("supplier_logo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -31,7 +31,7 @@ struct ThirdScreen: View {
                     Divider()
 
                     VStack {
-                        NavigationLink(destination: SignUpPage()) { 
+                        NavigationLink(destination: SignUpPage()) {
                             Image("user_logo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -52,5 +52,12 @@ struct ThirdScreen: View {
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true) // Hide the back button
         }
+    }
+}
+
+
+struct ThirdScreen_Previews: PreviewProvider{
+    static var previews: some View{
+        ThirdScreen()
     }
 }

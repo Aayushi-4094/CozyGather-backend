@@ -48,6 +48,8 @@
 		0FA693F72B6755CC006B18C6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F62B6755CC006B18C6 /* Notification.swift */; };
 		0FA693F92B6755EF006B18C6 /* CustomNotificationBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F82B6755EF006B18C6 /* CustomNotificationBox.swift */; };
 		0FA693FB2B67565F006B18C6 /* CustomManageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693FA2B67565F006B18C6 /* CustomManageBox.swift */; };
+		0FA99AD42B6E580600FBBC41 /* vendr_signin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA99AD32B6E580600FBBC41 /* vendr_signin.swift */; };
+		0FA99AD62B6E58F700FBBC41 /* vendr_signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA99AD52B6E58F700FBBC41 /* vendr_signup.swift */; };
 		0FADDF462B6CBD440032AAD9 /* task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADDF452B6CBD440032AAD9 /* task.swift */; };
 		0FADDF4C2B6CBDDF0032AAD9 /* taskBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADDF4B2B6CBDDF0032AAD9 /* taskBox.swift */; };
 /* End PBXBuildFile section */
@@ -95,6 +97,8 @@
 		0FA693F62B6755CC006B18C6 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		0FA693F82B6755EF006B18C6 /* CustomNotificationBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationBox.swift; sourceTree = "<group>"; };
 		0FA693FA2B67565F006B18C6 /* CustomManageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomManageBox.swift; sourceTree = "<group>"; };
+		0FA99AD32B6E580600FBBC41 /* vendr_signin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vendr_signin.swift; sourceTree = "<group>"; };
+		0FA99AD52B6E58F700FBBC41 /* vendr_signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vendr_signup.swift; sourceTree = "<group>"; };
 		0FADDF452B6CBD440032AAD9 /* task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = task.swift; sourceTree = "<group>"; };
 		0FADDF4B2B6CBDDF0032AAD9 /* taskBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,8 +194,8 @@
 		0F05E6C42B62B513009EBE91 /* SignIn & SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				0F05E6DF2B62BA7F009EBE91 /* SignIn.swift */,
-				0F05E6E12B62BA8C009EBE91 /* SignUp.swift */,
+				0FA99AD22B6E57E900FBBC41 /* vendr */,
+				0FA99AD12B6E57DD00FBBC41 /* user */,
 			);
 			path = "SignIn & SignUp";
 			sourceTree = "<group>";
@@ -311,6 +315,24 @@
 			path = details;
 			sourceTree = "<group>";
 		};
+		0FA99AD12B6E57DD00FBBC41 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				0F05E6DF2B62BA7F009EBE91 /* SignIn.swift */,
+				0F05E6E12B62BA8C009EBE91 /* SignUp.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		0FA99AD22B6E57E900FBBC41 /* vendr */ = {
+			isa = PBXGroup;
+			children = (
+				0FA99AD32B6E580600FBBC41 /* vendr_signin.swift */,
+				0FA99AD52B6E58F700FBBC41 /* vendr_signup.swift */,
+			);
+			path = vendr;
+			sourceTree = "<group>";
+		};
 		0FADDF442B6CBD2C0032AAD9 /* myEvents_tasks */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,6 +417,7 @@
 				0FA693F52B675592006B18C6 /* ViewVendr1.swift in Sources */,
 				0FADDF4C2B6CBDDF0032AAD9 /* taskBox.swift in Sources */,
 				0F05E6D82B62BA47009EBE91 /* messagelist.swift in Sources */,
+				0FA99AD62B6E58F700FBBC41 /* vendr_signup.swift in Sources */,
 				0F88BE862B6789AE00D81A29 /* MainOrders.swift in Sources */,
 				0F88BE7E2B6788B700D81A29 /* messageboxsample.swift in Sources */,
 				0F7B53382B68BC89008E6E4D /* VendorHome.swift in Sources */,
@@ -425,6 +448,7 @@
 				0F88BE792B6786F800D81A29 /* SelectCoHost.swift in Sources */,
 				0F88BE812B6788EE00D81A29 /* Notification1.swift in Sources */,
 				0F05E6E22B62BA8C009EBE91 /* SignUp.swift in Sources */,
+				0FA99AD42B6E580600FBBC41 /* vendr_signin.swift in Sources */,
 				0F7B533C2B68ED0D008E6E4D /* guestbox.swift in Sources */,
 				0F88BE8C2B678A7F00D81A29 /* ViewDetails.swift in Sources */,
 				0F05E6D42B62BA23009EBE91 /* SupplierProfile.swift in Sources */,

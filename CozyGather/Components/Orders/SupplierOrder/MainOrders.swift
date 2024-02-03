@@ -112,10 +112,13 @@ struct MainOrders: View {
                     .padding(.horizontal, 16)
                 }
                 .background(Color.gray.opacity(0.1)) // Set a background color to demonstrate separation
+                
+                
+                
             }
 
-            // Toolbar at the bottom
-           
+            VendorToolbar()
+                .position(CGPoint(x: 200.0, y: 760.0))
         }
     }
 }
