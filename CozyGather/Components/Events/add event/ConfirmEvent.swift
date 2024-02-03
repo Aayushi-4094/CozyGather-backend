@@ -5,73 +5,97 @@ struct ConfirmEvent: View {
     @State private var isDateAndTimeVisible = false
     @State private var coHostName: String = "Cohost"
     @State private var eventDate = Date()
+    @State private var showInvite = false
 
     var body: some View {
         VStack {
             HStack {
-
+                Button(action: {
+                    // Add action for the back button
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.title)
+                        .foregroundColor(.blue)
+                }
 
                 Spacer()
 
                 Text("Confirm Event")
                     .font(Font.custom("AirbnbCereal_W_Md", size: 24))
                     .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
-                    .padding(.bottom, 20)
-
+                
                 Spacer()
             }
             .padding()
             .background(Color.white)
 
-            Image("nametheevent")
-                .resizable()
-                .frame(width: 390, height: 280)
+            ZStack(alignment: .bottom) {
+                VStack {
+                    Image("nametheevent")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 300)
+                }
+                Capsule()
+                    .fill(Color.gray.opacity(1))
+                    .frame(height: 50)
+                    .overlay(
+                        Text("Days : Hours : Minutes")
+                            .foregroundColor(.black)
+                            .padding(.horizontal)
+                    )
+                    .padding(.horizontal, 40) // Add left and right padding
+            }
 
-            HStack {
-                FilterButton(imageName: "person", label: "Select Co-Host", isSelected: false) {
-                    isSelectCoHostVisible.toggle()
+           Button(action: {
+                /* Add co-host functionality */
+                isSelectCoHostVisible.toggle()
+            }) {
+                HStack {
+                    Image(systemName: "person.fill")
+                    Text("Add a Co-host")
+                        .font(.headline)
+                    Spacer()
+                    Text("Sam Aiden as the co-host")
+                        .foregroundColor(.gray)
                 }
-                .sheet(isPresented: $isSelectCoHostVisible) {
-                    SelectCoHost()
-                }
-            
-                
                 .padding()
-
-
-                     
-
-                TextField("Cohost", text: $coHostName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
+                .foregroundColor(.black)
+                .background(Color.white)
+                .cornerRadius(10)
             }
-            .padding()
-
-            HStack {
-                FilterButton(imageName: "calendar", label: "Select Date and Time", isSelected: false) {
-                    isDateAndTimeVisible.toggle()
-                }
-                .sheet(isPresented: $isDateAndTimeVisible) {
-                    DateAndTime()
-                }
-
-                TextField("Select Date and Time", value: $eventDate, formatter: dateFormatter)
-                    .disabled(true)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
+            .sheet(isPresented: $isSelectCoHostVisible) {
+                SelectCoHost()
             }
-            .padding()
-
+            
+            
+            
+            Button(action: {
+                 /* Add date and time functionality */
+                 isDateAndTimeVisible.toggle()
+             }) {
+                 HStack {
+                     Image(systemName: "calendar")
+                     Text("Add date and time")
+                         .font(.headline)
+                     Spacer()
+                     Text("Sam Aiden as the co-host")
+                         .foregroundColor(.gray)
+                 }
+                 .padding()
+                 .foregroundColor(.black)
+                 .background(Color.white)
+                 .cornerRadius(10)
+             }
+             .sheet(isPresented: $isDateAndTimeVisible) {
+                 DateAndTime()
+             }
+            
+            
             HStack {
                 Image(systemName: "location.fill")
                     .font(.title)
                     .foregroundColor(.blue)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .inset(by: 0.5)
-                            .foregroundColor(Color.gray.opacity(0.1)) // Set your desired color and opacity here
-                    )
-                Spacer()
 
                 TextField("Location", text: .constant(""))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -79,7 +103,27 @@ struct ConfirmEvent: View {
             }
             .padding()
 
+            
+            Button(action:{self.showInvite.toggle()}) {
+                           HStack{
+                               Text("Generate e-Invite")
+                                   .font(.headline)
+                               Image(systemName: "arrow.clockwise.circle.fill")
+                           }
+                           .padding()
+                           .foregroundColor(.white)
+                           .background(Color.blue)
+                           .cornerRadius(10)
+                       }
+                       .sheet(isPresented:$showInvite) {
+                           // Your e-invite view goes here
+                       }
+            
+            
+            
             Spacer()
+            
+            
             
             Button(action: {
                             // Add action for the Confirm button
@@ -110,6 +154,7 @@ struct ConfirmEvent: View {
         return formatter
     }()
 }
+
 
 struct FilterButton: View {
     var imageName: String
