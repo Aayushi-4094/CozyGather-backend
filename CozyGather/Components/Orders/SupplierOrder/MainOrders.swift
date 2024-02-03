@@ -36,9 +36,10 @@ struct MainOrders: View {
                             .font(.title)
                             .foregroundColor(.blue)
                     }
-                    .padding(.trailing, 16)
+                    .padding(.trailing, 25 )
+                    .padding(.top, -20)
                 }
-                .padding()
+                
 
                 // Search and Filter
                 HStack {
@@ -50,9 +51,12 @@ struct MainOrders: View {
 
                         TextField("Search", text: $searchText)
                             .padding()
-                            .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+                            
                     }
                     .padding(.leading, 16)
+                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+                    .frame(width: 250)
+
 
                     // Spacer to push Filter button to the right
                     Spacer()
@@ -78,34 +82,32 @@ struct MainOrders: View {
                     }
                 }
                 .padding()
+                .frame(height: 80)
 
                 // Order List
                 ScrollView {
                     VStack(spacing: 8) {
-                        NavigationLink(destination: ViewDetails(), isActive: $isViewDetailsActive) {
-                            EmptyView()
-                        }
-                        CustomCard(imageName: "order1", date: "January 25, 2024", description: "Description 1", hyperlinkText: "View Details")
+
+                        CustomCard1(imageName: "order1", date: "January 25, 2024", description: "Description 1", hyperlinkText: "View Details")
+                            .onTapGesture {
+                                isViewDetailsActive = true
+                            }
+                        CustomCard1(imageName: "order1", date: "January 25, 2024", description: "Description 1", hyperlinkText: "View Details")
+                            .onTapGesture {
+                                isViewDetailsActive = true
+                            }
+                        CustomCard1(imageName: "order1", date: "January 25, 2024", description: "Description 1", hyperlinkText: "View Details")
                             .onTapGesture {
                                 isViewDetailsActive = true
                             }
 
-                        CustomCard(imageName: "order2", date: "January 26, 2024", description: "Description 2", hyperlinkText: "View Details")
-                            .onTapGesture {
-                                isViewDetailsActive = true
-                            }
 
-                        CustomCard(imageName: "order3", date: "January 27, 2024", description: "Description 3", hyperlinkText: "View Details")
-                            .onTapGesture {
-                                isViewDetailsActive = true
-                            }
 
-                        CustomCard(imageName: "order4", date: "January 28, 2024", description: "Description 4", hyperlinkText: "View Details")
-                            .onTapGesture {
-                                isViewDetailsActive = true
-                            }
+  
 
-                        VendorToolbar()
+
+
+          
                     }
                     .padding(.horizontal, 16)
                 }
@@ -118,8 +120,58 @@ struct MainOrders: View {
     }
 }
 
+
+
+struct CustomCard1: View {
+    var imageName: String
+    var date: String
+    var description: String
+    var hyperlinkText: String
+
+    var body: some View {
+        VStack{
+            HStack {
+                Image(imageName) // Use the custom image name
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 80, height: 80)
+                    
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(date)
+                        .font(.headline)
+                        .foregroundColor(.black)
+                    
+                    Text(description)
+                        .foregroundColor(.gray)
+                        .font(.system(size: 15))
+                    
+                }
+                .padding()
+                
+                
+                Spacer()
+            }
+            
+            
+            HStack{
+                Spacer()
+                Text(hyperlinkText)
+                    .foregroundColor(.blue)
+                    .underline()
+                    .font(.system(size: 12))
+                    .position(CGPoint(x: 310.0, y: -30.0))
+            }
+            
+            
+            
+        }
+    }
+}
+
 struct MainOrders_Previews: PreviewProvider {
     static var previews: some View {
         MainOrders()
     }
 }
+
