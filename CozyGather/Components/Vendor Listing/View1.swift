@@ -10,8 +10,7 @@ struct View1: View {
                 // Top Section
                 Image("venrd1")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 350, height: 200)
+                    .frame(width: 390, height: 260)
                 
                 // Name, Share, and Bookmark Section
                 HStack {
@@ -35,9 +34,7 @@ struct View1: View {
                             .foregroundColor(.blue)
                     }
                 }
-                .padding()
                 
-                // Stars and Price Section
                 HStack {
                     Text("⭐️⭐️⭐️⭐️")
                         .font(.title)
@@ -45,30 +42,38 @@ struct View1: View {
                     
                     Spacer()
                     
-                    Text("$19.99")
+                    Text("Srating from")
+                        .foregroundColor(.black)
+                }
+                HStack {
+                    Image(systemName: "mappin.and.ellipse")
+                    
+                    
+                    Text("Directions")
+                    Spacer()
+
+                    Text("$1200")
                         .font(.title)
                         .foregroundColor(.black)
                 }
-                .padding()
+                VStack{
+                    
+                    Text("Address")
+                        .font(.body)
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.leading)
+                    
+                    Text("Hours")
+                        .font(.body)
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                    
+                    Text("Phone")
+                        .font(.body)
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                }.position(CGPoint(x: 100.0, y: 40.0))
                 
-                // Location, Timings, and Phone Number Section
-                Text("Location\nStreet, City")
-                    .font(.body)
-                    .foregroundColor(.black)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                
-                Text("Timings: 9 AM - 6 PM")
-                    .font(.body)
-                    .foregroundColor(.black)
-                    .padding()
-                
-                Text("Phone: 123-456-7890")
-                    .font(.body)
-                    .foregroundColor(.black)
-                    .padding()
-                
-                // ... (Previous code)
 
                 // Photos Section
                 HStack {
@@ -128,12 +133,30 @@ struct View1: View {
                     
                     Spacer()
                     
-                    Image("photo3")
+                    Image("photo1")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50, height: 50)
                 }
                 .padding()
+                
+                
+                
+                    Text("Amenities")
+                        .font(.title)
+                    
+                HStack {
+                    Text("Parking")
+                    
+                    Spacer()
+                    
+                    Text(" Food")
+                        .foregroundColor(.black)
+                    
+                    Spacer()
+                    Text(" Food")
+                        .foregroundColor(.black)
+                }
                 
                 // Book Button
                 Button(action: {
@@ -152,6 +175,8 @@ struct View1: View {
             }
             .navigationBarTitle("Vendor Details", displayMode: .inline)
             .padding()
+            
+            
         }
     }
 }
