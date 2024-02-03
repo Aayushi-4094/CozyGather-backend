@@ -49,8 +49,6 @@
 		0FA693F92B6755EF006B18C6 /* CustomNotificationBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F82B6755EF006B18C6 /* CustomNotificationBox.swift */; };
 		0FA693FB2B67565F006B18C6 /* CustomManageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693FA2B67565F006B18C6 /* CustomManageBox.swift */; };
 		0FADDF462B6CBD440032AAD9 /* task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADDF452B6CBD440032AAD9 /* task.swift */; };
-		0FADDF482B6CBD540032AAD9 /* addTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADDF472B6CBD540032AAD9 /* addTask.swift */; };
-		0FADDF4A2B6CBD690032AAD9 /* completedTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADDF492B6CBD690032AAD9 /* completedTask.swift */; };
 		0FADDF4C2B6CBDDF0032AAD9 /* taskBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADDF4B2B6CBDDF0032AAD9 /* taskBox.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,8 +96,6 @@
 		0FA693F82B6755EF006B18C6 /* CustomNotificationBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationBox.swift; sourceTree = "<group>"; };
 		0FA693FA2B67565F006B18C6 /* CustomManageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomManageBox.swift; sourceTree = "<group>"; };
 		0FADDF452B6CBD440032AAD9 /* task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = task.swift; sourceTree = "<group>"; };
-		0FADDF472B6CBD540032AAD9 /* addTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTask.swift; sourceTree = "<group>"; };
-		0FADDF492B6CBD690032AAD9 /* completedTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = completedTask.swift; sourceTree = "<group>"; };
 		0FADDF4B2B6CBDDF0032AAD9 /* taskBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -319,8 +315,6 @@
 			isa = PBXGroup;
 			children = (
 				0FADDF452B6CBD440032AAD9 /* task.swift */,
-				0FADDF472B6CBD540032AAD9 /* addTask.swift */,
-				0FADDF492B6CBD690032AAD9 /* completedTask.swift */,
 				0FADDF4B2B6CBDDF0032AAD9 /* taskBox.swift */,
 			);
 			path = myEvents_tasks;
@@ -403,7 +397,6 @@
 				0F05E6D82B62BA47009EBE91 /* messagelist.swift in Sources */,
 				0F88BE862B6789AE00D81A29 /* MainOrders.swift in Sources */,
 				0F88BE7E2B6788B700D81A29 /* messageboxsample.swift in Sources */,
-				0FADDF4A2B6CBD690032AAD9 /* completedTask.swift in Sources */,
 				0F7B53382B68BC89008E6E4D /* VendorHome.swift in Sources */,
 				0F05E6B42B62B4D2009EBE91 /* CozyGatherApp.swift in Sources */,
 				0F88BE832B67891400D81A29 /* CustomNotificationBox1.swift in Sources */,
@@ -421,7 +414,6 @@
 				0F05E6E42B62BA98009EBE91 /* Events.swift in Sources */,
 				0F0DF8BC2B680BB40016E3FB /* Toolbar.swift in Sources */,
 				0F05E6D02B62B670009EBE91 /* ThirdScreen.swift in Sources */,
-				0FADDF482B6CBD540032AAD9 /* addTask.swift in Sources */,
 				0FA693F92B6755EF006B18C6 /* CustomNotificationBox.swift in Sources */,
 				0F05E6D62B62BA39009EBE91 /* GuestMain.swift in Sources */,
 				0F88BE732B67868100D81A29 /* CreateEvent.swift in Sources */,

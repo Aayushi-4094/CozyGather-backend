@@ -42,21 +42,25 @@ struct GuestMain: View {
                     selectedTab = .cancelled
                 }
                 .frame(width: 120)
-                
             }
             .padding(.top, 20)
             .padding(.horizontal)
             .position(CGPoint(x: 190, y: -100))
+            .overlay(
+                Divider() // Add a black line below the buttons
+                    .background(Color.black)
+                    .position(CGPoint(x: 200.0, y: -62.0))
+            )
+
+            
+            
             
 
-            VStack(spacing: 20) {
-                CustomManageBox(imageName: "venrd1", date: "24 jan 2024", description: "hi", hyperlinkText: "view details")
-                CustomManageBox(imageName: "venrd1", date: "24 jan 2024", description: "hi", hyperlinkText: "view details")
+            VStack(spacing: -20) {
+                guestbox(imageName: "venrd1", date: "24 jan 2024", description: "hi", hyperlinkText: "view details")
+                guestbox(imageName: "venrd1", date: "24 jan 2024", description: "hi", hyperlinkText: "view details")
             }
-            .padding()
-            .background(Color.white)
-            .padding(.top, 0)
-            .frame(maxWidth: .infinity)
+
             .position(CGPoint(x: 190.0, y: -150.0))
 
             Spacer() // Add spacer to push content to the top
@@ -80,6 +84,44 @@ struct CustomButton1: View {
                 .padding()
                 .background(isSelected ? Color.blue : Color.white)
                 .cornerRadius(8)
+        }
+    }
+}
+
+struct guestbox: View {
+    var imageName: String
+    var date: String
+    var description: String
+    var hyperlinkText: String
+
+    var body: some View {
+        HStack {
+            Image(imageName)
+                .resizable()
+                .frame(width: 100, height: 100)
+                .padding()
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(date)
+                    .font(.headline)
+                    .foregroundColor(.black)
+
+                Text(description)
+                    .foregroundColor(.black)
+            }
+            .padding()
+
+            VStack(alignment: .trailing, spacing: 4) {
+                Button(action: {
+                    // Handle button action
+                }) {
+                    Text(hyperlinkText)
+                        .foregroundColor(.blue)
+                        .underline()
+                        .font(.system(size: 10))
+                }
+            }
+            .padding()
         }
     }
 }
