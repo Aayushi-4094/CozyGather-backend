@@ -23,10 +23,23 @@ struct task: View {
                     .font(Font.custom("AirbnbCereal_W_Md", size: 24))
                     .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
                     .position(CGPoint(x: 10.0, y: 40.0))
+                
+                Spacer()
+                
+                Button(action: {
+                    // Add action for the back button
+                }) {
+                    Image(systemName: "plus")
+                        .font(.title)
+                        .foregroundColor(.blue)
+                }
+                .position(CGPoint(x: 90.0, y: 40.0))
             }
             .background(Color.white)
             .navigationBarHidden(true)
 
+            
+            
             HStack(spacing: 20) {
                 CustomButton2(title: "All", isSelected: selectedTab == .upcoming) {
                     selectedTab = .upcoming
@@ -46,18 +59,26 @@ struct task: View {
             }
             .padding(.top, 20)
             .padding(.horizontal)
-            .position(CGPoint(x: 190, y: -100))
+            .position(CGPoint(x: 190, y: -70))
+            
+            
+            Divider()
+                .background(Color.black)
+                .position(CGPoint(x: 180, y: -205))
             
 
             VStack(spacing: 20) {
-                CustomManageBox(imageName: "venrd1", date: "24 jan 2024", description: "hi", hyperlinkText: "view details")
-                CustomManageBox(imageName: "venrd1", date: "24 jan 2024", description: "hi", hyperlinkText: "view details")
+                taskBox(imageName: "venrd1", date: "24 jan 2024", description: "hi", hyperlinkText: "view details")
+                
+                Spacer()
+                taskBox(imageName: "venrd1", date: "24 jan 2024", description: "hi", hyperlinkText: "view details")
             }
             .padding()
             .background(Color.white)
             .padding(.top, 0)
             .frame(maxWidth: .infinity)
-            .position(CGPoint(x: 190.0, y: -150.0))
+            .position(CGPoint(x: 190.0, y: -240.0))
+            
 
             Spacer() // Add spacer to push content to the top
 
@@ -81,6 +102,47 @@ struct CustomButton2: View {
                 .background(isSelected ? Color.blue : Color.white)
                 .cornerRadius(8)
         }
+    }
+}
+
+
+
+struct taskBox: View {
+    var imageName: String
+    var date: String
+    var description: String
+    var hyperlinkText: String
+
+    var body: some View {
+        HStack {
+            Image(imageName) // Use the custom image name
+                .resizable()
+                .frame(width: 70, height: 70)
+                .aspectRatio(contentMode: .fill)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 10)
+
+            VStack {
+                Text(date)
+                    .font(.headline)
+                    .foregroundColor(.black)
+
+                Text(description)
+                    .foregroundColor(.gray)
+
+
+            }
+            .padding()
+
+
+            VStack {
+
+                    Text(hyperlinkText)
+                        .font(.system(size: 15))
+            }
+        }
+        
     }
 }
 

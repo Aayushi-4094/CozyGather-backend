@@ -23,6 +23,14 @@ struct GuestMain: View {
                     .font(Font.custom("AirbnbCereal_W_Md", size: 24))
                     .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
                     .position(CGPoint(x: 10.0, y: 40.0))
+                
+                Button(action: {
+                    // Add action for the back button
+                }) {
+                    Image(systemName: "plus")
+                        .font(.title)
+                        .foregroundColor(.blue)
+                }.position(CGPoint(x: 90.0, y: 50.0))
             }
             .background(Color.white)
             .navigationBarHidden(true)

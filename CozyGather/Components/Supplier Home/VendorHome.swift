@@ -113,26 +113,7 @@ struct VendorHomePage: View {
                                 
                                 Spacer()
                             }
-                            HStack{
-                                VendorHomeBox(
-                                    title: "Custom Title",
-                                    description: "Custom Description",
-                                    imageName: "venrd1",
-                                    isOverviewButtonPressed: $isOverviewButtonPressed,
-                                    percentage: $percentage
-                                )
-                                
-                                Spacer()
-                                VendorHomeBox(
-                                    title: "Custom Title",
-                                    description: "Custom Description",
-                                    imageName: "venrd1",
-                                    isOverviewButtonPressed: $isOverviewButtonPressed,
-                                    percentage: $percentage
-                                )
-                                
-                                Spacer()
-                            }
+
                         }
                     }
                     VendorToolbar().position(CGPoint(x: 200, y: 750))
