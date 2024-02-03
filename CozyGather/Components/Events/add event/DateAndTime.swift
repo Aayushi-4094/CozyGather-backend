@@ -2,12 +2,33 @@ import SwiftUI
 
 struct DateAndTime: View {
     @State private var selectedDate = Date()
-    
+
     var body: some View {
         VStack {
-            DatePicker("Select Date and Time", selection: $selectedDate, in: Date()..., displayedComponents: [.date, .hourAndMinute])
-                .datePickerStyle(GraphicalDatePickerStyle())
-                .labelsHidden()
+            VStack {
+                Text("Select Date")
+                    .font(.headline)
+                    .padding(.top)
+
+                DatePicker(" ", selection: $selectedDate, in: Date()..., displayedComponents: [.date])
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .labelsHidden()
+            }
+
+            Divider()
+
+            VStack {
+                Text("Select Time")
+                    .font(.headline)
+                    .padding(.bottom)
+                Spacer()
+              
+
+                DatePicker(" ", selection: $selectedDate, in: Date()..., displayedComponents: [.hourAndMinute])
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .position(CGPoint(x: 50.0, y: 150.0))
+                
+            }
 
             Spacer()
 

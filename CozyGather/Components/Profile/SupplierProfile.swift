@@ -135,6 +135,7 @@ struct SupplierProfile: View {
 
             Spacer() // Leave space at the bottom for navigation control bar
             VendorToolbar()
+                .position(CGPoint(x: 180.0, y: 100.0))
         }
         .padding(.horizontal)
         .background(Color.white)

@@ -15,35 +15,47 @@ struct CreateEvent: View {
                     .font(.largeTitle)
                     .bold()
                     .padding()
+                
+                Text("Event Name")
+                    .bold()
+                    .font(.system(size: 20))
+                    .position(CGPoint(x: 60.0, y: 10.0))
 
             // Event Name
             TextField("Event Name", text: $eventName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                .frame(width: 350, height: 100)
+                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
 
             // Venue Address
-            Text("Venue Address")
-                .font(.headline)
-                .padding(.top)
+                Text("Venue")
+                    .bold()
+                    .font(.system(size: 20))
+                    .position(CGPoint(x: 30.0, y: 10.0))
+
 
             TextField("Address", text: $venueAddress)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 350, height: 100)
+                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
 
             // Price
-            Text("Price")
-                .font(.headline)
-                .padding(.top)
+                Text("Price")
+                    .bold()
+                    .font(.system(size: 20))
+                    .position(CGPoint(x: 30.0, y: 10.0))
+
 
             TextField("Price", text: $price)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                .frame(width: 350, height: 100)
+                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
 
             // Date and Time
-            Text("Date and Time")
-                .font(.headline)
-                .padding(.top)
-
+                Text("Date and Time")
+                    .bold()
+                    .font(.system(size: 20))
+                    .position(CGPoint(x: 75.0, y: 10.0))
             HStack {
                 Button(action: {
                     isDateAndTimeVisible.toggle()
@@ -81,6 +93,7 @@ struct CreateEvent: View {
                         .toolbar {
                             ToolbarItem(placement: .bottomBar) {
                                 Toolbar()
+                                    .position(CGPoint(x: 180, y: 40))
                             }
                         }
                     }

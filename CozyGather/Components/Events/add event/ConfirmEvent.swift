@@ -9,13 +9,7 @@ struct ConfirmEvent: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: {
-                    // Add action for the back button
-                }) {
-                    Image(systemName: "chevron.left")
-                        .font(.title)
-                        .foregroundColor(.blue)
-                }
+
 
                 Spacer()
 
@@ -31,8 +25,7 @@ struct ConfirmEvent: View {
 
             Image("nametheevent")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 500, height: 200)
+                .frame(width: 390, height: 280)
 
             HStack {
                 FilterButton(imageName: "person", label: "Select Co-Host", isSelected: false) {
@@ -41,6 +34,12 @@ struct ConfirmEvent: View {
                 .sheet(isPresented: $isSelectCoHostVisible) {
                     SelectCoHost()
                 }
+            
+                
+                .padding()
+
+
+                     
 
                 TextField("Cohost", text: $coHostName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -67,6 +66,12 @@ struct ConfirmEvent: View {
                 Image(systemName: "location.fill")
                     .font(.title)
                     .foregroundColor(.blue)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .inset(by: 0.5)
+                            .foregroundColor(Color.gray.opacity(0.1)) // Set your desired color and opacity here
+                    )
+                Spacer()
 
                 TextField("Location", text: .constant(""))
                     .textFieldStyle(RoundedBorderTextFieldStyle())

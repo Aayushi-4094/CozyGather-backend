@@ -89,18 +89,18 @@ struct SectionRow: View {
         HStack {
             Image(systemName: imageName)
                 .foregroundColor(Color(.label))
-                .padding(.leading, 10)
+                .padding(.leading, 0)
 
             Text(text)
                 .foregroundColor(Color(.label))
                 .font(.headline) // Added font size
-                .padding(.trailing, 10)
+                .padding(.trailing, 0)
 
-            Spacer() // Added spacer
+            Spacer()// Added spacer
 
             Image(systemName: "chevron.right")
                 .foregroundColor(Color(.secondaryLabel))
-                .padding(.trailing, 10)
+                .padding(.trailing, 0)
         }
     }
 }
