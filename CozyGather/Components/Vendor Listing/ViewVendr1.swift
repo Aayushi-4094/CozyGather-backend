@@ -55,5 +55,6 @@ struct ViewVendr1: View {
 struct ViewVendr1_Previews: PreviewProvider {
     static var previews: some View {
         ViewVendr1()
+        
     }
 }
