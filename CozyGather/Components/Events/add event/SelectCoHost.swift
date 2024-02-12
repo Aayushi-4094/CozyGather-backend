@@ -4,41 +4,17 @@ struct SelectCoHost: View {
     @State private var coHostName: String = ""
     @State private var searchText: String = ""
     @State private var selectedCoHosts: [String] = []
-    
+    @State private var isConfirmEventVisible = false // Add state variable
+
     var body: some View {
         NavigationView {
-            ZStack {
-                Color(.systemGray5)
-                VStack {
-                    Spacer()
-                    
-                    VStack(spacing: 20) {
-                        HStack {
-                            Spacer()
-                            Image("noti1")
-                            Spacer()
-                            Text("Select Co-Host")
-                                .font(Font.custom("AirbnbCereal_W_Md", size: 24))
-                                .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
-                            Spacer()
-                            // Button to navigate back
-                            Button(action: {
-                                // Handle the back action
-                            }) {
-                                Image(systemName: "multiply")
-                                    .font(.title)
-                                    .padding()
-                            }
-                        }
-                        
-                        Divider()
-                        
+            VStack {
+                List {
+                    Section(header: Text("Select Co-Host")) {
                         SearchBar(text: $searchText, placeholder: "Search Co-Host")
                         
-                        Divider()
-                        
-                        ScrollView(.horizontal) {
-                            HStack {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 16) {
                                 ForEach(0..<3) { index in
                                     VStack {
                                         Image("Avatar Image-\(index + 1)")
@@ -51,46 +27,36 @@ struct SelectCoHost: View {
                                                     .stroke(Color.blue, lineWidth: 2)
                                                     .overlay(
                                                         Button(action: {
-                                                            // Handle the click on the plus sign
                                                             let selectedHost = "Avatar Image-\(index + 1)"
                                                             if !selectedCoHosts.contains(selectedHost) {
                                                                 selectedCoHosts.append(selectedHost)
                                                             }
                                                         }) {
-                                                            HStack {
-                                                                Spacer()
-                                                                Image(systemName: "plus.circle.fill")
-                                                                    .font(.system(size: 20))
-                                                                    .foregroundColor(.green)
-                                                                    .offset(y: 40)
-                                                            }
-                                                            .padding()
+                                                            Image(systemName: "plus.circle.fill")
+                                                                .font(.system(size: 20))
+                                                                .foregroundColor(.green)
                                                         }
+                                                        .padding(10)
                                                     )
                                             )
                                             .shadow(radius: 5)
-                                            .padding()
-
+                                        
                                         Text("Avatar Image-\(index + 1)")
                                             .foregroundColor(.black)
-                                            .padding()
+                                            .padding(.top, 4)
                                     }
                                 }
                             }
                             .padding()
                         }
+                        .frame(height: 120)
                         
-                
-                        
-                        // Display the selected co-hosts
                         ForEach(selectedCoHosts, id: \.self) { coHost in
                             HStack {
                                 Text("\(coHost) added as a co-host")
                                     .foregroundColor(.green)
                                 
-                                // Add a button or icon for removing the co-host
                                 Button(action: {
-                                    // Handle the removal of the co-host
                                     if let index = selectedCoHosts.firstIndex(of: coHost) {
                                         selectedCoHosts.remove(at: index)
                                     }
@@ -102,16 +68,15 @@ struct SelectCoHost: View {
                             }
                             .padding()
                         }
-                        
-                        Divider()
-                        
+                    }
+
+                    Section(header: Text("Share Options")) {
                         HStack {
                             Image("Airdrop")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 70, height: 70)
-                                .clipShape(RoundedRectangle(cornerRadius: 20)) // Use Circle for rounded edges
-                                .padding()
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
                             
                             Spacer()
                             
@@ -119,8 +84,7 @@ struct SelectCoHost: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 70, height: 70)
-                                .clipShape(RoundedRectangle(cornerRadius: 20)) // Use RoundedRectangle for rounded edges
-                                .padding()
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
                             
                             Spacer()
                             
@@ -128,14 +92,13 @@ struct SelectCoHost: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 70, height: 70)
-                                .clipShape(RoundedRectangle(cornerRadius: 5)) // Use RoundedRectangle for rounded edges
-                                .padding()
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
                         }
                         .foregroundColor(.blue)
                         .padding()
-                        
-                        Divider()
-                        
+                    }
+
+                    Section(header: Text("Copy Link")) {
                         HStack {
                             Text("Copy the link")
                                 .font(.headline)
@@ -145,30 +108,34 @@ struct SelectCoHost: View {
                             
                             Image(systemName: "doc.on.doc")
                                 .font(.title)
-                                .padding()
                         }
-                        .padding(.horizontal, 20) // Left and right padding
-                        .background(RoundedRectangle(cornerRadius: 10)// Rounded edges
-                                .foregroundColor(.white) // White rectangular box
+                        .padding(.horizontal)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.white)
                         )
-                        
-                        Divider()
-                        
-                        Button("Done") {
-                            // Add your action here
-                        }
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .padding()
-                        
-                        Spacer()
-                   
                     }
-                    .padding()
                 }
+                
+                Button("Done") {
+                    // Add your action here
+                    isConfirmEventVisible.toggle()
+                }
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .padding()
+                .padding(.bottom, 16)
             }
+            .listStyle(GroupedListStyle())
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Button(action: {
+                // Handle the back action
+            }) {
+                Image(systemName: "multiply")
+                    .font(.title)
+                    .padding()
+            })
         }
     }
 }
