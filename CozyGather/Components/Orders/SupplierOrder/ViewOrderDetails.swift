@@ -7,7 +7,7 @@ struct ViewOrderDetails: View {
                 VStack(alignment: .leading, spacing: 20) {
                     NavigationBarView()
                     
-                    ActionButtonsView()
+//                 ActionButtonsView()
                     
                     UserCardView()
                     
@@ -20,8 +20,6 @@ struct ViewOrderDetails: View {
                     SpecificationTextView(text: "Enjoy your favorite dish and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase.")
                     
                     SpecificationsView()
-                    
-                    
                 }
             }
             .navigationBarHidden(true)
@@ -50,32 +48,29 @@ struct NavigationBarView: View {
         Divider()
     }
 }
-
-
-
-struct ActionButtonsView: View {
-    var body: some View {
-        HStack {
-            Button(action: {}) {
-                Text("Reject")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.red)
-                    .cornerRadius(20)
-            }
-            Button(action: {}) {
-                Text("Accept")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(20)
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal)
-        Divider()
-    }
-}
+//struct ActionButtonsView: View {
+//    var body: some View {
+//        HStack {
+//            Button(action: {}) {
+//                Text("Reject")
+//                    .foregroundColor(.white)
+//                    .padding()
+//                    .background(Color.red)
+//                    .cornerRadius(20)
+//            }
+//            Button(action: {}) {
+//                Text("Accept")
+//                    .foregroundColor(.white)
+//                    .padding()
+//                    .background(Color.green)
+//                    .cornerRadius(20)
+//            }
+//        }
+//        .frame(maxWidth: .infinity)
+//        .padding(.horizontal)
+//        Divider()
+//    }
+//}
 
 struct SectionHeaderView: View {
     var title: String
@@ -111,7 +106,7 @@ struct SpecificationsView: View {
             Spacer()
             SpecificationView(iconName: "calendar", text: "12th January 2024")
             SpecificationView(iconName: "clock", text: "4:00 PM")
-            SpecificationView(iconName: "mappin", text: "Mother's Village")
+            SpecificationView(iconName: "mappin", text: "Tea Village")
         }
         .padding(.horizontal)
     }

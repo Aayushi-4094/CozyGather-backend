@@ -1,127 +1,13 @@
 import SwiftUI
 
-struct VendorHomeBox: View {
-    var title: String
-    var description: String
-    var imageName: String
-    @Binding var isOverviewButtonPressed: Bool
-    @Binding var percentage: Double
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(title)
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .foregroundColor(.blue) // Customize the title color
-
-                Spacer()
-
-                Image(systemName: imageName) // Replace with your own image from assets
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.blue) // Customize the image color
-            }
-            .padding()
-
-            Text(description)
-                .padding()
-
-            Slider(value: $percentage, in: 0...100, step: 1)
-                .padding()
-        }
-        .background(Color.gray.opacity(0.2))
-        .cornerRadius(10)
-        .padding()
-    }
-}
-
-struct vNotificationView: View {
-    @Binding var isNotificationViewPresented: Bool
-    var body: some View {
-        NavigationView {
-            Form {
-                Text("Notification").font(.title)
-                Text("Notification").font(.title)
-            }
-            .listStyle(GroupedListStyle())
-            .navigationBarTitle("Notification", displayMode: .inline)
-            .navigationBarItems(
-                trailing:
-                    Button(action: {
-                        withAnimation {
-                            isNotificationViewPresented.toggle()
-                        }
-                    }) {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.black)
-                            .padding()
-                    }
-            )
-        }
-        .navigationViewStyle(StackNavigationViewStyle()) // Use stack style for iPhone
-    }
-}
-
-struct vMenuView: View {
-    @Binding var isMenuExpanded: Bool
-
-    var body: some View {
-        NavigationView {
-            Form {
-                Section(header: Text("Menu").font(.title)) {
-                    NavigationLink(destination: Text("Profile")) {
-                        Label("Profile", systemImage: "person.circle")
-                    }
-                    NavigationLink(destination: Text("Notification")) {
-                        Label("Notification", systemImage: "bell")
-                    }
-                    NavigationLink(destination: Text("Payments")) {
-                        Label("Payments", systemImage: "creditcard")
-                    }
-                    NavigationLink(destination: Text("Linked Accounts")) {
-                        Label("Linked Accounts", systemImage: "link")
-                    }
-                }
-
-                Section(header: Text("Settings").font(.title)) {
-                    NavigationLink(destination: Text("Privacy Policy")) {
-                        Label("Privacy Policy", systemImage: "shield")
-                    }
-                    NavigationLink(destination: Text("Report")) {
-                        Label("Report", systemImage: "flag")
-                    }
-                    NavigationLink(destination: Text("Settings")) {
-                        Label("Settings", systemImage: "gearshape")
-                    }
-                }
-            }
-            .listStyle(GroupedListStyle())
-            .navigationBarTitle("Menu", displayMode: .inline)
-            .navigationBarItems(
-                trailing:
-                    Button(action: {
-                        withAnimation {
-                            isMenuExpanded.toggle()
-                        }
-                    }) {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.black)
-                            .padding()
-                    }
-            )
-        }
-        .navigationViewStyle(StackNavigationViewStyle()) // Use stack style for iPhone
-    }
-}
-
 struct VendorHomePage: View {
-    @State private var isOverviewButtonPressed = false
-    @State private var percentage: Double = 50 // Adjust the default percentage as needed
     @State private var isMenuExpanded = false
     @State private var isNotificationViewPresented = false
-
+    
+    @State private var tasks: [String] = ["Task 1", "Task 2", "Task 3", "Task 4", "Task 5"]
+    @State private var newTask: String = ""
+    @State private var isEditing = false
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -137,16 +23,16 @@ struct VendorHomePage: View {
                                 .padding(.leading, 16)
                                 .foregroundColor(.blue)
                         }
-
+                        
                         Spacer()
-
+                        
                         Text("Vendor Home Page")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .padding()
-
+                        
                         Spacer()
-
+                        
                         Button(action: {
                             withAnimation {
                                 isNotificationViewPresented.toggle()
@@ -160,62 +46,121 @@ struct VendorHomePage: View {
                     }
                     .padding(.top, 10)
                     Divider()
-                        VendorHomeBox(
-                            title: "Order Management",
-                            description: "Here you can manage the orders",
-                            imageName: "venrd1",
-                            isOverviewButtonPressed: $isOverviewButtonPressed,
-                            percentage: $percentage
-                        )
+                    
+                    VStack {
+                        HStack {
+                            Text("No. of Orders Left")
+                                .font(.headline)
+                                .padding()
+                            Divider()
+                            Text("No. of Orders Completed")
+                                .font(.headline)
+                                .padding()
+                        }
+                        HStack {
+                            Text("Value")
+                                .padding()
+                            Divider()
+                            Text("Value")
+                                .padding()
+                        }
                         Divider()
-                        VStack{
-                            HStack{
-                                VendorHomeBox(
-                                    title: "Products",
-                                    description: "Description",
-                                    imageName: "venrd1",
-                                    isOverviewButtonPressed: $isOverviewButtonPressed,
-                                    percentage: $percentage
-                                )
-                                Spacer()
-                                VendorHomeBox(
-                                    title: "Inbox",
-                                    description: "Description",
-                                    imageName: "venrd1",
-                                    isOverviewButtonPressed: $isOverviewButtonPressed,
-                                    percentage: $percentage
-                                )
-                                
-                                Spacer()
+                    }
+                    
+                    Divider()
+                    
+                    VStack {
+                        HStack {
+                            Text("To Do List")
+                                .font(.headline)
+                                .padding()
+                            Spacer()
+                            if !isEditing {
+                                Button(action: {
+                                    isEditing.toggle()
+                                }) {
+                                    Text("Edit")
+                                        .foregroundColor(.blue)
+                                }
+                                .padding()
+                            } else {
+                                Button(action: {
+                                    isEditing.toggle()
+                                }) {
+                                    Text("Done")
+                                        .foregroundColor(.blue)
+                                }
+                                .padding()
                             }
                         }
+                        ForEach(tasks.indices, id: \.self) { index in
+                            ToDoItemView(task: $tasks[index], isEditing: $isEditing)
+                        }
+                        .onDelete(perform: deleteTask)
+                        .onMove(perform: moveTask)
+                        .padding(.bottom, 10)
+                        
+                        if isEditing {
+                            Button(action: {
+                                if tasks.count < 10 {
+                                    tasks.append("New Task")
+                                }
+                            }) {
+                                Text("Add Task")
+                                    .foregroundColor(.blue)
+                            }
+                            .padding()
+                        }
                     }
+                }
                 .overlay(
                     VendorToolbar()
                         .position(CGPoint(x: 190.0, y: 750.0))
                 )
-                }
             }
-        .navigationBarHidden(true)
-                    .padding(.horizontal, 16)
-                    .overlay(
-                        vMenuView(isMenuExpanded: $isMenuExpanded)
-                            .frame(width: isMenuExpanded ? UIScreen.main.bounds.width : 0)
-                            .background(Color.white)
-                            .offset(x: isMenuExpanded ? 0 : -UIScreen.main.bounds.width)
-                    )
-                    .overlay(
-                        vNotificationView(isNotificationViewPresented: $isNotificationViewPresented)
-                            .frame(width: isNotificationViewPresented ? UIScreen.main.bounds.width : 0)
-                            .background(Color.white)
-                            .offset(x: isNotificationViewPresented ? 0 : UIScreen.main.bounds.width)
-                    )
-                }
-            }
-        
-
-        struct VendorHomePage_Previews: PreviewProvider {
-            static var previews: some View {
-                VendorHomePage()
-            }
+            .navigationBarHidden(true)
+            .padding(.horizontal, 16)
+            
+            
         }
+        .navigationViewStyle(StackNavigationViewStyle()) // Use stack style for iPhone
+    }
+    
+    private func deleteTask(at offsets: IndexSet) {
+        tasks.remove(atOffsets: offsets)
+    }
+    
+    private func moveTask(from source: IndexSet, to destination: Int) {
+        tasks.move(fromOffsets: source, toOffset: destination)
+    }
+}
+
+struct VendorHomePage_Previews: PreviewProvider {
+    static var previews: some View {
+        VendorHomePage()
+    }
+}
+
+
+
+struct ToDoItemView: View {
+    @Binding var task: String
+    @Binding var isEditing: Bool
+    
+    var body: some View {
+        HStack {
+            if isEditing {
+                Image(systemName: "minus.circle.fill")
+                    .foregroundColor(.red)
+                    .onTapGesture {
+                        // Remove the task
+                        task = ""
+                    }
+            }
+            
+            TextField("Enter task", text: $task)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal)
+        }
+    }
+}

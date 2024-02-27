@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct FilterScreen: View {
     var body: some View {
         VStack {
@@ -9,9 +8,11 @@ struct FilterScreen: View {
                 .fontWeight(.bold)
                 .padding()
             
-            FilterOptionsView()
+            VFilterOptionsView()
             
             Spacer()
+            
+            VFilterActionButtonsView()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
@@ -20,25 +21,30 @@ struct FilterScreen: View {
     }
 }
 
-
 struct VFilterOptionsView: View {
     var body: some View {
         VStack {
             HStack {
                 VFilterOptionButtonView(label: "Completed orders", icon: "checkmark.circle.fill")
+                   
                 VFilterOptionButtonView(label: "Pending orders", icon: "clock.fill")
+                    
             }
             .padding(.bottom)
+            
+            VStack(alignment: .leading) {
+                Text("Categories")
+                    .font(.headline)
+                    .padding(.top, 20)
+                    .padding(.horizontal)
+                CategoriesView()
+            }
             
             VFilterDateSelectionView()
             
             VFilterLocationSelectionView()
             
-//            VFilterCategorySelectionView()
-            
             VFilterPriceRangeView()
-            
-            VFilterActionButtonsView()
         }
         .padding()
     }
@@ -52,7 +58,7 @@ struct VFilterOptionButtonView: View {
         Button(action: {}) {
             VStack {
                 Image(systemName: icon)
-                    .font(.largeTitle)
+                    .font(.title)
                     .foregroundColor(.blue)
                 Text(label)
                     .font(.caption)
@@ -60,18 +66,13 @@ struct VFilterOptionButtonView: View {
             .frame(maxWidth: .infinity)
         }
         .padding()
-        //.background(Color.gray.opacity(0.2))
         .cornerRadius(10)
     }
 }
 
-
-
 struct VFilterDateSelectionView: View {
     var body: some View {
         HStack {
-//            DateSelectionButtonView(label: "Today")
-//            DateSelectionButtonView(label: "Tomorrow")
             Text("Date")
                 .font(.caption)
             Spacer()
@@ -92,11 +93,6 @@ struct VDateSelectionButtonView: View {
                 .font(.caption)
                 .foregroundColor(.blue)
         }
-        
-//        .padding()
-//        .frame(maxWidth: .infinity)
-//        .background(Color.gray.opacity(0.2))
-//        .cornerRadius(10)
     }
 }
 
@@ -138,9 +134,27 @@ struct VFilterPriceRangeView: View {
     }
 }
 
+struct CategoriesView: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            Bakery()
+            Spacer()
+            Decor()
+            Spacer()
+            Music()
+            Spacer()
+            Food()
+            Spacer()
+        }
+        .padding(.horizontal)
+    }
+}
+
 struct VFilterActionButtonsView: View {
     var body: some View {
         HStack {
+            Spacer()
             Button(action: {}) {
                 Text("RESET")
                     .fontWeight(.bold)
@@ -150,7 +164,7 @@ struct VFilterActionButtonsView: View {
             .padding()
             .background(Color.gray.opacity(0.2))
             .cornerRadius(10)
-            
+            Spacer()
             Button(action: {}) {
                 Text("APPLY")
                     .fontWeight(.bold)
@@ -160,22 +174,73 @@ struct VFilterActionButtonsView: View {
             .padding()
             .background(Color.blue)
             .cornerRadius(10)
+            Spacer()
         }
     }
 }
-//struct VFilterCategorySelectionView: View {
-//    var body: some View {
-//        HStack {
-//            Text("Categories")
-//            Image("noti1")
-//        }
-//    }
-//}
 
-struct FilterScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        FilterScreen1()
+struct Bakery: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "birthday.cake")
+                .resizable()
+                .frame(width: 50, height: 50)
+                .foregroundColor(.blue)
+                .clipShape(Circle())
+            
+            Text("Bakery")
+                .font(.caption)
+        }
     }
 }
 
+struct Decor: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "snowflake")
+                .resizable()
+                .frame(width: 50, height: 50)
+                .foregroundColor(.blue)
+                .clipShape(Circle())
+            
+            Text("Decor")
+                .font(.caption)
+        }
+    }
+}
 
+struct Music: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "music.note")
+                .resizable()
+                .frame(width: 50, height: 50)
+                .foregroundColor(.blue)
+                .clipShape(Circle())
+            
+            Text("Music")
+                .font(.caption)
+        }
+    }
+}
+
+struct Food: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "fork.knife.circle")
+                .resizable()
+                .frame(width: 50, height: 50)
+                .foregroundColor(.blue)
+                .clipShape(Circle())
+            
+            Text("Food")
+                .font(.caption)
+        }
+    }
+}
+
+struct FilterScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        FilterScreen()
+    }
+}

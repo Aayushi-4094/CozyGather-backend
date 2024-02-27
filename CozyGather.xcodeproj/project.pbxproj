@@ -21,6 +21,8 @@
 		0F05E6E42B62BA98009EBE91 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6E32B62BA98009EBE91 /* Events.swift */; };
 		0F0DF8BC2B680BB40016E3FB /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0DF8BB2B680BB40016E3FB /* Toolbar.swift */; };
 		0F53AAE12B8D9D3200A1146E /* ViewOrderDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F53AAE02B8D9D3200A1146E /* ViewOrderDetails.swift */; };
+		0F53AAE72B8DD30300A1146E /* MessagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F53AAE62B8DD30300A1146E /* MessagingView.swift */; };
+		0F53AAE92B8DD43400A1146E /* NotificationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F53AAE82B8DD43400A1146E /* NotificationDetail.swift */; };
 		0F7B53252B67B320008E6E4D /* home_user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53242B67B320008E6E4D /* home_user.swift */; };
 		0F7B53352B68B814008E6E4D /* BudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53342B68B814008E6E4D /* BudgetApp.swift */; };
 		0F7B53382B68BC89008E6E4D /* VendorHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53372B68BC89008E6E4D /* VendorHome.swift */; };
@@ -70,6 +72,8 @@
 		0F05E6E32B62BA98009EBE91 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		0F0DF8BB2B680BB40016E3FB /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		0F53AAE02B8D9D3200A1146E /* ViewOrderDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOrderDetails.swift; sourceTree = "<group>"; };
+		0F53AAE62B8DD30300A1146E /* MessagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingView.swift; sourceTree = "<group>"; };
+		0F53AAE82B8DD43400A1146E /* NotificationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetail.swift; sourceTree = "<group>"; };
 		0F7B53242B67B320008E6E4D /* home_user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = home_user.swift; sourceTree = "<group>"; };
 		0F7B53342B68B814008E6E4D /* BudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetApp.swift; sourceTree = "<group>"; };
 		0F7B53372B68BC89008E6E4D /* VendorHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorHome.swift; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				0F05E6D72B62BA47009EBE91 /* messagelist.swift */,
+				0F53AAE62B8DD30300A1146E /* MessagingView.swift */,
 				0F88BE7D2B6788B700D81A29 /* messageboxsample.swift */,
 			);
 			path = Messages;
@@ -287,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				0F88BE802B6788EE00D81A29 /* Notification1.swift */,
+				0F53AAE82B8DD43400A1146E /* NotificationDetail.swift */,
 				0F88BE822B67891400D81A29 /* CustomNotificationBox1.swift */,
 			);
 			path = vendrnoti;
@@ -420,6 +426,7 @@
 				0FA99AD62B6E58F700FBBC41 /* vendr_signup.swift in Sources */,
 				0F88BE862B6789AE00D81A29 /* MainOrders.swift in Sources */,
 				0F88BE7E2B6788B700D81A29 /* messageboxsample.swift in Sources */,
+				0F53AAE72B8DD30300A1146E /* MessagingView.swift in Sources */,
 				0F7B53382B68BC89008E6E4D /* VendorHome.swift in Sources */,
 				0F05E6B42B62B4D2009EBE91 /* CozyGatherApp.swift in Sources */,
 				0F88BE832B67891400D81A29 /* CustomNotificationBox1.swift in Sources */,
@@ -436,6 +443,7 @@
 				0F88BE932B678B3500D81A29 /* detail.swift in Sources */,
 				0F88BE752B6786B200D81A29 /* DateAndTime.swift in Sources */,
 				0F05E6E42B62BA98009EBE91 /* Events.swift in Sources */,
+				0F53AAE92B8DD43400A1146E /* NotificationDetail.swift in Sources */,
 				0F0DF8BC2B680BB40016E3FB /* Toolbar.swift in Sources */,
 				0FA693F92B6755EF006B18C6 /* CustomNotificationBox.swift in Sources */,
 				0F05E6D62B62BA39009EBE91 /* GuestMain.swift in Sources */,
