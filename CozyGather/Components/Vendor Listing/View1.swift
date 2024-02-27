@@ -8,71 +8,44 @@ struct View1: View {
         ScrollView {
             VStack(spacing: 16) {
                 // Top Section
-                Image("venrd1")
-                    .resizable()
-                    .frame(width: 390, height: 260)
-                
-                // Name, Share, and Bookmark Section
-                HStack {
+                HStack{ 
+                    //Spacer()
                     Text("Vendor Name")
                         .font(.title)
                         .foregroundColor(.black)
-                
                     Spacer()
-                    
-                    Button(action: {
-                        // Handle Share action
-                    }) {
-                        Image(systemName: "square.and.arrow.up")
-                            .foregroundColor(.blue)
-                    }
-                    
-                    Button(action: {
-                        // Handle Bookmark action
-                    }) {
-                        Image(systemName: "bookmark")
-                            .foregroundColor(.blue)
-                    }
-                }
-                
-                HStack {
                     Text("⭐️⭐️⭐️⭐️")
-                        .font(.title)
+                        .font(.subheadline)
                         .foregroundColor(.yellow)
-                    
-                    Spacer()
-                    
-                    Text("Srating from")
-                        .foregroundColor(.black)
                 }
-                HStack {
-                    Image(systemName: "mappin.and.ellipse")
-                    
-                    
-                    Text("Directions")
-                    Spacer()
-
-                    Text("$1200")
-                        .font(.title)
-                        .foregroundColor(.black)
+                VStack {
+                    HStack{
+                        Text("Starting from")
+                            .foregroundColor(.black)
+                        Text("$1200")
+                            .font(.title)
+                        .foregroundColor(.black)}
+                }
+                    Image("venrd1")
+                    .resizable()
+                    .frame(width: 390, height: 260)
+               
                 }
                 VStack{
-                    
-                    Text("Address")
-                        .font(.body)
-                        .foregroundColor(.black)
-                        .multilineTextAlignment(.leading)
-                    
-                    Text("Hours")
-                        .font(.body)
-                        .foregroundColor(.black)
-                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                    
-                    Text("Phone")
-                        .font(.body)
-                        .foregroundColor(.black)
-                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                }.position(CGPoint(x: 100.0, y: 40.0))
+                    HStack{
+                        Image(systemName: "mappin")
+                        Text("Address")
+                            .font(.body)
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.leading)
+                    }
+                    HStack{
+                        Image(systemName: "phone")
+                        Text("Phone")
+                            .font(.body)
+                            .foregroundColor(.black)
+                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)}
+                }
                 
 
                 // Photos Section
@@ -179,7 +152,7 @@ struct View1: View {
             
         }
     }
-}
+
 
 struct View1_Previews: PreviewProvider {
     static var previews: some View {

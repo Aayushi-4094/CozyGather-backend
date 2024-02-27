@@ -1,154 +1,181 @@
 import SwiftUI
 
+
 struct FilterScreen: View {
-    @State private var selectedStatus: String = "Open"
-    @State private var selectedDate: String = "Today"
-    @State private var locationText: String = ""
-    @State private var priceLowerBound: Double = 1000
-    @State private var priceUpperBound: Double = 10000
-    @State private var isResetPressed: Bool = false
-    
-    var categories = ["vendr1", "vendr2", "vendr3", "vendr4", "photo1"]
+    var body: some View {
+        VStack {
+            Text("Filter")
+                .font(.title)
+                .fontWeight(.bold)
+                .padding()
+            
+            FilterOptionsView()
+            
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
+        .cornerRadius(30)
+        .padding()
+    }
+}
+
+
+struct VFilterOptionsView: View {
+    var body: some View {
+        VStack {
+            HStack {
+                VFilterOptionButtonView(label: "Completed orders", icon: "checkmark.circle.fill")
+                VFilterOptionButtonView(label: "Pending orders", icon: "clock.fill")
+            }
+            .padding(.bottom)
+            
+            VFilterDateSelectionView()
+            
+            VFilterLocationSelectionView()
+            
+//            VFilterCategorySelectionView()
+            
+            VFilterPriceRangeView()
+            
+            VFilterActionButtonsView()
+        }
+        .padding()
+    }
+}
+
+struct VFilterOptionButtonView: View {
+    var label: String
+    var icon: String
     
     var body: some View {
-        ScrollView{
+        Button(action: {}) {
             VStack {
-                // Heading
-                Text("   ")
+                Image(systemName: icon)
                     .font(.largeTitle)
-                    .bold()
-                    .padding()
-                
-                // Time and Date Section
-                Section(header: Text("Time and Date")) {
-                    HStack {
-                        FilterButton(imageName: "calendar", label: "Today", isSelected: selectedDate == "Today") {
-                            selectedDate = "Today"
-                        }
-                        FilterButton(imageName: "calendar", label: "Tomorrow", isSelected: selectedDate == "Tomorrow") {
-                            selectedDate = "Tomorrow"
-                        }
-                        FilterButton(imageName: "calendar", label: "This Week", isSelected: selectedDate == "This Week") {
-                            selectedDate = "This Week"
-                        }
-                    }
-                }
-                .padding()
-                
-                // Categories Section with Horizontal Scroll View
-                Section(header: Text("Categories")) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(categories, id: \.self) { categoryImage in
-                                CategoryView(categoryImage: categoryImage)
-                            }
-                        }
-                    }
-                }
-                .padding()
-                
-                // Location Section
-                Section(header: Text("Location")) {
-                    HStack {
-                        Image(systemName: "location.fill")
-                            .font(.title)
-                            .foregroundColor(.blue)
-                        TextField("Enter location", text: $locationText)
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
-                            .padding(.horizontal)
-                    }
-                }
-                .padding()
-                
-                // Price Range Section
-                Section(header: Text("Select Price Range")) {
-                    VStack {
-                        HStack {
-                            Text("INR \(Int(priceLowerBound))")
-                            Spacer()
-                            Text("INR \(Int(priceUpperBound))")
-                        }
-                        Slider(value: $priceLowerBound, in: 1000...priceUpperBound, step: 1000)
-                        Slider(value: $priceUpperBound, in: priceLowerBound...10000, step: 1000)
-                    }
-                }
-                .padding()
-                
-                // Reset and Apply Buttons
-                HStack {
-                    Button("Reset") {
-                        // Add action for reset button
-                        isResetPressed.toggle()
-                    }
-                    .padding()
-                    .background(Color.clear)
-                    .foregroundColor(.purple)
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.purple, lineWidth: 1)
-                    )
-                    .padding()
-                    
-                    Button("Apply") {
-                        // Add action for apply button
-                    }
-                    .padding()
-                    .background(Color.clear)
-                    .foregroundColor(.purple)
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.purple, lineWidth: 1)
-                    )
-                    .padding()
-                }
-                .padding()
-            }
-        }
-    }
-    
-    struct CategoryView: View {
-        var categoryImage: String
-        
-        var body: some View {
-            VStack {
-                Image(categoryImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 80, height: 80)
-                    .cornerRadius(10)
-            }
-            .padding(.horizontal, 8)
-        }
-    }
-    
-    struct FilterButton: View {
-        var imageName: String
-        var label: String
-        var isSelected: Bool
-        var action: () -> Void
-        
-        var body: some View {
-            VStack {
-                Image(systemName: imageName)
-                    .font(.title)
-                    .foregroundColor(isSelected ? .blue : .gray)
+                    .foregroundColor(.blue)
                 Text(label)
-                    .foregroundColor(isSelected ? .blue : .black)
+                    .font(.caption)
             }
-            .padding()
-            .background(isSelected ? Color.blue.opacity(0.2) : Color.clear)
-            .cornerRadius(10)
-            .onTapGesture(perform: action)
+            .frame(maxWidth: .infinity)
         }
+        .padding()
+        //.background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
     }
-    
-    struct FilterScreen_Previews: PreviewProvider {
-        static var previews: some View {
-            FilterScreen()
-        }
-    }
-    
 }
+
+
+
+struct VFilterDateSelectionView: View {
+    var body: some View {
+        HStack {
+//            DateSelectionButtonView(label: "Today")
+//            DateSelectionButtonView(label: "Tomorrow")
+            Text("Date")
+                .font(.caption)
+            Spacer()
+            VDateSelectionButtonView(label: "Select from Calendar")
+        }
+        .padding()
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
+    }
+}
+
+struct VDateSelectionButtonView: View {
+    var label: String
+    
+    var body: some View {
+        Button(action: {}) {
+            Text(label)
+                .font(.caption)
+                .foregroundColor(.blue)
+        }
+        
+//        .padding()
+//        .frame(maxWidth: .infinity)
+//        .background(Color.gray.opacity(0.2))
+//        .cornerRadius(10)
+    }
+}
+
+struct VFilterLocationSelectionView: View {
+    var body: some View {
+        HStack {
+            Text("Location")
+                .font(.caption)
+            Spacer()
+            Text("Choose")
+                .font(.caption)
+                .foregroundColor(.blue)
+            Image(systemName: "chevron.right")
+                .foregroundColor(.blue)
+        }
+        .padding()
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
+    }
+}
+
+struct VFilterPriceRangeView: View {
+    @State private var lowerPrice = 20.0
+    @State private var upperPrice = 100.0
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Select price range")
+                .font(.caption)
+            HStack {
+                Text("$\(Int(lowerPrice))")
+                Slider(value: $lowerPrice, in: 0...upperPrice, step: 1.0)
+                Text("$\(Int(upperPrice))")
+            }
+        }
+        .padding()
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
+    }
+}
+
+struct VFilterActionButtonsView: View {
+    var body: some View {
+        HStack {
+            Button(action: {}) {
+                Text("RESET")
+                    .fontWeight(.bold)
+                    .foregroundColor(.red)
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(10)
+            
+            Button(action: {}) {
+                Text("APPLY")
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.blue)
+            .cornerRadius(10)
+        }
+    }
+}
+//struct VFilterCategorySelectionView: View {
+//    var body: some View {
+//        HStack {
+//            Text("Categories")
+//            Image("noti1")
+//        }
+//    }
+//}
+
+struct FilterScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        FilterScreen1()
+    }
+}
+
+

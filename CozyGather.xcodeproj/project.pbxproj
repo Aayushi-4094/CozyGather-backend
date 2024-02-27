@@ -20,6 +20,7 @@
 		0F05E6E22B62BA8C009EBE91 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6E12B62BA8C009EBE91 /* SignUp.swift */; };
 		0F05E6E42B62BA98009EBE91 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05E6E32B62BA98009EBE91 /* Events.swift */; };
 		0F0DF8BC2B680BB40016E3FB /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0DF8BB2B680BB40016E3FB /* Toolbar.swift */; };
+		0F53AAE12B8D9D3200A1146E /* ViewOrderDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F53AAE02B8D9D3200A1146E /* ViewOrderDetails.swift */; };
 		0F7B53252B67B320008E6E4D /* home_user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53242B67B320008E6E4D /* home_user.swift */; };
 		0F7B53352B68B814008E6E4D /* BudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53342B68B814008E6E4D /* BudgetApp.swift */; };
 		0F7B53382B68BC89008E6E4D /* VendorHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53372B68BC89008E6E4D /* VendorHome.swift */; };
@@ -68,6 +69,7 @@
 		0F05E6E12B62BA8C009EBE91 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		0F05E6E32B62BA98009EBE91 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		0F0DF8BB2B680BB40016E3FB /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		0F53AAE02B8D9D3200A1146E /* ViewOrderDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOrderDetails.swift; sourceTree = "<group>"; };
 		0F7B53242B67B320008E6E4D /* home_user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = home_user.swift; sourceTree = "<group>"; };
 		0F7B53342B68B814008E6E4D /* BudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetApp.swift; sourceTree = "<group>"; };
 		0F7B53372B68BC89008E6E4D /* VendorHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorHome.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		0F88BE842B6789A700D81A29 /* SupplierOrder */ = {
 			isa = PBXGroup;
 			children = (
+				0F53AAE02B8D9D3200A1146E /* ViewOrderDetails.swift */,
 				0F88BE852B6789AE00D81A29 /* MainOrders.swift */,
 				0F88BE872B6789DE00D81A29 /* CustomCard.swift */,
 				0F88BE892B6789F600D81A29 /* FilterScreen1.swift */,
@@ -420,6 +423,7 @@
 				0F7B53382B68BC89008E6E4D /* VendorHome.swift in Sources */,
 				0F05E6B42B62B4D2009EBE91 /* CozyGatherApp.swift in Sources */,
 				0F88BE832B67891400D81A29 /* CustomNotificationBox1.swift in Sources */,
+				0F53AAE12B8D9D3200A1146E /* ViewOrderDetails.swift in Sources */,
 				0FA693ED2B6754A8006B18C6 /* VendorList.swift in Sources */,
 				0F88BE912B678B1900D81A29 /* WaitForFirstOrder.swift in Sources */,
 				0F88BE8A2B6789F600D81A29 /* FilterScreen1.swift in Sources */,

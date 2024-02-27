@@ -2,7 +2,7 @@ import SwiftUI
 
 struct VendorList: View {
     @State private var searchText: String = ""
-    @State private var isFilterScreenPresented = false
+    @State private var isFilterScreen1Presented = false
 
     var body: some View {
         NavigationView {
@@ -48,7 +48,7 @@ struct VendorList: View {
 
                         // Filter Button
                         Button(action: {
-                            isFilterScreenPresented.toggle()
+                            isFilterScreen1Presented.toggle()
                         }) {
                             HStack {
                                 Image(systemName: "slider.horizontal.3")
@@ -62,8 +62,8 @@ struct VendorList: View {
                             .cornerRadius(20)
                             .padding(.horizontal, 16)
                         }
-                        .sheet(isPresented: $isFilterScreenPresented) {
-                            FilterScreen()
+                        .sheet(isPresented: $isFilterScreen1Presented) {
+                            FilterScreen1()
                         }
                     }
 

@@ -1,138 +1,172 @@
 import SwiftUI
 
+
 struct FilterScreen1: View {
-    @State private var selectedStatus: String = "Open"
-    @State private var selectedDate: String = "Today"
-    @State private var locationText: String = ""
-    @State private var priceLowerBound: Double = 1000
-    @State private var priceUpperBound: Double = 10000
-    @State private var isResetPressed: Bool = false
-    
     var body: some View {
         VStack {
-            // Heading
-            Text("   ")
-                .font(.largeTitle)
-                .bold()
+            Text("Filter")
+                .font(.title)
+                .fontWeight(.bold)
                 .padding()
-
-
-
-            // Status Section
-            Section(header: Text("Status")) {
-                HStack {
-                    FilterButton(imageName: "checkmark.circle.fill", label: "Completed Orders", isSelected: selectedStatus == "Open") {
-                        selectedStatus = "Open"
-                    }
-                    FilterButton(imageName: "clock.circle.fill", label: "Pending Orders", isSelected: selectedStatus == "Closed") {
-                        selectedStatus = "Closed"
-                    }
-                }
-            }
-            .padding()
-
-            // Time and Date Section
-            Section(header: Text("Time and Date")) {
-                HStack {
-                    FilterButton1(imageName: "calendar", label: "Today", isSelected: selectedDate == "Today") {
-                        selectedDate = "Today"
-                    }
-                    FilterButton1(imageName: "calendar", label: "Tomorrow", isSelected: selectedDate == "Tomorrow") {
-                        selectedDate = "Tomorrow"
-                    }
-                    FilterButton1(imageName: "calendar", label: "Date and time", isSelected: selectedDate == "This Week") {
-                        selectedDate = "Date and time"
-                    }
-                }
-            }
-            .padding()
-
-            // Location Section
-            Section(header: Text("Location")) {
-                HStack {
-                    Image(systemName: "location.fill")
-                        .font(.title)
-                        .foregroundColor(.blue)
-                    TextField("Enter location", text: $locationText)
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
-                        .padding(.horizontal)
-                }
-            }
-            .padding()
-
-            // Price Range Section
-            Section(header: Text("Select Price Range")) {
-                VStack {
-                    HStack {
-                        Text("INR \(Int(priceLowerBound))")
-                        Spacer()
-                        Text("INR \(Int(priceUpperBound))")
-                    }
-                    Slider(value: $priceLowerBound, in: 1000...priceUpperBound, step: 1000)
-                    Slider(value: $priceUpperBound, in: priceLowerBound...10000, step: 1000)
-                }
-            }
-            .padding()
-
-            // Reset and Apply Buttons
-            HStack {
-                Button("Reset") {
-                    // Add action for reset button
-                    isResetPressed.toggle()
-                }
-                .padding()
-                .background(Color.clear)
-                .foregroundColor(.purple)
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.purple, lineWidth: 1)
-                )
-                .padding()
-
-                Button("Apply") {
-                    // Add action for apply button
-                }
-                .padding()
-                .background(Color.clear)
-                .foregroundColor(.purple)
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.purple, lineWidth: 1)
-                )
-                .padding()
-            }
-            .padding()
+            
+            FilterOptionsView()
+            
+            Spacer()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
+        .cornerRadius(30)
+        .padding()
     }
 }
 
-struct FilterButton1: View {
-    var imageName: String
-    var label: String
-    var isSelected: Bool
-    var action: () -> Void
-    
+
+struct FilterOptionsView: View {
     var body: some View {
         VStack {
-            Image(systemName: imageName)
-                .font(.title)
-                .foregroundColor(isSelected ? .blue : .gray)
-            Text(label)
-                .foregroundColor(isSelected ? .blue : .black)
+            HStack {
+                FilterOptionButtonView(label: "Completed orders", icon: "checkmark.circle.fill")
+                FilterOptionButtonView(label: "Pending orders", icon: "clock.fill")
+            }
+            .padding(.bottom)
+            
+            FilterDateSelectionView()
+            
+            FilterLocationSelectionView()
+            
+            //FilterCategorySelectionView()
+            
+            FilterPriceRangeView()
+            
+            FilterActionButtonsView()
         }
         .padding()
-        .background(isSelected ? Color.blue.opacity(0.2) : Color.clear)
-        .cornerRadius(10)
-        .onTapGesture(perform: action)
     }
 }
 
-struct FilterScreen_Previews1: PreviewProvider {
-    static var previews: some View {
-        FilterScreen()
+struct FilterOptionButtonView: View {
+    var label: String
+    var icon: String
+    
+    var body: some View {
+        Button(action: {}) {
+            VStack {
+                Image(systemName: icon)
+                    .font(.largeTitle)
+                    .foregroundColor(.blue)
+                Text(label)
+                    .font(.caption)
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .padding()
+        //.background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
     }
 }
+
+
+
+struct FilterDateSelectionView: View {
+    var body: some View {
+        HStack {
+//            DateSelectionButtonView(label: "Today")
+//            DateSelectionButtonView(label: "Tomorrow")
+            Text("Date")
+                .font(.caption)
+            Spacer()
+            DateSelectionButtonView(label: "Select from Calendar")
+        }
+        .padding()
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
+    }
+}
+
+struct DateSelectionButtonView: View {
+    var label: String
+    
+    var body: some View {
+        Button(action: {}) {
+            Text(label)
+                .font(.caption)
+                .foregroundColor(.blue)
+        }
+//        .padding()
+//        .frame(maxWidth: .infinity)
+//        .background(Color.gray.opacity(0.2))
+//        .cornerRadius(10)
+    }
+}
+
+struct FilterLocationSelectionView: View {
+    var body: some View {
+        HStack {
+            Text("Location")
+                .font(.caption)
+            Spacer()
+            Text("Choose")
+                .font(.caption)
+                .foregroundColor(.blue)
+            Image(systemName: "chevron.right")
+                .foregroundColor(.blue)
+        }
+        .padding()
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
+    }
+}
+
+struct FilterPriceRangeView: View {
+    @State private var lowerPrice = 20.0
+    @State private var upperPrice = 100.0
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Select price range")
+                .font(.caption)
+            HStack {
+                Text("$\(Int(lowerPrice))")
+                Slider(value: $lowerPrice, in: 0...upperPrice, step: 1.0)
+                Text("$\(Int(upperPrice))")
+            }
+        }
+        .padding()
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
+    }
+}
+
+struct FilterActionButtonsView: View {
+    var body: some View {
+        HStack {
+            Button(action: {}) {
+                Text("RESET")
+                    .fontWeight(.bold)
+                    .foregroundColor(.red)
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(10)
+            
+            Button(action: {}) {
+                Text("APPLY")
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.blue)
+            .cornerRadius(10)
+        }
+    }
+}
+
+struct FilterScreen1_Previews: PreviewProvider {
+    static var previews: some View {
+        FilterScreen1()
+    }
+}
+
 
