@@ -45,12 +45,12 @@
 		0FA693F12B675538006B18C6 /* FilterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F02B675538006B18C6 /* FilterScreen.swift */; };
 		0FA693F32B67556B006B18C6 /* View1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F22B67556B006B18C6 /* View1.swift */; };
 		0FA693F52B675592006B18C6 /* ViewVendr1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F42B675592006B18C6 /* ViewVendr1.swift */; };
-		0FA693F72B6755CC006B18C6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F62B6755CC006B18C6 /* Notification.swift */; };
+		0FA693F72B6755CC006B18C6 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F62B6755CC006B18C6 /* NotificationView.swift */; };
 		0FA693F92B6755EF006B18C6 /* CustomNotificationBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F82B6755EF006B18C6 /* CustomNotificationBox.swift */; };
 		0FA693FB2B67565F006B18C6 /* CustomManageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693FA2B67565F006B18C6 /* CustomManageBox.swift */; };
 		0FA99AD42B6E580600FBBC41 /* vendr_signin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA99AD32B6E580600FBBC41 /* vendr_signin.swift */; };
 		0FA99AD62B6E58F700FBBC41 /* vendr_signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA99AD52B6E58F700FBBC41 /* vendr_signup.swift */; };
-		0FADDF462B6CBD440032AAD9 /* task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADDF452B6CBD440032AAD9 /* task.swift */; };
+		0FADDF462B6CBD440032AAD9 /* taskview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADDF452B6CBD440032AAD9 /* taskview.swift */; };
 		0FADDF4C2B6CBDDF0032AAD9 /* taskBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADDF4B2B6CBDDF0032AAD9 /* taskBox.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,12 +94,12 @@
 		0FA693F02B675538006B18C6 /* FilterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterScreen.swift; sourceTree = "<group>"; };
 		0FA693F22B67556B006B18C6 /* View1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View1.swift; sourceTree = "<group>"; };
 		0FA693F42B675592006B18C6 /* ViewVendr1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVendr1.swift; sourceTree = "<group>"; };
-		0FA693F62B6755CC006B18C6 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		0FA693F62B6755CC006B18C6 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		0FA693F82B6755EF006B18C6 /* CustomNotificationBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationBox.swift; sourceTree = "<group>"; };
 		0FA693FA2B67565F006B18C6 /* CustomManageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomManageBox.swift; sourceTree = "<group>"; };
 		0FA99AD32B6E580600FBBC41 /* vendr_signin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vendr_signin.swift; sourceTree = "<group>"; };
 		0FA99AD52B6E58F700FBBC41 /* vendr_signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vendr_signup.swift; sourceTree = "<group>"; };
-		0FADDF452B6CBD440032AAD9 /* task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = task.swift; sourceTree = "<group>"; };
+		0FADDF452B6CBD440032AAD9 /* taskview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskview.swift; sourceTree = "<group>"; };
 		0FADDF4B2B6CBDDF0032AAD9 /* taskBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,7 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				0FADDF442B6CBD2C0032AAD9 /* myEvents_tasks */,
-				0FA693F62B6755CC006B18C6 /* Notification.swift */,
+				0FA693F62B6755CC006B18C6 /* NotificationView.swift */,
 				0FA693F82B6755EF006B18C6 /* CustomNotificationBox.swift */,
 				0F7B53242B67B320008E6E4D /* home_user.swift */,
 			);
@@ -336,7 +336,7 @@
 		0FADDF442B6CBD2C0032AAD9 /* myEvents_tasks */ = {
 			isa = PBXGroup;
 			children = (
-				0FADDF452B6CBD440032AAD9 /* task.swift */,
+				0FADDF452B6CBD440032AAD9 /* taskview.swift */,
 				0FADDF4B2B6CBDDF0032AAD9 /* taskBox.swift */,
 			);
 			path = myEvents_tasks;
@@ -443,8 +443,8 @@
 				0FA693FB2B67565F006B18C6 /* CustomManageBox.swift in Sources */,
 				0FA693F12B675538006B18C6 /* FilterScreen.swift in Sources */,
 				0F88BE8F2B678AEA00D81A29 /* TransitionToAskDetails.swift in Sources */,
-				0FA693F72B6755CC006B18C6 /* Notification.swift in Sources */,
-				0FADDF462B6CBD440032AAD9 /* task.swift in Sources */,
+				0FA693F72B6755CC006B18C6 /* NotificationView.swift in Sources */,
+				0FADDF462B6CBD440032AAD9 /* taskview.swift in Sources */,
 				0F88BE792B6786F800D81A29 /* SelectCoHost.swift in Sources */,
 				0F88BE812B6788EE00D81A29 /* Notification1.swift in Sources */,
 				0F05E6E22B62BA8C009EBE91 /* SignUp.swift in Sources */,

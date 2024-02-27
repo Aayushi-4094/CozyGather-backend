@@ -2,7 +2,7 @@ import SwiftUI
 
 struct VendrSignIn: View {
     @State private var rememberMe = false
-    @State private var isHomeVendrActive = false
+    @State private var TransitionToAskDetailsActive = false
 
     
     var body: some View {
@@ -77,7 +77,7 @@ struct VendrSignIn: View {
                     
                     Button(action: {
                         withAnimation {
-                            isHomeVendrActive.toggle()
+                            TransitionToAskDetailsActive.toggle()
                         }
                     }) {
                         Text("SIGN IN")
@@ -88,8 +88,8 @@ struct VendrSignIn: View {
                             .cornerRadius(5.0)
                             .shadow(radius: 2.0)
                     }
-                    .fullScreenCover(isPresented: $isHomeVendrActive, content: {
-                        VendorHomePage()
+                    .fullScreenCover(isPresented: $TransitionToAskDetailsActive, content: {
+                        TransitionToAskDetails()
                     })
                     
                     Text("OR")

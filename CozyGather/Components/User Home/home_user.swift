@@ -15,32 +15,32 @@ struct EventData: Identifiable, Hashable {
     }
 }
 
-struct NotificationView: View {
-    @Binding var isNotificationViewPresented: Bool
-    var body: some View {
-        NavigationView {
-            Form {
-                Text("Notification").font(.title)
-                Text("Notification").font(.title)
-            }
-            .listStyle(GroupedListStyle())
-            .navigationBarTitle("Notification", displayMode: .inline)
-            .navigationBarItems(
-                trailing:
-                    Button(action: {
-                        withAnimation {
-                            isNotificationViewPresented.toggle()
-                        }
-                    }) {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.black)
-                            .padding()
-                    }
-            )
-        }
-        .navigationViewStyle(StackNavigationViewStyle()) // Use stack style for iPhone
-    }
-}
+//struct NotificationView: View {
+//    @Binding var isNotificationViewPresented: Bool
+//    var body: some View {
+//        NavigationView {
+//            Form {
+//                Text("Notification").font(.title)
+//                Text("Notification").font(.title)
+//            }
+//            .listStyle(GroupedListStyle())
+//            .navigationBarTitle("Notification", displayMode: .inline)
+//            .navigationBarItems(
+//                trailing:
+//                    Button(action: {
+//                        withAnimation {
+//                            isNotificationViewPresented.toggle()
+//                        }
+//                    }) {
+//                        Image(systemName: "xmark")
+//                            .foregroundColor(.black)
+//                            .padding()
+//                    }
+//            )
+//        }
+//        .navigationViewStyle(StackNavigationViewStyle()) // Use stack style for iPhone
+//    }
+//}
 
 struct EventCard: View {
     @State private var isDetailViewPresented = false
@@ -93,10 +93,68 @@ struct EventCard: View {
         }
     }
 }
-
+//
+//struct EventDetailView: View {
+//    var event: EventData
+//
+//    var body: some View {
+//        VStack {
+//            Text("Event Details")
+//                .font(.title)
+//                .fontWeight(.bold)
+//                .padding()
+//
+//            Image(event.imageName)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .cornerRadius(12)
+//                .padding(8)
+//                .shadow(radius: 5) // Add shadow for a card-like appearance
+//
+//            Text(event.name)
+//                .font(.headline)
+//                .padding(.bottom, 8)
+//
+//            Capsule()
+//                .fill(Color.gray.opacity(1))
+//                .frame(height: 50)
+//                .overlay(
+//                    Text("Days : Hours : Minutes")
+//                        .foregroundColor(.black)
+//                        .padding(.horizontal)
+//                )
+//                .padding(.horizontal, 40) // Add left and right padding
+//
+//            // Add more details as needed
+//
+//            Text("Co-Host")
+//                .font(.headline)
+//                .padding(.bottom, 8)
+//            Text("Date and time")
+//                .font(.headline)
+//                .padding(.bottom, 8)
+//            Text("Location")
+//                .font(.headline)
+//                .padding(.bottom, 8)
+//            Text("Description")
+//                .font(.headline)
+//                .padding(.bottom, 8)
+//            Text("Vendor assigned")
+//                .font(.headline)
+//                .padding(.bottom, 8)
+//            Text("Task")
+//                .font(.headline)
+//                .padding(.bottom, 8)
+//
+//            Spacer()
+//        }
+//        .navigationBarTitle("Event Detail", displayMode: .inline)
+//    }
+//}
 struct EventDetailView: View {
     var event: EventData
-    
+    @State private var isTaskLinkActive = false
+
     var body: some View {
         VStack {
             Text("Event Details")
@@ -104,53 +162,72 @@ struct EventDetailView: View {
                 .fontWeight(.bold)
                 .padding()
 
+            Text(event.name)
+                .font(.headline)
+                .padding(.bottom, 8)
+            
             Image(event.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(12)
                 .padding(8)
                 .shadow(radius: 5) // Add shadow for a card-like appearance
-
-            Text(event.name)
-                .font(.headline)
-                .padding(.bottom, 8)
             
-            Capsule()
-                .fill(Color.gray.opacity(1))
-                .frame(height: 50)
-                .overlay(
-                    Text("Days : Hours : Minutes")
-                        .foregroundColor(.black)
-                        .padding(.horizontal)
-                )
-                .padding(.horizontal, 40) // Add left and right padding
-
-            // Add more details as needed
-            
-            Text("Co-Host")
-                .font(.headline)
-                .padding(.bottom, 8)
-            Text("Date and time")
-                .font(.headline)
-                .padding(.bottom, 8)
-            Text("Location")
-                .font(.headline)
-                .padding(.bottom, 8)
-            Text("Description")
-                .font(.headline)
-                .padding(.bottom, 8)
-            Text("Vendor assigned")
-                .font(.headline)
-                .padding(.bottom, 8)
-            Text("Task")
-                .font(.headline)
-                .padding(.bottom, 8)
+            // Add overlay for capsule
+            ZStack(alignment: .bottom) {
+                Capsule()
+                    .fill(Color.gray.opacity(1))
+                    .frame(height: 50)
+                    .overlay(
+                        Text("Days : Hours : Minutes")
+                            .foregroundColor(.black)
+                            .padding(.horizontal)
+                    )
+                    .padding(.horizontal, 40) // Add left and right padding
+                    .offset(y: -240) // Move the capsule up to overlap the image
+                
+                VStack {
+                    // Add more details as needed
+                    Text("Co-Host")
+                        .font(.headline)
+                        .padding(.bottom, 8)
+                    Text("Date and time")
+                        .font(.headline)
+                        .padding(.bottom, 8)
+                    Text("Location")
+                        .font(.headline)
+                        .padding(.bottom, 8)
+                    Text("Description")
+                        .font(.headline)
+                        .padding(.bottom, 8)
+                    Text("Vendor assigned")
+                        .font(.headline)
+                        .padding(.bottom, 8)
+                    
+                    // Link to the task file
+                    Button(action: {
+                        isTaskLinkActive = true
+                    }) {
+                        Text("Task")
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .padding(.bottom, 8)
+                    }
+                    .sheet(isPresented: $isTaskLinkActive) {
+                        // Replace "TaskView" with the view you want to navigate to for the task
+                        taskview()
+                    }
+                }
+            }
 
             Spacer()
         }
         .navigationBarTitle("Event Detail", displayMode: .inline)
     }
 }
+
+
+
 
 struct SeeAllView: View {
     var eventData: [EventData]
@@ -168,13 +245,13 @@ struct GridView: View {
 
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 10) {
+            LazyVGrid(columns: Array(repeating: GridItem(), count: 1), spacing: 50) {
                 ForEach(eventData, id: \.self) { event in
                     EventCard(event: event)
                 }
             }
-            .padding(16)
-            .frame(maxWidth: .infinity, alignment: .center) // Adjust the frame size
+            .padding(26)
+             // Adjust the frame size
         }
     }
 }
@@ -357,7 +434,7 @@ struct UserHomeView: View {
                                     .offset(x: isMenuExpanded ? 0 : -UIScreen.main.bounds.width)
                             )
                             .overlay(
-                                NotificationView(isNotificationViewPresented: $isNotificationViewPresented)
+                                NotificationView()
                                     .frame(width: isNotificationViewPresented ? UIScreen.main.bounds.width : 0)
                                     .background(Color.white)
                                     .offset(x: isNotificationViewPresented ? 0 : UIScreen.main.bounds.width)

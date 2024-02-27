@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct task: View {
+struct taskview: View {
     @State private var selectedTab: EventsTab = .upcoming
     
     enum EventsTab {
@@ -147,8 +147,8 @@ struct taskBox: View {
 }
 
 
-struct task_Previews: PreviewProvider {
+struct taskview_Previews: PreviewProvider {
     static var previews: some View {
-        task()
+        taskview()
     }
 }

@@ -1,13 +1,8 @@
-//
-//  WaitForFirstOrder.swift
-//  CozyGather_sri
-//
-//  Created by user2 on 25/01/24.
-//
-
 import SwiftUI
 
 struct WaitForFirstOrder: View {
+    @State private var isVendorHomeActive = false
+    
     var body: some View {
         VStack {
             Text("You are in!!! Wait for your first order")
@@ -18,10 +13,9 @@ struct WaitForFirstOrder: View {
                 .padding()
 
             Button(action: {
-                // Add action for when the button is tapped
+                isVendorHomeActive.toggle()
             }) {
                 HStack(alignment: .center, spacing: 4) {
-                    // Add content inside the button
                     Text("Go to Home Page")
                         .font(Font.custom("YourCustomFont", size: 16))
                         .foregroundColor(.white)
@@ -32,17 +26,15 @@ struct WaitForFirstOrder: View {
                 .background(Color(red: 0.34, green: 0.41, blue: 1))
                 .cornerRadius(12)
             }
+            .fullScreenCover(isPresented: $isVendorHomeActive) {
+                VendorHomePage()
+            }
         }
     }
 }
-
-
 
 struct WaitForFirstOrder_Previews: PreviewProvider {
     static var previews: some View {
         WaitForFirstOrder()
     }
 }
-
-
-

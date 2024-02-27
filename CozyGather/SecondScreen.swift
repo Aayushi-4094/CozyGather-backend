@@ -3,6 +3,8 @@ import SwiftUI
 
 struct SecondScreen: View {
     @State private var goToThirdScreen = false
+    @State private var isVendorSignUpActive = false
+    @State private var isUserSignUpActive = false
 
     var body: some View {
         NavigationView {
@@ -27,47 +29,57 @@ struct SecondScreen: View {
                     .padding(.top, 20)
 
                 HStack {
-                    VStack {
-                        NavigationLink(destination: VendrSignUp()) {
-                            Image("supplier_logo")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.15)
-                                .cornerRadius(20)
-                                .shadow(radius: 5)
+                                VStack {
+                                    Button(action: {
+                                        isVendorSignUpActive = true
+                                    }) {
+                                        Image("supplier_logo")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.15)
+                                            .cornerRadius(20)
+                                            .shadow(radius: 5)
+                                    }
+
+                                    Text("Supplier")
+                                        .font(.headline)
+                                        .padding(.top, 10)
+                                }
+
+                                Divider()
+
+                                VStack {
+                                    Button(action: {
+                                        isUserSignUpActive = true
+                                    }) {
+                                        Image("user_logo")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.15)
+                                            .cornerRadius(20)
+                                            .shadow(radius: 5)
+                                    }
+
+                                    Text("User")
+                                        .font(.headline)
+                                        .padding(.top, 5)
+                                }
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 20)
+
+                            Spacer()
                         }
-
-                        Text("Supplier")
-                            .font(.headline)
-                            .padding(.top, 10)
-                    }
-
-                    Divider()
-
-                    VStack {
-                        NavigationLink(destination: SignUpPage()) {
-                            Image("user_logo")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.15)
-                                .cornerRadius(20)
-                                .shadow(radius: 5)
+                        .fullScreenCover(isPresented: $isVendorSignUpActive) {
+                            VendrSignUp()
                         }
-
-                        Text("User")
-                            .font(.headline)
-                            .padding(.top, 5)
+                        .fullScreenCover(isPresented: $isUserSignUpActive) {
+                            SignUpPage()
+                        }
+                        .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true)
                     }
                 }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 20)
-
-                Spacer()
-            }
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
-        }
-    }
 }
 
 struct SecondScreen_Previews: PreviewProvider {

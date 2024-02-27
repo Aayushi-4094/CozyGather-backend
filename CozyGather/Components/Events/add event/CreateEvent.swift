@@ -6,109 +6,223 @@ struct CreateEvent: View {
     @State private var price: String = "Price"
     @State private var selectedDate = Date()
     @State private var isDateAndTimeVisible = false
-    @State private var isConfirmationVisible = false // Add this state variable
-
+    @State private var isConfirmationVisible = false
+    @State private var isSelectCoHostVisible = false
+    @State private var coHostName: String = "Cohost"
+    @State private var eventDate = Date()
+    @State private var showInvite = false
+    
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Create Event")
-                    .font(.largeTitle)
-                    .bold()
+            ScrollView {
+                VStack {
+                    HStack {
+                        Button(action: {
+                            // Add action for the back button
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .font(.title2)
+                                .foregroundColor(.blue)
+                        }
+                        
+                        Spacer()
+                        
+                        Text("Create Event")
+                            .font(.title2)
+                            .foregroundColor(Color(.label))
+                        
+                        Spacer()
+                    }
                     .padding()
-                
-                Text("Event Name")
-                    .bold()
-                    .font(.system(size: 20))
-                    .position(CGPoint(x: 60.0, y: 10.0))
-
-            // Event Name
-            TextField("Event Name", text: $eventName)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 350, height: 100)
-                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-
-            // Venue Address
-                Text("Venue")
-                    .bold()
-                    .font(.system(size: 20))
-                    .position(CGPoint(x: 30.0, y: 10.0))
-
-
-            TextField("Address", text: $venueAddress)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .frame(width: 350, height: 100)
-                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-
-            // Price
-                Text("Price")
-                    .bold()
-                    .font(.system(size: 20))
-                    .position(CGPoint(x: 30.0, y: 10.0))
-
-
-            TextField("Price", text: $price)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 350, height: 100)
-                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-
-            // Date and Time
-                Text("Date and Time")
-                    .bold()
-                    .font(.system(size: 20))
-                    .position(CGPoint(x: 75.0, y: 10.0))
-            HStack {
-                Button(action: {
-                    isDateAndTimeVisible.toggle()
-                }) {
-                    Image(systemName: "calendar")
-                        .foregroundColor(.blue)
-                }
-                .sheet(isPresented: $isDateAndTimeVisible) {
-                    DateAndTime()
-                }
-
-                TextField("Select Date and Time", value: $selectedDate, formatter: dateFormatter)
-                    .disabled(true)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-            }
-            .padding()
-                NavigationLink(destination: ConfirmEvent(), isActive: $isConfirmationVisible) {
-                                    EmptyView()
-                                }
-                                .hidden()
-
-                                Button("Create Event") {
-                                    isConfirmationVisible = true
-                                }
-                                .padding()
-                                .background(Color.purple)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .padding()
-
-                                Spacer() // Leave space for the navigation control bar
-                            }
-            .padding()
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .bottomBar) {
-                                Toolbar()
-                                    .position(CGPoint(x: 180, y: 40))
-                            }
+                    .background(Color(.systemBackground))
+                    
+                    ZStack(alignment: .bottom) {
+                        Image("nametheevent")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: 200)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Event Name")
+                            .font(.headline)
+                            .padding(.leading)
+                        
+                        TextField("Event Name", text: $eventName)
+                            .foregroundColor(.secondary)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Venue Address")
+                            .font(.headline)
+                            .padding(.leading)
+                        
+                        TextField("Venue Address", text: $venueAddress)
+                            .foregroundColor(.secondary)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Price")
+                            .font(.headline)
+                            .padding(.leading)
+                        
+                        TextField("Price", text: $price)
+                            .foregroundColor(.secondary)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal)
+                    }
+                    
+                    Button(action: {
+                        /* Add co-host functionality */
+                        isSelectCoHostVisible.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: "person.fill")
+                            Text("Add a Co-host")
+                                .font(.headline)
+                            Spacer()
+                            Text("Sam Aiden as the co-host")
+                                .foregroundColor(.secondary)
+                        }
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 1)
+                    }
+                    .sheet(isPresented: $isSelectCoHostVisible) {
+                        SelectCoHost()
+                    }
+                    
+                    Button(action: {
+                        /* Add date and time functionality */
+                        isDateAndTimeVisible.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: "calendar")
+                            Text("Add date and time")
+                                .font(.headline)
+                            Spacer()
+                            Text("Date and time")
+                                .foregroundColor(.secondary)
+                        }
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 1)
+                    }
+                    .sheet(isPresented: $isDateAndTimeVisible) {
+                        DateAndTime()
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Location")
+                            .font(.headline)
+                            .padding(.leading)
+                        
+                        HStack {
+                            Image(systemName: "mappin")
+                                .font(.title)
+                                .foregroundColor(.black)
+                            
+                            TextField("Mapping", text: .constant(""))
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal)
+                                .foregroundColor(.secondary)
                         }
                     }
-                }
+                    .padding()
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Budget")
+                            .font(.headline)
+                            .padding(.leading)
+                        
+                        HStack {
+                            Image(systemName: "dollarsign")
+                                .font(.title)
+                                .foregroundColor(.black)
+                            
+                            TextField("Budget", text: .constant(""))
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    .padding()
+                    
+                    VStack {
+                        Button(action: { self.showInvite.toggle() }) {
+                            HStack {
+                                Text("Generate e-Invite")
+                                    .font(.headline)
+                                Image(systemName: "arrow.clockwise.circle")
+                            }
+                            .padding()
+                            .foregroundColor(.black)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .shadow(radius: 1)
+                        }
+                        .sheet(isPresented: $showInvite) {
+                            // Your e-invite view goes here
+                            ScrollView {
+                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                                    ForEach(0..<5) { _ in
+                                        Image("invite")
+                                            .resizable()
+                                            .frame(width: 150, height: 250) // Adjust the size as needed
+                                            .cornerRadius(10)
+                                            .shadow(radius: 1)
+                                    }
+                                }
+                                .padding()
+                            }
 
-                private let dateFormatter: DateFormatter = {
-                    let formatter = DateFormatter()
-                    formatter.dateStyle = .medium
-                    formatter.timeStyle = .short
-                    return formatter
-                }()
+                        }
+                    }
+                    .padding()
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        // Add action for the Confirm button
+                        // Handle the logic to confirm the event
+                    }) {
+                        Text("Confirm")
+                            .foregroundColor(.white)
+                            .font(.headline)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .padding()
+                            .shadow(radius: 1)
+                    }
+                }
+                .padding()
             }
-
-            struct CreateEvent_Previews: PreviewProvider {
-                static var previews: some View {
-                    CreateEvent()
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true) // Hide navigation bar
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Toolbar()
+                        .position(CGPoint(x: 180, y: 40))
                 }
             }
+        }
+    }
+}
+
+struct CreateEvent_Previews: PreviewProvider {
+    static var previews: some View {
+        CreateEvent()
+    }
+}
