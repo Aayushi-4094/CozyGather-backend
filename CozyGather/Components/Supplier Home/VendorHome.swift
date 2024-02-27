@@ -7,6 +7,7 @@ struct VendorHomePage: View {
     @State private var tasks: [String] = ["Task 1", "Task 2", "Task 3", "Task 4", "Task 5"]
     @State private var newTask: String = ""
     @State private var isEditing = false
+
     
     var body: some View {
         NavigationView {

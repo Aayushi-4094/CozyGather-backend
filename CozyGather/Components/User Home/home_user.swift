@@ -258,7 +258,6 @@ struct GridView: View {
 
 struct MenuView: View {
     @Binding var isMenuExpanded: Bool
-
     var body: some View {
         NavigationView {
             Form {
@@ -276,7 +275,6 @@ struct MenuView: View {
                         Label("Linked Accounts", systemImage: "link")
                     }
                 }
-
                 Section(header: Text("Settings").font(.title)) {
                     NavigationLink(destination: Text("Privacy Policy")) {
                         Label("Privacy Policy", systemImage: "shield")

@@ -12,13 +12,13 @@ struct UserProfile: View {
     var body: some View {
         VStack(spacing: 20) {
             HStack {
-                Button(action: {
-                    // Add action for the back button
-                }) {
-                    Image(systemName: "chevron.left")
-                        .font(.title)
-                        .foregroundColor(.blue)
-                }
+//                Button(action: {
+//                    // Add action for the back button
+//                }) {
+//                    Image(systemName: "chevron.left")
+//                        .font(.title)
+//                        .foregroundColor(.blue)
+//                }
                 Spacer()
 
                 Text("Profile")

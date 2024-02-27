@@ -10,13 +10,13 @@ struct ConfirmEvent: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: {
-                    // Add action for the back button
-                }) {
-                    Image(systemName: "chevron.left")
-                        .font(.title)
-                        .foregroundColor(.blue)
-                }
+//                Button(action: {
+//                    // Add action for the back button
+//                }) {
+//                    Image(systemName: "chevron.left")
+//                        .font(.title)
+//                        .foregroundColor(.blue)
+//                }
 
                 Spacer()
 

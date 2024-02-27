@@ -7,13 +7,13 @@ struct BudgetApp: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     HStack {
-                        Button(action: {
-                            // Handle back button action
-                        }) {
-                            Image(systemName: "arrow.left")
-                                .foregroundColor(.blue)
-                        }
-                        .padding(.leading)
+//                        Button(action: {
+//                            // Handle back button action
+//                        }) {
+//                            Image(systemName: "arrow.left")
+//                                .foregroundColor(.blue)
+//                        }
+//                        .padding(.leading)
                         
                         Spacer()
                         

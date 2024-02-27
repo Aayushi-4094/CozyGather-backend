@@ -2,7 +2,7 @@ import SwiftUI
 
 struct VendorList: View {
     @State private var searchText: String = ""
-    @State private var isFilterScreen1Presented = false
+    @State private var isFilterScreenPresented = false
 
     var body: some View {
         NavigationView {
@@ -11,14 +11,14 @@ struct VendorList: View {
                 VStack {
                     // Header
                     HStack {
-                        Button(action: {
-                            // Add action for when the back button is tapped
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .font(.title)
-                                .foregroundColor(.blue)
-                        }
-                        .padding(.leading, 16)
+//                        Button(action: {
+//                            // Add action for when the back button is tapped
+//                        }) {
+//                            Image(systemName: "chevron.left")
+//                                .font(.title)
+//                                .foregroundColor(.blue)
+//                        }
+//                        .padding(.leading, 16)
 
                         Spacer()
 
@@ -48,7 +48,7 @@ struct VendorList: View {
 
                         // Filter Button
                         Button(action: {
-                            isFilterScreen1Presented.toggle()
+                            isFilterScreenPresented.toggle()
                         }) {
                             HStack {
                                 Image(systemName: "slider.horizontal.3")
@@ -62,8 +62,8 @@ struct VendorList: View {
                             .cornerRadius(20)
                             .padding(.horizontal, 16)
                         }
-                        .sheet(isPresented: $isFilterScreen1Presented) {
-                            FilterScreen1()
+                        .sheet(isPresented: $isFilterScreenPresented) {
+                            FilterScreen()
                         }
                     }
 
