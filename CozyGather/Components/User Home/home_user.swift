@@ -114,8 +114,37 @@ struct EventDetailView: View {
             Text(event.name)
                 .font(.headline)
                 .padding(.bottom, 8)
+            
+            Capsule()
+                .fill(Color.gray.opacity(1))
+                .frame(height: 50)
+                .overlay(
+                    Text("Days : Hours : Minutes")
+                        .foregroundColor(.black)
+                        .padding(.horizontal)
+                )
+                .padding(.horizontal, 40) // Add left and right padding
 
             // Add more details as needed
+            
+            Text("Co-Host")
+                .font(.headline)
+                .padding(.bottom, 8)
+            Text("Date and time")
+                .font(.headline)
+                .padding(.bottom, 8)
+            Text("Location")
+                .font(.headline)
+                .padding(.bottom, 8)
+            Text("Description")
+                .font(.headline)
+                .padding(.bottom, 8)
+            Text("Vendor assigned")
+                .font(.headline)
+                .padding(.bottom, 8)
+            Text("Task")
+                .font(.headline)
+                .padding(.bottom, 8)
 
             Spacer()
         }

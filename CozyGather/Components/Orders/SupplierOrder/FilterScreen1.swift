@@ -40,8 +40,8 @@ struct FilterScreen1: View {
                     FilterButton1(imageName: "calendar", label: "Tomorrow", isSelected: selectedDate == "Tomorrow") {
                         selectedDate = "Tomorrow"
                     }
-                    FilterButton1(imageName: "calendar", label: "This Week", isSelected: selectedDate == "This Week") {
-                        selectedDate = "This Week"
+                    FilterButton1(imageName: "calendar", label: "Date and time", isSelected: selectedDate == "This Week") {
+                        selectedDate = "Date and time"
                     }
                 }
             }

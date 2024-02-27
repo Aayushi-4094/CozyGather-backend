@@ -36,15 +36,16 @@ struct ConfirmEvent: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(height: 300)
                 }
-                Capsule()
-                    .fill(Color.gray.opacity(1))
-                    .frame(height: 50)
-                    .overlay(
-                        Text("Days : Hours : Minutes")
-                            .foregroundColor(.black)
-                            .padding(.horizontal)
-                    )
-                    .padding(.horizontal, 40) // Add left and right padding
+//                Capsule()
+//                    .fill(Color.gray.opacity(1))
+//                    .frame(height: 50)
+//                    .overlay(
+//                        Text("Days : Hours : Minutes")
+//                            .foregroundColor(.black)
+//                            .padding(.horizontal)
+//                    )
+//                    .padding(.horizontal, 40) // Add left and right padding
+                    
             }
 
            Button(action: {
@@ -108,15 +109,18 @@ struct ConfirmEvent: View {
                            HStack{
                                Text("Generate e-Invite")
                                    .font(.headline)
-                               Image(systemName: "arrow.clockwise.circle.fill")
+                               Image(systemName: "arrow.clockwise.circle")
                            }
                            .padding()
-                           .foregroundColor(.white)
-                           .background(Color.blue)
+                           .foregroundColor(.black)
+                           .background(Color.white)
                            .cornerRadius(10)
                        }
                        .sheet(isPresented:$showInvite) {
                            // Your e-invite view goes here
+                           Image("invite")
+                           Spacer()
+                           Image("invite")
                        }
             
             
