@@ -18,7 +18,7 @@ struct MessagingView: View {
     var body: some View {
         VStack {
             HStack{
-                Image(systemName: "arrow.left")
+                
                 Image("noti1")
                     .cornerRadius(50)
                 Text("Sam")

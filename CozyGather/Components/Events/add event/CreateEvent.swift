@@ -17,14 +17,14 @@ struct CreateEvent: View {
             ScrollView {
                 VStack {
                     HStack {
-                        Button(action: {
-                            // Add action for the back button
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .font(.title2)
-                                .foregroundColor(.blue)
-                        }
-                        
+//                        Button(action: {
+//                            // Add action for the back button
+//                        }) {
+//                            Image(systemName: "chevron.left")
+//                                .font(.title2)
+//                                .foregroundColor(.blue)
+//                        }
+//                        
                         Spacer()
                         
                         Text("Create Event")

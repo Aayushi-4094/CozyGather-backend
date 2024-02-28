@@ -1,107 +1,100 @@
-
 import SwiftUI
+
 struct messagelist: View {
+    @State private var numberOfMessages = 4 // Initial number of messages
+
     var body: some View {
-        VStack(spacing: 20) {
-            HStack {
-                Button(action: {
-                    // Add action for the back button
-                }) {
-                    Image(systemName: "chevron.left")
+        NavigationView {
+            VStack(spacing: 20) {
+                HStack {
+                    Spacer()
+                    Text("Messages")
                         .font(.title)
-                        .foregroundColor(.blue)
-                        .position(CGPoint(x: 40.0, y: -200.0))
+                        .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
+                        .padding(.bottom, 20)
+                    Spacer()
+                    Button(action: {}) {
+                        Image(systemName: "bell")
+                            .font(.title)
+                            .foregroundColor(.blue)
+                    }
                 }
-                Spacer()
-                Text("Messages")
-                    .font(.title)
-                    .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
-                    .padding(.bottom, 20)
-                    .position(CGPoint(x: 0.0, y: -190.0))
-                Spacer()
+                .padding(.top, 20) // Align top bar to the top
+                Divider()
+
+                ForEach(0..<numberOfMessages, id: \.self) { index in
+                    NavigationLink(destination: MessagingView()) {
+                        MessageBoxSampleView(imageName: "noti\(index + 1)", name: "Notification \(index + 1)", date: "Jan \(Int.random(in: 1...31))", description: "Sample description", timeButtonText: "\(Int.random(in: 1...60))")
+                    }
+                }
+                .padding(.top, 20) // Align notifications to the top
+
                 Button(action: {
-                    // Add action for the bell button
+                    numberOfMessages += 1 // Increase the number of messages by 1
                 }) {
-                    Image(systemName: "bell")
-                        .font(.title)
+                    Text("Load More Messages") // Updated button label
                         .foregroundColor(.blue)
-                        .position(CGPoint(x: 100.0, y: -200.0))
                 }
             }
-            .padding()
+            .padding(.horizontal)
             .background(Color.white)
-            .padding(.top , -120)
-            .frame(width: 450, height: 10)// Push everything down by adding top padding
-            
+            .navigationBarHidden(true)
 
-            messageboxsample(imageName: "noti2", name:"Notty1", date: "Jan 25", description: "Hi", timeButtonText: "2")
-                .padding()
-                .position(CGPoint(x: 210.0, y: -250.0))
-                .frame(width: 430, height: 10)
-
-            
-            messageboxsample(imageName: "noti1", name:"Notty2" , date: "Feb 2", description: "Hello", timeButtonText: "5")
-                .padding()
-                .position(CGPoint(x: 210.0, y: -180.0))
-                .frame(width: 430, height: 10)
-
+            // Add VendorToolbar at the end of the page
+            .overlay(
+                VendorToolbar()
+                    .position(x:190, y: 740) // Position toolbar at the bottom
+            )
         }
-        .padding(.horizontal)
-        .background(Color.white)
-        .navigationBarHidden(true)
-         // This line looks suspicious, you might want to review it
-
-        // Hide the navigation bar
-        .overlay(
-            VendorToolbar()
-                .position(CGPoint(x: 235.0, y: 415.0))
-        )
     }
 }
-struct messageboxsample: View {
-    var imageName: String
-    var name: String
-    var date: String
-    var description: String
-    var timeButtonText: String
+
+struct MessageBoxSampleView: View {
+    let imageName: String
+    let name: String
+    let date: String
+    let description: String
+    let timeButtonText: String
+
     var body: some View {
-        HStack {
-            HStack{
-                Image(imageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 70, height: 70)
-                    .position(CGPoint(x: 70.0, y: 10.0))
-                
-                VStack(alignment: .leading) {
-                    Text(name)
-                        .font(.headline)
-                        .foregroundColor(.black)
-                    
-                    Text(description)
-                        .foregroundColor(.gray)
-                }.position(CGPoint(x: 10.0, y: 10.0))
-                
-                
+        HStack(alignment:.top) {
+            Image(imageName)
+                .resizable()
+                .aspectRatio(contentMode:.fit)
+                .frame(width :70, height :70)
+                .cornerRadius(100.0)
+
+            VStack(alignment:.leading) {
+                Text(name)
+                    .font(.headline)
+                    .foregroundColor(.black)
+
+                Text(description)
+                    .foregroundColor(.gray)
             }
-            VStack{
-                Text(date)
-                Text(timeButtonText)
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-            }
+
             Spacer()
+
+            VStack(alignment:.trailing) {
+                Text(date)
+                Text("\(timeButtonText) min ago")
+                    .foregroundColor(.white)
+                    .padding(5)
+                    .background(Color.blue)
+                    .cornerRadius(5)
+                    .frame(width :50,height :50)
+            }
         }
+        .padding()
     }
-    
-    }
-struct messagelist_preview: PreviewProvider {
-    static var previews: some View {
+}
+
+
+
+
+
+struct messagelist_Previews : PreviewProvider {
+    static var previews : some View {
         messagelist()
     }
 }
-
-
-
-
-
