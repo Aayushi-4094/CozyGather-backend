@@ -13,11 +13,11 @@ struct messagelist: View {
                         .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
                         .padding(.bottom, 20)
                     Spacer()
-                    Button(action: {}) {
-                        Image(systemName: "bell")
-                            .font(.title)
-                            .foregroundColor(.blue)
-                    }
+//                    Button(action: {}) {
+//                        Image(systemName: "bell")
+//                            .font(.title)
+//                            .foregroundColor(.blue)
+//                    }
                 }
                 .padding(.top, 20) // Align top bar to the top
                 Divider()

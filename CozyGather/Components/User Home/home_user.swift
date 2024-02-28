@@ -15,147 +15,82 @@ struct EventData: Identifiable, Hashable {
     }
 }
 
-//struct NotificationView: View {
-//    @Binding var isNotificationViewPresented: Bool
-//    var body: some View {
-//        NavigationView {
-//            Form {
-//                Text("Notification").font(.title)
-//                Text("Notification").font(.title)
-//            }
-//            .listStyle(GroupedListStyle())
-//            .navigationBarTitle("Notification", displayMode: .inline)
-//            .navigationBarItems(
-//                trailing:
-//                    Button(action: {
-//                        withAnimation {
-//                            isNotificationViewPresented.toggle()
-//                        }
-//                    }) {
-//                        Image(systemName: "xmark")
-//                            .foregroundColor(.black)
-//                            .padding()
-//                    }
-//            )
-//        }
-//        .navigationViewStyle(StackNavigationViewStyle()) // Use stack style for iPhone
-//    }
-//}
+
 
 struct EventCard: View {
     @State private var isDetailViewPresented = false
     var event: EventData
+    var randomBackgroundColor: Color {
+        let colors: [Color] = [.purple, .mint, .orange, .indigo, .purple, .pink]
+            return colors.randomElement() ?? .gray
+        }
     
     var body: some View {
         ZStack {
-            VStack {
-                Image(event.imageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width - 200, height: 200)
-                    .cornerRadius(12)
-                    //.padding(8)
-                    .shadow(radius: 5) // Add shadow for a card-like appearance
-
-                HStack {
+            randomBackgroundColor
+                            .cornerRadius(12)
+            HStack{
+                VStack {
+                    
                     Text(event.name)
-                        .font(.headline)
                         .foregroundColor(.black)
-                        .padding(.bottom, 4)
-                        .padding(.leading, 8)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                    Spacer()
-
+                        .font(.system(size:15 ))
+                        .padding(.bottom,8)
+                        .padding(.top,17)
+                    
+                    Image(event.imageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width - 250, height: 180)
+                        .cornerRadius(12)
+                        .shadow(radius: 5) // Add shadow for a card-like appearance
+                    
                     Button(action: {
                         isDetailViewPresented.toggle()
                     }) {
                         Text("View Details")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.black)
                             .padding(.vertical, 8)
                             .padding(.horizontal, 16)
-                            //.background(Color.blue)
+                        //.background(Color.blue)
                             .cornerRadius(8)
-                            .padding(.trailing, 8)
+                            .font(.system(size:13 ))
+                        
+                        
                     }
                     .sheet(isPresented: $isDetailViewPresented) {
                         EventDetailView(event: event)
                     }
+                    
                 }
-                .padding(.horizontal, 8)
-                .frame(width: UIScreen.main.bounds.width - 32, alignment: .leading)
+                .padding(.horizontal,20)
+                
+                .frame(width: 150)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(event.frameColor,lineWidth:2)
+                    
+                )
             }
             
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(event.frameColor, lineWidth: 2)
-            )
+                
+            
+//            .frame(width: 250)
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 12)
+//                    .stroke(event.frameColor, lineWidth: 2)
+//            )
+            
         }
     }
 }
-//
-//struct EventDetailView: View {
-//    var event: EventData
-//
-//    var body: some View {
-//        VStack {
-//            Text("Event Details")
-//                .font(.title)
-//                .fontWeight(.bold)
-//                .padding()
-//
-//            Image(event.imageName)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .cornerRadius(12)
-//                .padding(8)
-//                .shadow(radius: 5) // Add shadow for a card-like appearance
-//
-//            Text(event.name)
-//                .font(.headline)
-//                .padding(.bottom, 8)
-//
-//            Capsule()
-//                .fill(Color.gray.opacity(1))
-//                .frame(height: 50)
-//                .overlay(
-//                    Text("Days : Hours : Minutes")
-//                        .foregroundColor(.black)
-//                        .padding(.horizontal)
-//                )
-//                .padding(.horizontal, 40) // Add left and right padding
-//
-//            // Add more details as needed
-//
-//            Text("Co-Host")
-//                .font(.headline)
-//                .padding(.bottom, 8)
-//            Text("Date and time")
-//                .font(.headline)
-//                .padding(.bottom, 8)
-//            Text("Location")
-//                .font(.headline)
-//                .padding(.bottom, 8)
-//            Text("Description")
-//                .font(.headline)
-//                .padding(.bottom, 8)
-//            Text("Vendor assigned")
-//                .font(.headline)
-//                .padding(.bottom, 8)
-//            Text("Task")
-//                .font(.headline)
-//                .padding(.bottom, 8)
-//
-//            Spacer()
-//        }
-//        .navigationBarTitle("Event Detail", displayMode: .inline)
-//    }
-//}
+
 struct EventDetailView: View {
     var event: EventData
     @State private var isTaskLinkActive = false
 
     var body: some View {
+        
         VStack {
             Text("Event Details")
                 .font(.title)
@@ -245,12 +180,16 @@ struct GridView: View {
 
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: Array(repeating: GridItem(), count: 1), spacing: 50) {
+            LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 0) {
                 ForEach(eventData, id: \.self) { event in
                     EventCard(event: event)
+                        .padding(100)
+                        .frame(width: 250,height: 250)
+                    
                 }
+                .padding(20)
             }
-            .padding(26)
+            .padding(20)
              // Adjust the frame size
         }
     }
@@ -258,14 +197,15 @@ struct GridView: View {
 
 struct MenuView: View {
     @Binding var isMenuExpanded: Bool
+    
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Menu").font(.title)) {
-                    NavigationLink(destination: Text("Profile")) {
+                    NavigationLink(destination: UserProfile()) { // Connect to UserProfile view
                         Label("Profile", systemImage: "person.circle")
                     }
-                    NavigationLink(destination: Text("Notification")) {
+                    NavigationLink(destination: NotificationView()) { // Connect to NotificationView view
                         Label("Notification", systemImage: "bell")
                     }
                     NavigationLink(destination: Text("Payments")) {
@@ -306,58 +246,61 @@ struct MenuView: View {
     }
 }
 
+
 struct UserHomeView: View {
     @State private var isSeeAllPresented = false
     @State private var isMenuExpanded = false
-    @State private var isNotificationViewPresented = false
+    @State private var isAddEventPresented = false
     let myEventsData = [
-        EventData(name: "Birthday Bash", imageName: "img2", frameColor: .pink),
-        EventData(name: "Summer Fiesta", imageName: "img2", frameColor: .orange),
-        EventData(name: "Joyful Gathering", imageName: "img3", frameColor: .purple)
+        EventData(name: "Birthday Bash", imageName: "invite", frameColor: .pink),
+        EventData(name: "Summer Fiesta", imageName: "invite", frameColor: .orange),
+        EventData(name: "Joyful Gathering", imageName: "invite", frameColor: .purple)
     ]
 
     let upcomingEventsData = [
-        EventData(name: "Beach Party", imageName: "img4", frameColor: .blue),
-        EventData(name: "Dance Night", imageName: "img5", frameColor: .green),
-        EventData(name: "Sunset Soiree", imageName: "img6", frameColor: .yellow)
+        EventData(name: "Beach Party", imageName: "invite", frameColor: .blue),
+        EventData(name: "Dance Night", imageName: "invite", frameColor: .green),
+        EventData(name: "Sunset Soiree", imageName: "invite", frameColor: .yellow)
     ]
 
     var body: some View {
-            NavigationView {
-                VStack {
-                    Spacer()
-                    HStack {
-                        Button(action: {
-                            withAnimation {
-                                isMenuExpanded.toggle()
-                                isNotificationViewPresented = false // Close notification view when menu opens
-                            }
-                        }) {
-                            Image(systemName: "line.3.horizontal")
-                                .imageScale(.large)
-                                .padding(.leading, 16)
-                                .foregroundColor(.blue)
+        NavigationView {
+            VStack {
+                Spacer()
+                HStack {
+                    Button(action: {
+                        withAnimation {
+                            isMenuExpanded.toggle()
+                            isAddEventPresented = false // Close notification view when menu opens
                         }
-
-                        Spacer()
-                        Text("Hi Aayushi!!")
-                            .font(.title)
-                            .fontWeight(.bold)
+                    }) {
+                        Image(systemName: "line.3.horizontal")
+                            .imageScale(.large)
                             .padding(.leading, 16)
-                        Spacer()
+                            .foregroundColor(.blue)
+                    }
 
-                        Image(systemName: "bell")
+                    Spacer()
+                    Text("Hi Aayushi!!")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.leading, 16)
+                    Spacer()
+
+                    NavigationLink(destination: CreateEvent()) { // Use NavigationLink for navigation to CreateEvent view
+                        Image(systemName: "plus")
                             .imageScale(.large)
                             .padding(.trailing, 16)
                             .foregroundColor(.blue)
-                            .onTapGesture {
-                                isMenuExpanded = false // Close menu when notification icon is tapped
-                                isNotificationViewPresented.toggle()
-                            }
                     }
-                    .padding(.top, 10)
-                    Divider()
+                    .navigationTitle("home")
+                    .navigationBarTitle("", displayMode: .inline)
+                }
+                .navigationBarTitle("", displayMode: .inline)
+                .padding(.top, 20)
+                Divider()
 
+ 
                 HStack {
                     Text("My Events")
                         .font(.system(size: 30, weight: .bold, design: .default))
@@ -432,10 +375,10 @@ struct UserHomeView: View {
                                     .offset(x: isMenuExpanded ? 0 : -UIScreen.main.bounds.width)
                             )
                             .overlay(
-                                NotificationView()
-                                    .frame(width: isNotificationViewPresented ? UIScreen.main.bounds.width : 0)
+                                CreateEvent()
+                                    .frame(width: isAddEventPresented ? UIScreen.main.bounds.width : 0)
                                     .background(Color.white)
-                                    .offset(x: isNotificationViewPresented ? 0 : UIScreen.main.bounds.width)
+                                    .offset(x: isAddEventPresented ? 0 : UIScreen.main.bounds.width)
                             )
                         }
                     }

@@ -11,27 +11,10 @@ struct MainOrders: View {
                 // Content
                 VStack {
                     // Header
-                    HStack {
                         Spacer()
-
                         Text("Orders")
-                            .font(Font.custom("AirbnbCereal_W_Md", size: 24))
-                            .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
-                            .padding(.bottom, 20)
-
+                            .font(.largeTitle)
                         Spacer()
-
-                        Button(action: {
-                            // Add action for when the notifications button is tapped
-                        }) {
-                            Image(systemName: "bell")
-                                .font(.title)
-                                .foregroundColor(.blue)
-                        }
-                        .padding(.trailing, 25 )
-                        .padding(.top, -20)
-                    }
-
                     // Search and Filter
                     HStack {
                         // Search TextField
@@ -99,7 +82,7 @@ struct MainOrders: View {
                 }
 
                 VendorToolbar()
-                    .position(CGPoint(x: 200.0, y: 760.0))
+                    .position(CGPoint(x: 200.0, y: 750.0))
 
                 // Button to navigate to ViewOrderDetails
                 if isViewOrderDetailsActive {

@@ -39,10 +39,10 @@ struct NNavigationBarView: View {
                 .font(.title)
                 .fontWeight(.bold)
             Spacer()
-            Button(action: {}) {
-                Image(systemName: "bell")
-                    .foregroundColor(.black)
-            }
+//            Button(action: {}) {
+//                Image(systemName: "bell")
+//                    .foregroundColor(.black)
+//            }
         }
         .padding(.horizontal)
         Divider()
@@ -164,4 +164,3 @@ struct NotificationDetail_Previews: PreviewProvider {
         NotificationDetail()
     }
 }
-

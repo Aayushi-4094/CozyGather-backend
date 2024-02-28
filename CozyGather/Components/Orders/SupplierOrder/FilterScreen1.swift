@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct FilterScreen1: View {
     var body: some View {
         VStack {
@@ -22,6 +21,9 @@ struct FilterScreen1: View {
 
 
 struct FilterOptionsView: View {
+    @State private var selectedDate = Date()
+    @State private var selectedTime = Date()
+    
     var body: some View {
         VStack {
             HStack {
@@ -30,11 +32,9 @@ struct FilterOptionsView: View {
             }
             .padding(.bottom)
             
-            FilterDateSelectionView()
+            FilterDateTimeSelectionView(selectedDate: $selectedDate, selectedTime: $selectedTime)
             
             FilterLocationSelectionView()
-            
-            //FilterCategorySelectionView()
             
             FilterPriceRangeView()
             
@@ -60,42 +60,39 @@ struct FilterOptionButtonView: View {
             .frame(maxWidth: .infinity)
         }
         .padding()
-        //.background(Color.gray.opacity(0.2))
         .cornerRadius(10)
     }
 }
 
 
-
-struct FilterDateSelectionView: View {
-    var body: some View {
-        HStack {
-//            DateSelectionButtonView(label: "Today")
-//            DateSelectionButtonView(label: "Tomorrow")
-            Text("Date")
-                .font(.caption)
-            Spacer()
-            DateSelectionButtonView(label: "Select from Calendar")
-        }
-        .padding()
-        .background(Color.gray.opacity(0.2))
-        .cornerRadius(10)
-    }
-}
-
-struct DateSelectionButtonView: View {
-    var label: String
+struct FilterDateTimeSelectionView: View {
+    @Binding var selectedDate: Date
+    @Binding var selectedTime: Date
     
     var body: some View {
-        Button(action: {}) {
-            Text(label)
-                .font(.caption)
-                .foregroundColor(.blue)
+        VStack {
+            HStack {
+                Text("Date")
+                    .font(.caption)
+                Spacer()
+                DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                    .labelsHidden()
+            }
+            .padding()
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(10)
+            
+            HStack {
+                Text("Time")
+                    .font(.caption)
+                Spacer()
+                DatePicker("", selection: $selectedTime, displayedComponents: .hourAndMinute)
+                    .labelsHidden()
+            }
+            .padding()
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(10)
         }
-//        .padding()
-//        .frame(maxWidth: .infinity)
-//        .background(Color.gray.opacity(0.2))
-//        .cornerRadius(10)
     }
 }
 
@@ -168,5 +165,3 @@ struct FilterScreen1_Previews: PreviewProvider {
         FilterScreen1()
     }
 }
-
-

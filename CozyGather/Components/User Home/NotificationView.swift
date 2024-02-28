@@ -114,14 +114,7 @@ struct NotificationView: View {
         VStack {
             VStack{
                 HStack {
-                    Button(action: {
-                        // Add action for the back button
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .font(.title)
-                            .foregroundColor(.blue)
-                    }
-                    Spacer()
+                                        Spacer()
                     
                     Label("Notification", systemImage: "")
                         .font(Font.custom("AirbnbCereal_W_Md", size: 24))

@@ -136,6 +136,60 @@ struct VendorHomePage: View {
     }
 }
 
+
+//struct MenuView: View {
+//    @Binding var isMenuExpanded: Bool
+//    
+//    var body: some View {
+//        NavigationView {
+//            Form {
+//                Section(header: Text("Menu").font(.title)) {
+//                    NavigationLink(destination: UserProfile()) { // Connect to UserProfile view
+//                        Label("Profile", systemImage: "person.circle")
+//                    }
+//                    NavigationLink(destination: NotificationView()) { // Connect to NotificationView view
+//                        Label("Notification", systemImage: "bell")
+//                    }
+//                    NavigationLink(destination: Text("Payments")) {
+//                        Label("Payments", systemImage: "creditcard")
+//                    }
+//                    NavigationLink(destination: Text("Linked Accounts")) {
+//                        Label("Linked Accounts", systemImage: "link")
+//                    }
+//                }
+//                Section(header: Text("Settings").font(.title)) {
+//                    NavigationLink(destination: Text("Privacy Policy")) {
+//                        Label("Privacy Policy", systemImage: "shield")
+//                    }
+//                    NavigationLink(destination: Text("Report")) {
+//                        Label("Report", systemImage: "flag")
+//                    }
+//                    NavigationLink(destination: Text("Settings")) {
+//                        Label("Settings", systemImage: "gearshape")
+//                    }
+//                }
+//            }
+//            .listStyle(GroupedListStyle())
+//            .navigationBarTitle("Menu", displayMode: .inline)
+//            .navigationBarItems(
+//                trailing:
+//                    Button(action: {
+//                        withAnimation {
+//                            isMenuExpanded.toggle()
+//                        }
+//                    }) {
+//                        Image(systemName: "xmark")
+//                            .foregroundColor(.black)
+//                            .padding()
+//                    }
+//            )
+//        }
+//        .navigationViewStyle(StackNavigationViewStyle()) // Use stack style for iPhone
+//    }
+//}
+
+
+
 struct VendorHomePage_Previews: PreviewProvider {
     static var previews: some View {
         VendorHomePage()
