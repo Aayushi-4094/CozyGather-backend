@@ -24,7 +24,7 @@ struct Toolbar: View {
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(selectedTab == .home ? Color.blue : Color.gray)
                         }
-                        .frame(width: 393 / 5, height: 83)
+                        .frame(width: 393 / 4, height: 83)
                         .onTapGesture {
                             selectedTab = .home
                             isHomeUserViewActive.toggle()
@@ -33,25 +33,25 @@ struct Toolbar: View {
                             UserHomeView()
                         }
             
-            VStack {
-                Image(systemName: selectedTab == .events ? "calendar.badge.plus ": "calendar.badge.plus")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(selectedTab == .events ? Color.blue : Color.gray)
-                Text("Create Event")
-                    .font(.system(size: 10, weight: .regular, design: .default))
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .foregroundColor(selectedTab == .events ? Color.blue : Color.gray)
-            }
-            .frame(width: 393 / 5, height: 83)
-            .onTapGesture {
-                selectedTab = .events
-                isCreateEventViewActive.toggle()
-            }
-            .fullScreenCover(isPresented: $isCreateEventViewActive) {
-                CreateEvent()
-            }
+//            VStack {
+//                Image(systemName: selectedTab == .events ? "calendar.badge.plus ": "calendar.badge.plus")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: 24, height: 24)
+//                    .foregroundColor(selectedTab == .events ? Color.blue : Color.gray)
+//                Text("Create Event")
+//                    .font(.system(size: 10, weight: .regular, design: .default))
+//                    .frame(maxWidth: .infinity, alignment: .center)
+//                    .foregroundColor(selectedTab == .events ? Color.blue : Color.gray)
+//            }
+//            .frame(width: 393 / 5, height: 83)
+//            .onTapGesture {
+//                selectedTab = .events
+//                isCreateEventViewActive.toggle()
+//            }
+//            .fullScreenCover(isPresented: $isCreateEventViewActive) {
+//                CreateEvent()
+//            }
             
             VStack {
                 Image(systemName: selectedTab == .vendorListing ? "list.bullet.fill" : "list.bullet")
@@ -64,7 +64,7 @@ struct Toolbar: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundColor(selectedTab == .vendorListing ? Color.blue : Color.gray)
             }
-            .frame(width: 393 / 5, height: 83)
+            .frame(width: 393 / 4, height: 83)
             .onTapGesture {
                 selectedTab = .events
                 isCreateVendorList.toggle()
@@ -84,7 +84,7 @@ struct Toolbar: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundColor(selectedTab == .guests ? Color.blue : Color.gray)
             }
-            .frame(width: 393 / 5, height: 83)
+            .frame(width: 393 / 4, height: 83)
             
                 .onTapGesture {
                     selectedTab = .budget
@@ -106,7 +106,7 @@ struct Toolbar: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundColor(selectedTab == .budget ? Color.blue : Color.gray)
             }
-            .frame(width: 393 / 5, height: 83)
+            .frame(width: 393 / 4, height: 83)
             .onTapGesture {
                 selectedTab = .budget
                 isBudgetApp.toggle()

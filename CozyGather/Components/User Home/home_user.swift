@@ -285,6 +285,7 @@ struct UserHomeView: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.leading, 16)
+                        .padding(.top, 40)
                     Spacer()
 
                     NavigationLink(destination: CreateEvent()) { // Use NavigationLink for navigation to CreateEvent view
@@ -363,7 +364,7 @@ struct UserHomeView: View {
                     Spacer()
                     Toolbar()
                         .background(Color.white)
-                        .padding(.bottom, -35)
+                        .padding(.bottom, 55)
                 }
             }
                 .navigationBarHidden(true)

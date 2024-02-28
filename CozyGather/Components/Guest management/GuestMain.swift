@@ -4,14 +4,35 @@ struct GuestMain: View {
     @State private var selectedTab: EventsTab = .upcoming
     @State private var isAddGuestAvailable = false
     @State private var selectedSegment = 0
-    
-    
+
     enum EventsTab {
         case upcoming, past, cancelled
     }
 
+    // Replace with your actual logic to fetch guests
+    let guests: [GuestModel] = [
+        GuestModel(id: UUID(), name: "Aarushi", phoneNo: "+91 xxxxxxxxxx", email: "xxxx@gmail.com", imageName: "noti1", isAccepted: true),
+        GuestModel(id: UUID(), name: "Aarushi", phoneNo: "+91 xxxxxxxxxx", email: "xxxx@gmail.com", imageName: "noti1", isAccepted: false),
+        GuestModel(id: UUID(), name: "Aarushi", phoneNo: "+91 xxxxxxxxxx", email: "yyyy@gmail.com", imageName: "noti1", isAccepted: true),
+        GuestModel(id: UUID(), name: "Aarushi", phoneNo: "+91 xxxxxxxxxx", email: "xxxx@gmail.com", imageName: "noti1", isAccepted: true),
+        GuestModel(id: UUID(), name: "Aarushi", phoneNo: "+91 xxxxxxxxxx", email: "xxxx@gmail.com", imageName: "noti1", isAccepted: false),
+    ]
+
+    var filteredGuests: [GuestModel] {
+        switch selectedSegment {
+        case 0:
+            return guests // Show all guests for segment 0
+        case 1:
+            return guests.filter { $0.isAccepted } // Show accepted guests for segment 1
+        case 2:
+            return guests.filter { !$0.isAccepted } // Show rejected guests for segment 2
+        default:
+            return guests // Handle unexpected segment values (optional)
+        }
+    }
+
     var body: some View {
-        VStack{
+        VStack {
             HStack {
                 Spacer()
                 Text("Guests")
@@ -28,8 +49,9 @@ struct GuestMain: View {
             .background(Color.white)
             .navigationBarHidden(true)
             .sheet(isPresented: $isAddGuestAvailable) {
-            AddGuest()
+                AddGuest() // Assuming AddGuest is defined elsewhere
             }
+
             Picker(selection: $selectedSegment, label: Text("")) {
                 Text("All").tag(0)
                 Text("Accepted").tag(1)
@@ -39,38 +61,25 @@ struct GuestMain: View {
             .padding()
 
             List {
-                guestbox(imageName: "noti1", name: "Aarushi",phoneNo: "+91 xxxxxxxxxx",email: "xxxx@gmail.com")
-                guestbox(imageName: "noti1", name: "Aarushi",phoneNo: "+91 xxxxxxxxxx",email: "xxxx@gmail.com")
-                guestbox(imageName: "noti1", name: "Aarushi",phoneNo: "+91 xxxxxxxxxx",email: "yyyy@gmail.com")
+                ForEach(filteredGuests) { guest in
+                    GuestBox(guest: guest)
+                }
             }
-            Toolbar()
+            .listStyle(PlainListStyle()) // Remove separators for a cleaner look
+
+            // Optional toolbar content (replace with your needs)
+            // Toolbar()
         }
         .edgesIgnoringSafeArea(.bottom) // Allow content to extend below safe area
     }
 }
-//struct CustomButton1: View {
-//    var title: String
-//    var isSelected: Bool
-//    var action: () -> Void
-//    var body: some View {
-//        Button(action: action) {
-//            Text(title)
-//                .foregroundColor(isSelected ? .white : .black)
-//                .padding()
-//                .background(isSelected ? Color.blue : Color.white)
-//                .cornerRadius(8)
-//        }
-//    }
-//}
 
-struct guestbox: View {
-    var imageName: String
-    var name: String
-    var phoneNo: String
-    var email: String
+struct GuestBox: View {
+    let guest: GuestModel
+
     var body: some View {
         HStack {
-            Image(imageName)
+            Image(guest.imageName)
                 .resizable()
                 .frame(width: 70, height: 70)
                 .aspectRatio(contentMode: .fill)
@@ -79,19 +88,42 @@ struct guestbox: View {
                 .shadow(radius: 10)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(name)
+                Text(guest.name)
                     .font(.headline)
                     .foregroundColor(.black)
 
-                Text(phoneNo)
+                Text(guest.phoneNo)
                     .foregroundColor(.black)
-                Text(email)
+                Text(guest.email)
                     .foregroundColor(.black)
             }
             .padding()
+
+            Spacer()
+
+            // Add status indicator based on guest.isAccepted property
+            if guest.isAccepted {
+                Image(systemName: "checkmark.circle")
+                    .foregroundColor(.green)
+                    .font(.system(size: 20))
+            } else {
+                Image(systemName: "xmark.circle")
+                    .foregroundColor(.red)
+                    .font(.system(size: 20))
+            }
         }
     }
 }
+
+struct GuestModel: Identifiable {
+    let id: UUID
+    let name: String
+    let phoneNo: String
+    let email: String
+    let imageName: String
+    let isAccepted: Bool // Replace with your logic to determine acceptance status
+}
+
 struct GuestMain_Previews: PreviewProvider {
     static var previews: some View {
         GuestMain()

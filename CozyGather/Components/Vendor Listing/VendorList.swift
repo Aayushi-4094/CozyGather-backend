@@ -112,7 +112,7 @@ struct VendorList: View {
                 }
 
                 // Toolbar at the bottom
-                VStack {
+                ZStack {
                     Spacer() // Push the toolbar to the bottom
                     Toolbar()
                         .background(Color.white)
