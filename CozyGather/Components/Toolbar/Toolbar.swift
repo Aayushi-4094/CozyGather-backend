@@ -18,11 +18,10 @@ struct Toolbar: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 24, height: 24)
-                                .foregroundColor(selectedTab == .home ? Color.blue : Color.gray)
+                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                             Text("Home")
-                                .font(.system(size: 10, weight: .regular, design: .default))
                                 .frame(maxWidth: .infinity, alignment: .center)
-                                .foregroundColor(selectedTab == .home ? Color.blue : Color.gray)
+                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                         }
                         .frame(width: 393 / 4, height: 83)
                         .onTapGesture {
@@ -58,12 +57,11 @@ struct Toolbar: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 24, height: 24)
-                    .foregroundColor(selectedTab == .vendorListing ? Color.blue : Color.gray)
+                    .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                 Text("Vendor Listing")
                     .font(.system(size: 10, weight: .regular, design: .default))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .foregroundColor(selectedTab == .vendorListing ? Color.blue : Color.gray)
-            }
+                    .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))            }
             .frame(width: 393 / 4, height: 83)
             .onTapGesture {
                 selectedTab = .events
@@ -78,12 +76,11 @@ struct Toolbar: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 24, height: 24)
-                    .foregroundColor(selectedTab == .guests ? Color.blue : Color.gray)
+                    .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                 Text("Guests")
                     .font(.system(size: 10, weight: .regular, design: .default))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .foregroundColor(selectedTab == .guests ? Color.blue : Color.gray)
-            }
+                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))            }
             .frame(width: 393 / 4, height: 83)
             
                 .onTapGesture {
@@ -100,11 +97,11 @@ struct Toolbar: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 24, height: 24)
-                    .foregroundColor(selectedTab == .budget ? Color.blue : Color.gray)
+                    .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                 Text("Budget")
                     .font(.system(size: 10, weight: .regular, design: .default))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .foregroundColor(selectedTab == .budget ? Color.blue : Color.gray)
+                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
             }
             .frame(width: 393 / 4, height: 83)
             .onTapGesture {
@@ -115,7 +112,7 @@ struct Toolbar: View {
                 BudgetApp()
             }
         }
-        .background(Color.white)
+        .background(Color(red: 250/225, green: 244/255, blue: 250/255))
         .cornerRadius(10)
         .shadow(radius: 5)
     }

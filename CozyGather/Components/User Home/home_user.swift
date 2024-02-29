@@ -4,7 +4,6 @@ struct EventData: Identifiable, Hashable {
     let id = UUID()
     let name: String
     let imageName: String
-    let frameColor: Color // Added property for frame color
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -21,66 +20,45 @@ struct EventCard: View {
     @State private var isDetailViewPresented = false
     var event: EventData
     var randomBackgroundColor: Color {
-        let colors: [Color] = [.purple, .mint, .orange, .indigo, .purple, .pink]
+        let colors: [Color] = [Color(red: 240/225, green: 240/255, blue: 234/255)]
             return colors.randomElement() ?? .gray
         }
-    
     var body: some View {
         ZStack {
             randomBackgroundColor
-                            .cornerRadius(12)
+                .cornerRadius(12)
             HStack{
                 VStack {
-                    
-                    Text(event.name)
-                        .foregroundColor(.black)
-                        .font(.system(size:15 ))
-                        .padding(.bottom,8)
-                        .padding(.top,17)
-                    
                     Image(event.imageName)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.main.bounds.width - 250, height: 180)
                         .cornerRadius(12)
-                        .shadow(radius: 5) // Add shadow for a card-like appearance
-                    
+                        .shadow(radius: 5)
+                    Text(event.name)
+                        .foregroundColor(.black)
+                        .font(.system(size:12 ))
+                        .padding(.bottom,2)
+                        .padding(.top,1)
+        
                     Button(action: {
                         isDetailViewPresented.toggle()
                     }) {
                         Text("View Details")
                             .foregroundColor(.black)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                        //.background(Color.blue)
+                            .padding(.top,0)
+                            .padding(.bottom,2)
                             .cornerRadius(8)
-                            .font(.system(size:13 ))
-                        
-                        
+                            .font(.system(size:12 ))
                     }
                     .sheet(isPresented: $isDetailViewPresented) {
                         EventDetailView(event: event)
                     }
-                    
                 }
-                .padding(.horizontal,20)
-                
+                .padding(.horizontal,30)
                 .frame(width: 150)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(event.frameColor,lineWidth:2)
-                    
-                )
             }
-            
-                
-            
-//            .frame(width: 250)
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 12)
-//                    .stroke(event.frameColor, lineWidth: 2)
-//            )
-            
+            .padding(10)
         }
     }
 }
@@ -152,8 +130,14 @@ struct EventDetailView: View {
                         // Replace "TaskView" with the view you want to navigate to for the task
                         taskview()
                     }
+                    //.background(Color(red: 250/225, green: 244/255, blue: 250/255))
+
                 }
+               // .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+
             }
+          //  .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+
 
             Spacer()
         }
@@ -172,7 +156,12 @@ struct SeeAllView: View {
             GridView(eventData: eventData)
                 .navigationBarTitle("See All", displayMode: .inline)
         }
+        .padding(.all,-20)
+        .background(Color(red: 240/225, green: 240/255, blue: 234/255))
+
     }
+
+
 }
 
 struct GridView: View {
@@ -192,43 +181,62 @@ struct GridView: View {
             .padding(20)
              // Adjust the frame size
         }
+        .background(Color(red: 240/225, green: 240/255, blue: 234/255))
+
     }
 }
 
 struct MenuView: View {
     @Binding var isMenuExpanded: Bool
-    
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Menu").font(.title)) {
                     NavigationLink(destination: UserProfile()) { // Connect to UserProfile view
                         Label("Profile", systemImage: "person.circle")
+                            .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
                     }
                     NavigationLink(destination: NotificationView()) { // Connect to NotificationView view
                         Label("Notification", systemImage: "bell")
+                            .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
                     }
                     NavigationLink(destination: Text("Payments")) {
                         Label("Payments", systemImage: "creditcard")
+                            .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
                     }
                     NavigationLink(destination: Text("Linked Accounts")) {
                         Label("Linked Accounts", systemImage: "link")
+                            .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
                     }
                 }
                 Section(header: Text("Settings").font(.title)) {
                     NavigationLink(destination: Text("Privacy Policy")) {
                         Label("Privacy Policy", systemImage: "shield")
+                            .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
                     }
                     NavigationLink(destination: Text("Report")) {
                         Label("Report", systemImage: "flag")
+                            .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
                     }
                     NavigationLink(destination: Text("Settings")) {
                         Label("Settings", systemImage: "gearshape")
+                            .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
                     }
                 }
+                
+                
             }
+            .background(Color(red: 240/225, green: 240/255, blue: 234/255))
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Menu", displayMode: .inline)
+            .foregroundColor(.black)
             .navigationBarItems(
                 trailing:
                     Button(action: {
@@ -242,7 +250,9 @@ struct MenuView: View {
                     }
             )
         }
-        .navigationViewStyle(StackNavigationViewStyle()) // Use stack style for iPhone
+        .navigationViewStyle(StackNavigationViewStyle())
+        .background(Color(red: 240/225, green: 240/255, blue: 234/255))
+// Use stack style for iPhone
     }
 }
 
@@ -252,50 +262,62 @@ struct UserHomeView: View {
     @State private var isMenuExpanded = false
     @State private var isAddEventPresented = false
     let myEventsData = [
-        EventData(name: "Birthday Bash", imageName: "invite", frameColor: .pink),
-        EventData(name: "Summer Fiesta", imageName: "invite", frameColor: .orange),
-        EventData(name: "Joyful Gathering", imageName: "invite", frameColor: .purple)
+        EventData(name: "Birthday Bash", imageName: "event1"),
+        EventData(name: "Summer Fiesta", imageName: "event2"),
+        EventData(name: "Joyful Gathering", imageName: "event3")
     ]
+    
 
     let upcomingEventsData = [
-        EventData(name: "Beach Party", imageName: "invite", frameColor: .blue),
-        EventData(name: "Dance Night", imageName: "invite", frameColor: .green),
-        EventData(name: "Sunset Soiree", imageName: "invite", frameColor: .yellow)
+        EventData(name: "Beach Party", imageName: "event4"),
+        EventData(name: "Dance Night", imageName: "event5"),
+        EventData(name: "Sunset Soiree", imageName: "event6")
     ]
 
     var body: some View {
         NavigationView {
             VStack {
-                Spacer()
                 HStack {
-                    Button(action: {
-                        withAnimation {
-                            isMenuExpanded.toggle()
-                            isAddEventPresented = false // Close notification view when menu opens
+                    VStack{
+                        Button(action: {
+                            withAnimation {
+                                isMenuExpanded.toggle()
+                            }
+                        }) {
+                            Image(systemName: "line.3.horizontal")
+                                .imageScale(.large)
+                                .padding(.leading,40)
+                                .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
                         }
-                    }) {
-                        Image(systemName: "line.3.horizontal")
-                            .imageScale(.large)
-                            .padding(.leading, 16)
-                            .foregroundColor(.blue)
+                        .foregroundColor(.primary)
                     }
-
-                    Spacer()
+                    .padding(.bottom,40)
                     Text("Hi Aayushi!!")
-                        .font(.title)
+                        .font(.title3)
                         .fontWeight(.bold)
-                        .padding(.leading, 16)
+                        .padding(.leading, -40)
                         .padding(.top, 40)
+                    .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+                    
                     Spacer()
+                    
+                    
+                    Spacer()
+                    VStack{
+                        NavigationLink(destination: CreateEvent()) { // Use NavigationLink for navigation to CreateEvent view
+                            Image(systemName: "plus")
+                                .imageScale(.large)
+                                .padding(.trailing, 16)
+                                .padding(.bottom,40)
+                                .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
 
-                    NavigationLink(destination: CreateEvent()) { // Use NavigationLink for navigation to CreateEvent view
-                        Image(systemName: "plus")
-                            .imageScale(.large)
-                            .padding(.trailing, 16)
-                            .foregroundColor(.blue)
+                            
+                        }
+                        .navigationTitle("home")
+                        .navigationBarTitle("", displayMode: .inline)         .foregroundColor(Color(red: 203/225, green: 120/225, blue: 91/225))
+                        
+                        
                     }
-                    .navigationTitle("home")
-                    .navigationBarTitle("", displayMode: .inline)
                 }
                 .navigationBarTitle("", displayMode: .inline)
                 .padding(.top, 20)
@@ -304,9 +326,12 @@ struct UserHomeView: View {
  
                 HStack {
                     Text("My Events")
-                        .font(.system(size: 30, weight: .bold, design: .default))
+                        .font(.title2)
                         .fontWeight(.bold)
-                        .padding(.leading, 16)
+                        .padding(.leading, 30)
+                        .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
+
 
                     Spacer()
 
@@ -314,8 +339,11 @@ struct UserHomeView: View {
                         isSeeAllPresented.toggle()
                     }) {
                         Text("See All")
-                            .foregroundColor(.blue)
                             .padding(.trailing, 16)
+                            .font(.title2)
+                            .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
+
                     }
                     .sheet(isPresented: $isSeeAllPresented) {
                         SeeAllView(eventData: myEventsData)
@@ -327,14 +355,24 @@ struct UserHomeView: View {
                         ForEach(myEventsData, id: \.self) { event in
                             EventCard(event: event)
                         }
+                        .padding(.trailing,20)
+
                     }
+                    .padding(.horizontal,20)
+
                 }
+                .padding(.trailing,10)
+
                 Divider()
                 HStack {
                     Text("Upcoming Events")
-                        .font(.system(size: 30, weight: .bold, design: .default))
+                        .font(.title2)
                         .fontWeight(.bold)
                         .padding(.leading, 16)
+                        .padding(.horizontal,20)
+                        .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
+
 
                     Spacer()
 
@@ -342,11 +380,17 @@ struct UserHomeView: View {
                         isSeeAllPresented.toggle()
                     }) {
                         Text("See All")
-                            .foregroundColor(.blue)
-                            .padding(.trailing, 16)
+                            .font(.title2)
+                             .padding(.trailing, 16)
+                             .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
+
                     }
                     .sheet(isPresented: $isSeeAllPresented) {
                         SeeAllView(eventData: upcomingEventsData)
+                            .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+
+
                     }
                 }
 
@@ -355,18 +399,30 @@ struct UserHomeView: View {
                         ForEach(upcomingEventsData, id: \.self) { event in
                             EventCard(event: event)
                         }
+                        .padding(.horizontal,20)
+                        .padding(.trailing,-20)
+
                     }
                 }
 
                 Spacer()
 
-                HStack {
+                
                     Spacer()
+
                     Toolbar()
-                        .background(Color.white)
-                        .padding(.bottom, 55)
-                }
+                        .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+                        .position(x: 200, y: 30)
+                        
+                        
+                
+                
             }
+            .frame(width:400)
+            .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+            //.background(.white)
+            .position(CGPoint(x: 180.0, y: 350.0))
+
                 .navigationBarHidden(true)
                             .padding(.horizontal, 16)
                             .overlay(
@@ -382,7 +438,9 @@ struct UserHomeView: View {
                                     .offset(x: isAddEventPresented ? 0 : UIScreen.main.bounds.width)
                             )
                         }
+
                     }
+
                 }
 
 

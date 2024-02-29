@@ -27,7 +27,6 @@
 		0F7B53352B68B814008E6E4D /* BudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53342B68B814008E6E4D /* BudgetApp.swift */; };
 		0F7B53382B68BC89008E6E4D /* VendorHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53372B68BC89008E6E4D /* VendorHome.swift */; };
 		0F7B533A2B68C18B008E6E4D /* Vendor_Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B53392B68C18B008E6E4D /* Vendor_Toolbar.swift */; };
-		0F7B533C2B68ED0D008E6E4D /* guestbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B533B2B68ED0D008E6E4D /* guestbox.swift */; };
 		0F88BE732B67868100D81A29 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE722B67868100D81A29 /* CreateEvent.swift */; };
 		0F88BE752B6786B200D81A29 /* DateAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE742B6786B200D81A29 /* DateAndTime.swift */; };
 		0F88BE772B6786DB00D81A29 /* ConfirmEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE762B6786DB00D81A29 /* ConfirmEvent.swift */; };
@@ -43,10 +42,8 @@
 		0F88BE912B678B1900D81A29 /* WaitForFirstOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE902B678B1900D81A29 /* WaitForFirstOrder.swift */; };
 		0F88BE932B678B3500D81A29 /* detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88BE922B678B3500D81A29 /* detail.swift */; };
 		0FA693ED2B6754A8006B18C6 /* VendorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693EC2B6754A8006B18C6 /* VendorList.swift */; };
-		0FA693EF2B6754F8006B18C6 /* VendorListCustomBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693EE2B6754F8006B18C6 /* VendorListCustomBox.swift */; };
 		0FA693F12B675538006B18C6 /* FilterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F02B675538006B18C6 /* FilterScreen.swift */; };
 		0FA693F32B67556B006B18C6 /* View1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F22B67556B006B18C6 /* View1.swift */; };
-		0FA693F52B675592006B18C6 /* ViewVendr1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F42B675592006B18C6 /* ViewVendr1.swift */; };
 		0FA693F72B6755CC006B18C6 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F62B6755CC006B18C6 /* NotificationView.swift */; };
 		0FA693F92B6755EF006B18C6 /* CustomNotificationBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693F82B6755EF006B18C6 /* CustomNotificationBox.swift */; };
 		0FA693FB2B67565F006B18C6 /* CustomManageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA693FA2B67565F006B18C6 /* CustomManageBox.swift */; };
@@ -79,7 +76,6 @@
 		0F7B53342B68B814008E6E4D /* BudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetApp.swift; sourceTree = "<group>"; };
 		0F7B53372B68BC89008E6E4D /* VendorHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorHome.swift; sourceTree = "<group>"; };
 		0F7B53392B68C18B008E6E4D /* Vendor_Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor_Toolbar.swift; sourceTree = "<group>"; };
-		0F7B533B2B68ED0D008E6E4D /* guestbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guestbox.swift; sourceTree = "<group>"; };
 		0F88BE722B67868100D81A29 /* CreateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEvent.swift; sourceTree = "<group>"; };
 		0F88BE742B6786B200D81A29 /* DateAndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTime.swift; sourceTree = "<group>"; };
 		0F88BE762B6786DB00D81A29 /* ConfirmEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEvent.swift; sourceTree = "<group>"; };
@@ -95,10 +91,8 @@
 		0F88BE902B678B1900D81A29 /* WaitForFirstOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitForFirstOrder.swift; sourceTree = "<group>"; };
 		0F88BE922B678B3500D81A29 /* detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detail.swift; sourceTree = "<group>"; };
 		0FA693EC2B6754A8006B18C6 /* VendorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorList.swift; sourceTree = "<group>"; };
-		0FA693EE2B6754F8006B18C6 /* VendorListCustomBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorListCustomBox.swift; sourceTree = "<group>"; };
 		0FA693F02B675538006B18C6 /* FilterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterScreen.swift; sourceTree = "<group>"; };
 		0FA693F22B67556B006B18C6 /* View1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View1.swift; sourceTree = "<group>"; };
-		0FA693F42B675592006B18C6 /* ViewVendr1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVendr1.swift; sourceTree = "<group>"; };
 		0FA693F62B6755CC006B18C6 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		0FA693F82B6755EF006B18C6 /* CustomNotificationBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationBox.swift; sourceTree = "<group>"; };
 		0FA693FA2B67565F006B18C6 /* CustomManageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomManageBox.swift; sourceTree = "<group>"; };
@@ -236,7 +230,6 @@
 			children = (
 				0FB678A22B8F228200DA0ACD /* AddGuest.swift */,
 				0F05E6D52B62BA39009EBE91 /* GuestMain.swift */,
-				0F7B533B2B68ED0D008E6E4D /* guestbox.swift */,
 			);
 			path = "Guest management";
 			sourceTree = "<group>";
@@ -245,10 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				0FA693EC2B6754A8006B18C6 /* VendorList.swift */,
-				0FA693EE2B6754F8006B18C6 /* VendorListCustomBox.swift */,
 				0FA693F02B675538006B18C6 /* FilterScreen.swift */,
 				0FA693F22B67556B006B18C6 /* View1.swift */,
-				0FA693F42B675592006B18C6 /* ViewVendr1.swift */,
 			);
 			path = "Vendor Listing";
 			sourceTree = "<group>";
@@ -423,7 +414,6 @@
 			files = (
 				0F05E6B62B62B4D2009EBE91 /* ContentView.swift in Sources */,
 				0F88BE772B6786DB00D81A29 /* ConfirmEvent.swift in Sources */,
-				0FA693F52B675592006B18C6 /* ViewVendr1.swift in Sources */,
 				0FADDF4C2B6CBDDF0032AAD9 /* taskBox.swift in Sources */,
 				0F05E6D82B62BA47009EBE91 /* messagelist.swift in Sources */,
 				0FA99AD62B6E58F700FBBC41 /* vendr_signup.swift in Sources */,
@@ -461,10 +451,8 @@
 				0F88BE812B6788EE00D81A29 /* Notification1.swift in Sources */,
 				0F05E6E22B62BA8C009EBE91 /* SignUp.swift in Sources */,
 				0FA99AD42B6E580600FBBC41 /* vendr_signin.swift in Sources */,
-				0F7B533C2B68ED0D008E6E4D /* guestbox.swift in Sources */,
 				0F88BE8C2B678A7F00D81A29 /* ViewDetails.swift in Sources */,
 				0F05E6D42B62BA23009EBE91 /* SupplierProfile.swift in Sources */,
-				0FA693EF2B6754F8006B18C6 /* VendorListCustomBox.swift in Sources */,
 				0F88BE882B6789DE00D81A29 /* CustomCard.swift in Sources */,
 				0FA693F32B67556B006B18C6 /* View1.swift in Sources */,
 			);

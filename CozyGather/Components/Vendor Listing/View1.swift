@@ -62,10 +62,10 @@ struct View1: View {
                         Image(systemName: "arrow.right.circle")
                             .foregroundColor(.blue)
                     }
-                    .sheet(isPresented: $isShowingDetailView) {
-                        ViewVendr1()
-                    }
-                    .padding()
+//                    .sheet(isPresented: $isShowingDetailView) {
+//                        ViewVendr1()
+//                    }
+//                    .padding()
                 }
 
                 // Image Slide View

@@ -37,27 +37,34 @@ struct GuestMain: View {
                 Spacer()
                 Text("Guests")
                     .font(.largeTitle)
+                    .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
+                    .padding(.leading,50)
                 Spacer()
                 Button(action: {
                     isAddGuestAvailable.toggle()
                 }) {
                     Image(systemName: "plus")
                         .font(.title)
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
+                        .padding(.trailing,20)
                 }
             }
-            .background(Color.white)
+            .background(Color(red: 250/225, green: 244/255, blue: 250/255))
             .navigationBarHidden(true)
             .sheet(isPresented: $isAddGuestAvailable) {
                 AddGuest() // Assuming AddGuest is defined elsewhere
             }
+            
 
             Picker(selection: $selectedSegment, label: Text("")) {
                 Text("All").tag(0)
                 Text("Accepted").tag(1)
                 Text("Rejected").tag(2)
             }
+           // .background(Color(red: 82/225, green: 72/255, blue: 159/255))
             .pickerStyle(SegmentedPickerStyle())
+            .frame(width: 380,height: 10)
+            
             .padding()
 
             List {
@@ -65,13 +72,21 @@ struct GuestMain: View {
                     GuestBox(guest: guest)
                 }
             }
+
+
             .listStyle(PlainListStyle()) // Remove separators for a cleaner look
 
             // Optional toolbar content (replace with your needs)
-            // Toolbar()
+             Toolbar()
         }
+        .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+
         .edgesIgnoringSafeArea(.bottom) // Allow content to extend below safe area
+        
+
     }
+
+    
 }
 
 struct GuestBox: View {
@@ -97,7 +112,9 @@ struct GuestBox: View {
                 Text(guest.email)
                     .foregroundColor(.black)
             }
-            .padding()
+            
+            .padding(0)
+            .padding(.horizontal,20)
 
             Spacer()
 
@@ -112,7 +129,12 @@ struct GuestBox: View {
                     .font(.system(size: 20))
             }
         }
+        .padding(10)
+        .padding(.horizontal,10)
+
     }
+    
+
 }
 
 struct GuestModel: Identifiable {

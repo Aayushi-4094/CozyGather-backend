@@ -79,7 +79,10 @@ struct SecondScreen: View {
                         .navigationBarHidden(true)
                         .navigationBarBackButtonHidden(true)
                     }
+        .background(Color(red: 0.96, green: 0.94, blue: 0.93))
+
                 }
+
 }
 
 struct SecondScreen_Previews: PreviewProvider {

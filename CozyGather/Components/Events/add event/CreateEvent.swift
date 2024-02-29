@@ -6,7 +6,7 @@ struct CreateEvent: View {
     @State private var price: String = "Price"
     @State private var selectedDate = Date()
     @State private var isDateAndTimeVisible = false
-    @State private var isConfirmationVisible = false
+    @State private var isEventDetailViewVisible = false
     @State private var isSelectCoHostVisible = false
     @State private var coHostName: String = "Cohost"
     @State private var eventDate = Date()
@@ -15,209 +15,209 @@ struct CreateEvent: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack {
+                VStack(spacing: 20) {
+                    // Title Section
                     HStack {
-//                        Button(action: {
-//                            // Add action for the back button
-//                        }) {
-//                            Image(systemName: "chevron.left")
-//                                .font(.title2)
-//                                .foregroundColor(.blue)
-//                        }
-//                        
-                        Spacer()
-                        
                         Text("Create Event")
-                            .font(.title2)
-                            .foregroundColor(Color(.label))
-                        
-                        Spacer()
+                            .font(.title)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 20)
+                            .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                     }
-                    .padding()
-                    .background(Color(.systemBackground))
+                    .cornerRadius(10)
                     
-                    ZStack(alignment: .bottom) {
-                        Image("nametheevent")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height: 200)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Event Name")
-                            .font(.headline)
-                            .padding(.leading)
-                        
-                        TextField("Event Name", text: $eventName)
-                            .foregroundColor(.secondary)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.horizontal)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Venue Address")
-                            .font(.headline)
-                            .padding(.leading)
-                        
-                        TextField("Venue Address", text: $venueAddress)
-                            .foregroundColor(.secondary)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.horizontal)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Price")
-                            .font(.headline)
-                            .padding(.leading)
-                        
-                        TextField("Price", text: $price)
-                            .foregroundColor(.secondary)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.horizontal)
-                    }
-                    
-                    Button(action: {
-                        /* Add co-host functionality */
-                        isSelectCoHostVisible.toggle()
-                    }) {
-                        HStack {
-                            Image(systemName: "person.fill")
-                            Text("Add a Co-host")
-                                .font(.headline)
-                            Spacer()
-                            Text("Sam Aiden as the co-host")
-                                .foregroundColor(.secondary)
-                        }
-                        .padding()
-                        .foregroundColor(.black)
-                        .background(Color.white)
+                    // Image Section
+                    Image("nametheevent")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 200)
                         .cornerRadius(10)
-                        .shadow(radius: 1)
-                    }
-                    .sheet(isPresented: $isSelectCoHostVisible) {
-                        SelectCoHost()
-                    }
+                        .shadow(radius: 5)
                     
-                    Button(action: {
-                        /* Add date and time functionality */
-                        isDateAndTimeVisible.toggle()
-                    }) {
+                    // Event Name Section
+                    SectionBox {
                         HStack {
-                            Image(systemName: "calendar")
-                            Text("Add date and time")
+                            Text("Event Name")
                                 .font(.headline)
-                            Spacer()
-                            Text("Date and time")
-                                .foregroundColor(.secondary)
-                        }
-                        .padding()
-                        .foregroundColor(.black)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .shadow(radius: 1)
-                    }
-                    .sheet(isPresented: $isDateAndTimeVisible) {
-                        DateAndTime()
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Location")
-                            .font(.headline)
-                            .padding(.leading)
-                        
-                        HStack {
-                            Image(systemName: "mappin")
-                                .font(.title)
-                                .foregroundColor(.black)
+                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                             
-                            TextField("Mapping", text: .constant(""))
+                            Spacer()
+                            
+                            TextField("Event Name", text: $eventName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal)
-                                .foregroundColor(.secondary)
                         }
                     }
-                    .padding()
                     
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Budget")
-                            .font(.headline)
-                            .padding(.leading)
-                        
+                    // Co-host Section
+                    SectionBox {
                         HStack {
-                            Image(systemName: "dollarsign")
-                                .font(.title)
-                                .foregroundColor(.black)
+                            Text("Co-host")
+                                .font(.headline)
+                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
+                            Spacer()
                             
-                            TextField("Budget", text: .constant(""))
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding(.horizontal)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .padding()
-                    
-                    VStack {
-                        Button(action: { self.showInvite.toggle() }) {
-                            HStack {
-                                Text("Generate e-Invite")
-                                    .font(.headline)
-                                Image(systemName: "arrow.clockwise.circle")
+                            Button(action: {
+                                isSelectCoHostVisible.toggle()
+                            }) {
+                                Text(coHostName)
+                                    .foregroundColor(.primary)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 1)
                             }
-                            .padding()
-                            .foregroundColor(.black)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .shadow(radius: 1)
+                            .sheet(isPresented: $isSelectCoHostVisible) {
+                                SelectCoHost()
+                            }
                         }
-                        .sheet(isPresented: $showInvite) {
-                            // Your e-invite view goes here
-                            ScrollView {
-                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                                    ForEach(0..<5) { _ in
-                                        Image("invite")
-                                            .resizable()
-                                            .frame(width: 150, height: 250) // Adjust the size as needed
-                                            .cornerRadius(10)
-                                            .shadow(radius: 1)
+                    }
+                    
+                    // Date and Time Section
+                    SectionBox {
+                        HStack {
+                            Text("Date and Time")
+                                .font(.headline)
+                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
+                            Spacer()
+                            
+                            Button(action: {
+                                isDateAndTimeVisible.toggle()
+                            }) {
+                                Text("Select Date and Time")
+                                    .foregroundColor(.primary)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 1)
+                            }
+                            .sheet(isPresented: $isDateAndTimeVisible) {
+                                DateAndTime()
+                            }
+                        }
+                    }
+                    
+                    // Location Section
+                    SectionBox {
+                        HStack {
+                            Text("Location")
+                                .font(.headline)
+                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
+                            Spacer()
+                            
+                            TextField("Location", text: $venueAddress)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal)
+                        }
+                    }
+                    
+                    // Budget Section
+                    SectionBox {
+                        HStack {
+                            Text("Budget")
+                                .font(.headline)
+                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
+                            Spacer()
+                            
+                            TextField("Budget", text: $price)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal)
+                        }
+                    }
+                    
+                    // Generate e-Invite Section
+                    SectionBox {
+                        HStack {
+                            Text("Generate e-Invite")
+                                .font(.headline)
+                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
+                            Spacer()
+                            
+                            Button(action: {
+                                self.showInvite.toggle()
+                            }) {
+                                Text("Generate")
+                                    .foregroundColor(.primary)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 1)
+                            }
+                            .sheet(isPresented: $showInvite) {
+                                ScrollView {
+                                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                                        ForEach(0..<5) { _ in
+                                            Image("invite")
+                                                .resizable()
+                                                .frame(width: 150, height: 250)
+                                                .cornerRadius(10)
+                                                .shadow(radius: 1)
+                                        }
                                     }
+                                    .padding()
                                 }
-                                .padding()
                             }
-
                         }
                     }
-                    .padding()
+                    
+                    // Confirm Button Section
+                 
+                        Button(action: {
+                            // Handle the logic to confirm the event
+                            isEventDetailViewVisible.toggle()
+                        }) {
+                            Text("Confirm")
+                                .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+                                .font(.headline)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color(red: 82/225, green: 72/255, blue: 159/255))
+                                .cornerRadius(10)
+                                .padding(.horizontal)
+                                .shadow(radius: 1)
+                        }
+                        .sheet(isPresented: $isEventDetailViewVisible) {
+                            // Your confirmation view goes here
+                            EventDetailView(event: EventData(name: "Birthday Bash", imageName: "event1"))
+                            
+                        }
+                    
                     
                     Spacer()
-                    
-                    Button(action: {
-                        // Add action for the Confirm button
-                        // Handle the logic to confirm the event
-                    }) {
-                        Text("Confirm")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.blue)
-                            .cornerRadius(10)
-                            .padding()
-                            .shadow(radius: 1)
-                    }
                 }
                 .padding()
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+
             .navigationBarHidden(true) // Hide navigation bar
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
                     Toolbar()
-                        .position(CGPoint(x: 180, y: 40))
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+// Ensure that navigation stacks vertically for iPhone
+    }
+}
+
+// Custom Section Box View
+struct SectionBox<Content: View>: View {
+    let content: Content
+    
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        VStack {
+            content
+                .padding()
+        }
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(radius: 1)
     }
 }
 

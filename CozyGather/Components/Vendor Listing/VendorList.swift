@@ -4,157 +4,108 @@ struct VendorList: View {
     @State private var searchText: String = ""
     @State private var isFilterScreenPresented = false
 
+    var vendors: [Vendor] = [ // Replace with your actual vendor data
+        Vendor(id: UUID().uuidString, imageName: "Vendor1", title: "Vendor 1", description: "Description for Vendor 1", numberOfStars: 4, price: "$12.99", hyperlinkText: "Details"),
+        Vendor(id: UUID().uuidString, imageName: "Vendor2", title: "Vendor 2", description: "Description for Vendor 2", numberOfStars: 2, price: "$19.99", hyperlinkText: "Details"),
+        Vendor(id: UUID().uuidString, imageName: "Vendor3", title: "Vendor 3", description: "Description for Vendor 3", numberOfStars: 4, price: "$12.99", hyperlinkText: "Details"),
+        Vendor(id: UUID().uuidString, imageName: "Vendor4", title: "Vendor 4", description: "Description for Vendor 4", numberOfStars: 1, price: "$19.99", hyperlinkText: "Details"),
+        Vendor(id: UUID().uuidString, imageName: "Vendor1", title: "Vendor 1", description: "Description for Vendor 1", numberOfStars: 4, price: "$12.99", hyperlinkText: "Details"),
+        Vendor(id: UUID().uuidString, imageName: "Vendor2", title: "Vendor 2", description: "Description for Vendor 2", numberOfStars: 2, price: "$19.99", hyperlinkText: "Details"),
+        Vendor(id: UUID().uuidString, imageName: "Vendor3", title: "Vendor 3", description: "Description for Vendor 3", numberOfStars: 4, price: "$12.99", hyperlinkText: "Details"),
+        Vendor(id: UUID().uuidString, imageName: "Vendor4", title: "Vendor 4", description: "Description for Vendor 4", numberOfStars: 1, price: "$19.99", hyperlinkText: "Details"),
+        // Add additional vendors here
+    ]
     var body: some View {
-        NavigationView {
-            ZStack {
-                // Content
-                VStack {
-                    // Header
-                    HStack {
-//                        Button(action: {
-//                            // Add action for when the back button is tapped
-//                        }) {
-//                            Image(systemName: "chevron.left")
-//                                .font(.title)
-//                                .foregroundColor(.blue)
-//                        }
-//                        .padding(.leading, 16)
-
-                        Spacer()
-
-                        Text("Vendors")
-                            .font(.title)
-                            .fontWeight(.bold)
-
-                        Spacer()
-                    }
-                    .padding()
-
-                    // Search and Filter
-                    HStack {
-                        // Search TextField
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.blue)
-                                .padding(.leading, 10)
-
-                            TextField("Search", text: $searchText)
-                                .padding()
-                        }
-                        .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
-                        .frame(width: 230, height: 100)
-
-                        // Spacer to push Filter button to the right
-
-                        // Filter Button
-                        Button(action: {
-                            isFilterScreenPresented.toggle()
-                        }) {
+        ZStack{
+            NavigationView {
+                List {
+                    // Search & Filter section in a single HStack
+                    Section {
+                        HStack(spacing: 16) {
                             HStack {
-                                Image(systemName: "slider.horizontal.3")
-                                    .foregroundColor(.white)
-                                Text("Filter")
+                                Image(systemName: "magnifyingglass")
+                                    .padding(.horizontal,8)
+                                
+                                TextField("Search", text: $searchText)
+                                    .padding(8)
+                                    .frame(maxWidth: .infinity)
+                                    .shadow(radius: 2)
+                            }
+                            .cornerRadius(20)
+                            .background(Color.secondary.opacity(0.2))
+                            .foregroundColor(.gray)
+                            
+                            
+                            Spacer() // Spacer to push the filter button to the right
+                            
+                            Button(action: {
+                                isFilterScreenPresented.toggle()
+                            }) {
+                                Label("Filter", systemImage: "slider.horizontal.3")
                                     .foregroundColor(.white)
                                     .font(.headline)
+                                    .padding(.vertical, 8)
+                                    .padding(.horizontal, 16)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
                             }
-                            .frame(width: 100, height: 60)
-                            .background(Color.blue)
-                            .cornerRadius(20)
-                            .padding(.horizontal, 16)
+                            .sheet(isPresented: $isFilterScreenPresented) {
+                                FilterScreen() // Placeholder for your FilterScreen view
+                            }
                         }
-                        .sheet(isPresented: $isFilterScreenPresented) {
-                            FilterScreen()
-                        }
+                        .frame(height: 44)
                     }
-
-                    // Vendor List
-                    ScrollView {
-                        VStack(spacing: 0) {
-                            
-                                VendorListCustomBox1(
-                                    imageName: "venrd1",
-                                    title: "Product Title",
-                                    description: "Product description goes here.",
-                                    numberOfStars: 5,
-                                    price: "$19.99",
-                                    hyperlinkText: "Details"
-                                )
-                            
-
-                            VendorListCustomBox1(
-                                imageName: "venrd1",
-                                title: "Product Title",
-                                description: "Product description goes here.",
-                                numberOfStars: 5,
-                                price: "$19.99",
-                                hyperlinkText: "Details"
-                            )
-
-                            VendorListCustomBox1(
-                                imageName: "venrd1",
-                                title: "Product Title",
-                                description: "Product description goes here.",
-                                numberOfStars: 5,
-                                price: "$19.99",
-                                hyperlinkText: "Details"
-                            )
-
-                            VendorListCustomBox1(
-                                imageName: "venrd1",
-                                title: "Product Title",
-                                description: "Product description goes here.",
-                                numberOfStars: 5,
-                                price: "$19.99",
-                                hyperlinkText: "Details"
-                            )
-                        }
+                    
+                    // Vendor List section
+                    ForEach(vendors) { vendor in
+                        VendorListCustomBox1(vendor: vendor)
+                            .padding(.vertical, 8)
                     }
+                    
                 }
-
-                // Toolbar at the bottom
-                ZStack {
-                    Spacer() // Push the toolbar to the bottom
-                    Toolbar()
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
-                        .padding(.horizontal)
-                        .position(x: 195, y: 750)
-                }
+                .listStyle(GroupedListStyle()) // Maintain grouped list style
+                .navigationBarTitleDisplayMode(.inline) // Display title inline
+                
+                // Navigation title
+                .navigationBarItems(
+                    leading:
+                        Text("Vendors")
+                        .font(.title.bold())
+                )
             }
         }
+        .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+        .padding(.trailing,7)
+         .padding(.leading,7)
     }
+    
 }
 
 struct VendorListCustomBox1: View {
-    var imageName: String
-    var title: String
-    var description: String
-    var numberOfStars: Int
-    var price: String
-    var hyperlinkText: String
+    var vendor: Vendor
 
     var body: some View {
-        NavigationLink(destination: View1()) {
+        NavigationLink(destination: View1()) { // Replace View1() with your actual destination view
             VStack {
                 HStack {
-                    Image(imageName)
+                    Image(vendor.imageName)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 100, height: 160)
 
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(title)
+                        Text(vendor.title)
                             .font(.headline)
                             .foregroundColor(.black)
 
-                        Text(description)
+                        Text(vendor.description)
                             .foregroundColor(.gray)
 
                         HStack {
-                            ForEach(0..<numberOfStars) { _ in
+                            ForEach(0..<vendor.numberOfStars) { _ in
                                 Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
+                                    .fixedSize()
                             }
                         }
                     }
@@ -162,15 +113,15 @@ struct VendorListCustomBox1: View {
                     Spacer()
 
                     VStack(alignment: .trailing, spacing: 4) {
-                        Text(hyperlinkText)
+                        Text(vendor.hyperlinkText)
                             .foregroundColor(.blue)
                             .underline()
 
-                        Text(price)
+                        Text(vendor.price)
                             .font(.headline)
                             .foregroundColor(.black)
+                        .position(CGPoint(x: 100.0, y: 40.0)) // Remove unnecessary position modifier
                     }
-                    .position(CGPoint(x: 100.0, y: 40.0))
                 }
                 .frame(width: 400, height: 100)
             }
@@ -178,10 +129,15 @@ struct VendorListCustomBox1: View {
     }
 }
 
-
-
-
-
+struct Vendor: Identifiable {
+    let id: String // Unique identifier for each vendor
+    let imageName: String
+    let title: String
+    let description: String
+    let numberOfStars: Int
+    let price: String
+    let hyperlinkText: String
+}
 
 struct VendorList_Previews: PreviewProvider {
     static var previews: some View {
@@ -189,4 +145,3 @@ struct VendorList_Previews: PreviewProvider {
             .environment(\.colorScheme, .light) // Ensure light mode for preview
     }
 }
-

@@ -10,6 +10,8 @@ struct AddGuest: View {
             Spacer()
             Text("Add Guests")
                 .font(.largeTitle)
+                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
+
           Spacer()
           NavigationLink(destination: GuestMain()) {
             Text("Done")
@@ -18,7 +20,7 @@ struct AddGuest: View {
               .padding(.vertical, 5)
               .padding(.horizontal, 10)
             
-              .background(Color.blue)
+              .background(Color(red: 82/225, green: 72/255, blue: 159/255))
               .cornerRadius(5)
           }
           .isDetailLink(false)
@@ -28,13 +30,16 @@ struct AddGuest: View {
         Spacer()
         
         List {
-          Section(header: Text("Guests")) {
+          Section(header: Text("Guests")
+            .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))) {
             CustomAddGuestBox(imageName: "noti1", name: "Aarushi", phone: "+91 XXXXXXXXXX", email: "aa1946")
               .listRowInsets(.init(top: 0, leading: 0, bottom: 10, trailing: 0)) // Adjust list row inset
             CustomAddGuestBox(imageName: "noti1", name: "Aarushi", phone: "+91 XXXXXXXXXX", email: "aa1946")
               .listRowInsets(.init(top: 0, leading: 0, bottom: 10, trailing: 0))
           }
         }
+        .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+
         .padding()
         .listStyle(PlainListStyle()) // Remove separators for a cleaner list look
       }
@@ -83,7 +88,7 @@ struct CustomAddGuestBox: View {
         Image(systemName: "plus")
           .resizable()
           .frame(width: 30, height: 30)
-          .foregroundColor(.blue)
+          .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
       }
       .padding()
     }
