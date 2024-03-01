@@ -1,15 +1,13 @@
 import SwiftUI
 
 struct View1: View {
-    
     @State private var isShowingDetailView = false
     
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 // Top Section
-                HStack{ 
-                    //Spacer()
+                HStack {
                     Text("Vendor Name")
                         .font(.title)
                         .foregroundColor(.black)
@@ -18,36 +16,38 @@ struct View1: View {
                         .font(.subheadline)
                         .foregroundColor(.yellow)
                 }
+                
                 VStack {
-                    HStack{
+                    HStack {
                         Text("Starting from")
                             .foregroundColor(.black)
                         Text("$1200")
                             .font(.title)
-                        .foregroundColor(.black)}
+                            .foregroundColor(.black)
+                    }
                 }
-                    Image("venrd1")
+                
+                Image("venrd1")
                     .resizable()
                     .frame(width: 390, height: 260)
-               
-                }
-                VStack{
-                    HStack{
+                
+                VStack {
+                    HStack {
                         Image(systemName: "mappin")
                         Text("Address")
                             .font(.body)
                             .foregroundColor(.black)
                             .multilineTextAlignment(.leading)
                     }
-                    HStack{
+                    HStack {
                         Image(systemName: "phone")
                         Text("Phone")
                             .font(.body)
                             .foregroundColor(.black)
-                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)}
+                            .multilineTextAlignment(.leading)
+                    }
                 }
                 
-
                 // Photos Section
                 HStack {
                     Text("Photos")
@@ -62,35 +62,25 @@ struct View1: View {
                         Image(systemName: "arrow.right.circle")
                             .foregroundColor(.blue)
                     }
-//                    .sheet(isPresented: $isShowingDetailView) {
-//                        ViewVendr1()
-//                    }
-//                    .padding()
                 }
-
-                // Image Slide View
+                
                 TabView {
                     ForEach(0..<5) { index in
                         Image("photo\(index + 1)") // Assuming you have images named photo1, photo2, etc.
                             .resizable()
                             .scaledToFill()
-                         //   .frame(width: 300 ,height: 300)
                             .clipped()
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
                 .padding()
                 .frame(width: 300, height: 500)
-
-                // ... (Remaining code)
-
-                // Title: Available Cakes
+                
                 Text("Available Cakes")
                     .font(.title)
                     .foregroundColor(.black)
                     .padding()
                 
-                // Horizontal Icons for Bakery Products
                 HStack {
                     Image("photo1")
                         .resizable()
@@ -113,21 +103,20 @@ struct View1: View {
                 }
                 .padding()
                 
+                Text("Amenities")
+                    .font(.title)
                 
-                
-                    Text("Amenities")
-                        .font(.title)
-                    
                 HStack {
                     Text("Parking")
                     
                     Spacer()
                     
-                    Text(" Food")
+                    Text("Food")
                         .foregroundColor(.black)
                     
                     Spacer()
-                    Text(" Food")
+                    
+                    Text("Food")
                         .foregroundColor(.black)
                 }
                 
@@ -144,15 +133,12 @@ struct View1: View {
                         .cornerRadius(8)
                 }
                 .padding()
-                
             }
             .navigationBarTitle("Vendor Details", displayMode: .inline)
             .padding()
-            
-            
         }
     }
-
+}
 
 struct View1_Previews: PreviewProvider {
     static var previews: some View {
