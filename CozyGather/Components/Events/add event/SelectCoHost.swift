@@ -4,7 +4,8 @@ struct SelectCoHost: View {
     @State private var coHostName: String = ""
     @State private var searchText: String = ""
     @State private var selectedCoHosts: [String] = []
-    @State private var isConfirmEventVisible = false // Add state variable
+    @State private var isConfirmEventVisible = false
+    var onCoHostsSelected: ([String]) -> Void
 
     var body: some View {
         NavigationView {
@@ -12,7 +13,7 @@ struct SelectCoHost: View {
                 List {
                     Section(header: Text("Select Co-Host")) {
                         SearchBar(text: $searchText, placeholder: "Search Co-Host")
-                        
+
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 16) {
                                 ForEach(0..<3) { index in
@@ -21,6 +22,7 @@ struct SelectCoHost: View {
                                             .resizable()
                                             .aspectRatio(contentMode: .fill)
                                             .frame(width: 80, height: 80)
+                                            .fixedSize() // Keep the frame size fixed
                                             .clipShape(Circle())
                                             .overlay(
                                                 Circle()
@@ -40,7 +42,7 @@ struct SelectCoHost: View {
                                                     )
                                             )
                                             .shadow(radius: 5)
-                                        
+
                                         Text("Avatar Image-\(index + 1)")
                                             .foregroundColor(.black)
                                             .padding(.top, 4)
@@ -50,12 +52,12 @@ struct SelectCoHost: View {
                             .padding()
                         }
                         .frame(height: 120)
-                        
+
                         ForEach(selectedCoHosts, id: \.self) { coHost in
                             HStack {
                                 Text("\(coHost) added as a co-host")
                                     .foregroundColor(.green)
-                                
+
                                 Button(action: {
                                     if let index = selectedCoHosts.firstIndex(of: coHost) {
                                         selectedCoHosts.remove(at: index)
@@ -96,70 +98,70 @@ struct SelectCoHost: View {
                         }
                         .foregroundColor(.blue)
                         .padding()
+                        
                     }
 
                     Section(header: Text("Copy Link")) {
-                        HStack {
-                            Text("Copy the link")
-                                .font(.headline)
-                                .foregroundColor(.black)
-                            
-                            Spacer()
-                            
-                            Image(systemName: "doc.on.doc")
-                                .font(.title)
-                        }
-                        .padding(.horizontal)
-                        .background(RoundedRectangle(cornerRadius: 10)
+                                            HStack {
+                                                Text("Copy the link")
+                                                    .font(.headline)
+                                                    .foregroundColor(.black)
+
+                                                Spacer()
+
+                                                Image(systemName: "doc.on.doc")
+                                                    .font(.title)
+                                            }
+                                            .padding(.horizontal)
+                                            .background(RoundedRectangle(cornerRadius: 10)
+                                                    .foregroundColor(.white)
+                                            )
+                                        }
+                }
+
+                                Button("Done") {
+                                    onCoHostsSelected(selectedCoHosts)
+                                }
+                                .padding()
+                                .background(Color.blue)
                                 .foregroundColor(.white)
-                        )
+                                .cornerRadius(10)
+                                .padding()
+                                .padding(.bottom, 16)
+                            }
+                            .listStyle(GroupedListStyle())
+                            .navigationBarTitleDisplayMode(.inline)
+                            .navigationBarItems(trailing: Button(action: {
+                                // Handle the back action
+                            }) {
+                                Image(systemName: "multiply")
+                                    .font(.title)
+                                    .padding()
+                            })
+                        }
                     }
                 }
-                
-                Button("Done") {
-                    // Add your action here
-                    isConfirmEventVisible.toggle()
+
+                struct SelectCoHost_Previews: PreviewProvider {
+                    static var previews: some View {
+                        SelectCoHost(onCoHostsSelected: {_ in })
+                    }
                 }
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .padding()
-                .padding(.bottom, 16)
-            }
-            .listStyle(GroupedListStyle())
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button(action: {
-                // Handle the back action
-            }) {
-                Image(systemName: "multiply")
-                    .font(.title)
-                    .padding()
-            })
-        }
-    }
-}
 
-struct SelectCoHost_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectCoHost()
-    }
-}
+                struct SearchBar: View {
+                    @Binding var text: String
+                    var placeholder: String
 
-struct SearchBar: View {
-    @Binding var text: String
-    var placeholder: String
-    
-    var body: some View {
-        HStack {
-            Image(systemName: "magnifyingglass")
-                .foregroundColor(.gray)
-                .padding(.leading, 10)
-            
-            TextField(placeholder, text: $text)
-                .padding(.vertical, 8)
-        }
-        .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
-        .padding(.horizontal)
-    }
-}
+                    var body: some View {
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                                .padding(.leading, 10)
+
+                            TextField(placeholder, text: $text)
+                                .padding(.vertical, 8)
+                        }
+                        .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+                        .padding(.horizontal)
+                    }
+                }

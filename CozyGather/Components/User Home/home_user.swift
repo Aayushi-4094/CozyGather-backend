@@ -1,4 +1,5 @@
 import SwiftUI
+import FirebaseAuth
 
 struct EventData: Identifiable, Hashable {
     let id = UUID()
@@ -14,20 +15,20 @@ struct EventData: Identifiable, Hashable {
     }
 }
 
-
-
 struct EventCard: View {
     @State private var isDetailViewPresented = false
     var event: EventData
+
     var randomBackgroundColor: Color {
         let colors: [Color] = [Color(red: 240/225, green: 240/255, blue: 234/255)]
-            return colors.randomElement() ?? .gray
-        }
+        return colors.randomElement() ?? .gray
+    }
+
     var body: some View {
         ZStack {
             randomBackgroundColor
                 .cornerRadius(12)
-            HStack{
+            HStack {
                 VStack {
                     Image(event.imageName)
                         .resizable()
@@ -37,25 +38,25 @@ struct EventCard: View {
                         .shadow(radius: 5)
                     Text(event.name)
                         .foregroundColor(.black)
-                        .font(.system(size:12 ))
-                        .padding(.bottom,2)
-                        .padding(.top,1)
-        
+                        .font(.system(size: 12))
+                        .padding(.bottom, 2)
+                        .padding(.top, 1)
+
                     Button(action: {
                         isDetailViewPresented.toggle()
                     }) {
                         Text("View Details")
                             .foregroundColor(.black)
-                            .padding(.top,0)
-                            .padding(.bottom,2)
+                            .padding(.top, 0)
+                            .padding(.bottom, 2)
                             .cornerRadius(8)
-                            .font(.system(size:12 ))
+                            .font(.system(size: 12))
                     }
                     .sheet(isPresented: $isDetailViewPresented) {
                         EventDetailView(event: event)
                     }
                 }
-                .padding(.horizontal,30)
+                .padding(.horizontal, 30)
                 .frame(width: 150)
             }
             .padding(10)
@@ -68,7 +69,6 @@ struct EventDetailView: View {
     @State private var isTaskLinkActive = false
 
     var body: some View {
-        
         VStack {
             Text("Event Details")
                 .font(.title)
@@ -78,15 +78,14 @@ struct EventDetailView: View {
             Text(event.name)
                 .font(.headline)
                 .padding(.bottom, 8)
-            
+
             Image(event.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(12)
                 .padding(8)
-                .shadow(radius: 5) // Add shadow for a card-like appearance
-            
-            // Add overlay for capsule
+                .shadow(radius: 5)
+
             ZStack(alignment: .bottom) {
                 Capsule()
                     .fill(Color.gray.opacity(1))
@@ -96,11 +95,10 @@ struct EventDetailView: View {
                             .foregroundColor(.black)
                             .padding(.horizontal)
                     )
-                    .padding(.horizontal, 40) // Add left and right padding
-                    .offset(y: -240) // Move the capsule up to overlap the image
-                
+                    .padding(.horizontal, 40)
+                    .offset(y: -240)
+
                 VStack {
-                    // Add more details as needed
                     Text("Co-Host")
                         .font(.headline)
                         .padding(.bottom, 8)
@@ -116,8 +114,7 @@ struct EventDetailView: View {
                     Text("Vendor assigned")
                         .font(.headline)
                         .padding(.bottom, 8)
-                    
-                    // Link to the task file
+
                     Button(action: {
                         isTaskLinkActive = true
                     }) {
@@ -128,25 +125,16 @@ struct EventDetailView: View {
                     }
                     .sheet(isPresented: $isTaskLinkActive) {
                         // Replace "TaskView" with the view you want to navigate to for the task
-                        taskview()
+                        TaskView()
                     }
-                    //.background(Color(red: 250/225, green: 244/255, blue: 250/255))
-
                 }
-               // .background(Color(red: 250/225, green: 244/255, blue: 250/255))
-
             }
-          //  .background(Color(red: 250/225, green: 244/255, blue: 250/255))
-
 
             Spacer()
         }
         .navigationBarTitle("Event Detail", displayMode: .inline)
     }
 }
-
-
-
 
 struct SeeAllView: View {
     var eventData: [EventData]
@@ -156,12 +144,9 @@ struct SeeAllView: View {
             GridView(eventData: eventData)
                 .navigationBarTitle("See All", displayMode: .inline)
         }
-        .padding(.all,-20)
+        .padding(.all, -20)
         .background(Color(red: 240/225, green: 240/255, blue: 234/255))
-
     }
-
-
 }
 
 struct GridView: View {
@@ -173,100 +158,86 @@ struct GridView: View {
                 ForEach(eventData, id: \.self) { event in
                     EventCard(event: event)
                         .padding(100)
-                        .frame(width: 250,height: 250)
-                    
+                        .frame(width: 250, height: 250)
                 }
                 .padding(20)
             }
             .padding(20)
-             // Adjust the frame size
         }
         .background(Color(red: 240/225, green: 240/255, blue: 234/255))
-
     }
 }
 
 struct MenuView: View {
     @Binding var isMenuExpanded: Bool
+
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Menu").font(.title)) {
-                    NavigationLink(destination: UserProfile()) { // Connect to UserProfile view
+                    NavigationLink(destination: UserProfile()) {
                         Label("Profile", systemImage: "person.circle")
                             .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
                     }
-                    NavigationLink(destination: NotificationView()) { // Connect to NotificationView view
+                    NavigationLink(destination: NotificationView()) {
                         Label("Notification", systemImage: "bell")
                             .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
                     }
                     NavigationLink(destination: Text("Payments")) {
                         Label("Payments", systemImage: "creditcard")
                             .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
                     }
                     NavigationLink(destination: Text("Linked Accounts")) {
                         Label("Linked Accounts", systemImage: "link")
                             .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
                     }
                 }
                 Section(header: Text("Settings").font(.title)) {
                     NavigationLink(destination: Text("Privacy Policy")) {
                         Label("Privacy Policy", systemImage: "shield")
                             .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
                     }
                     NavigationLink(destination: Text("Report")) {
                         Label("Report", systemImage: "flag")
                             .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
                     }
                     NavigationLink(destination: Text("Settings")) {
                         Label("Settings", systemImage: "gearshape")
                             .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
                     }
                 }
-                
-                
             }
             .background(Color(red: 240/225, green: 240/255, blue: 234/255))
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Menu", displayMode: .inline)
             .foregroundColor(.black)
             .navigationBarItems(
-                trailing:
-                    Button(action: {
-                        withAnimation {
-                            isMenuExpanded.toggle()
-                        }
-                    }) {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.black)
-                            .padding()
+                trailing: Button(action: {
+                    withAnimation {
+                        isMenuExpanded.toggle()
                     }
+                }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.black)
+                        .padding()
+                }
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .background(Color(red: 240/225, green: 240/255, blue: 234/255))
-// Use stack style for iPhone
     }
 }
-
 
 struct UserHomeView: View {
     @State private var isSeeAllPresented = false
     @State private var isMenuExpanded = false
     @State private var isAddEventPresented = false
+
     let myEventsData = [
         EventData(name: "Birthday Bash", imageName: "event1"),
         EventData(name: "Summer Fiesta", imageName: "event2"),
         EventData(name: "Joyful Gathering", imageName: "event3")
     ]
-    
 
     let upcomingEventsData = [
         EventData(name: "Beach Party", imageName: "event4"),
@@ -278,7 +249,7 @@ struct UserHomeView: View {
         NavigationView {
             VStack {
                 HStack {
-                    VStack{
+                    VStack {
                         Button(action: {
                             withAnimation {
                                 isMenuExpanded.toggle()
@@ -286,52 +257,47 @@ struct UserHomeView: View {
                         }) {
                             Image(systemName: "line.3.horizontal")
                                 .imageScale(.large)
-                                .padding(.leading,40)
+                                .padding(.leading, 40)
                                 .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
                         }
                         .foregroundColor(.primary)
                     }
-                    .padding(.bottom,40)
-                    Text("Hi Aayushi!!")
+                    .padding(.bottom, 40)
+
+                    Text("Hi User!!")
                         .font(.title3)
                         .fontWeight(.bold)
                         .padding(.leading, -40)
                         .padding(.top, 40)
-                    .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-                    
+                        .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
+
                     Spacer()
-                    
-                    
+
                     Spacer()
-                    VStack{
-                        NavigationLink(destination: CreateEvent()) { // Use NavigationLink for navigation to CreateEvent view
+
+                    VStack {
+                        NavigationLink(destination: CreateEvent(selectedCoHosts: .constant([]))) {
                             Image(systemName: "plus")
                                 .imageScale(.large)
                                 .padding(.trailing, 16)
-                                .padding(.bottom,40)
+                                .padding(.bottom, 40)
                                 .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
-                            
                         }
                         .navigationTitle("home")
-                        .navigationBarTitle("", displayMode: .inline)         .foregroundColor(Color(red: 203/225, green: 120/225, blue: 91/225))
-                        
-                        
+                        .navigationBarTitle("", displayMode: .inline)
+                        .foregroundColor(Color(red: 203/225, green: 120/225, blue: 91/225))
                     }
                 }
                 .navigationBarTitle("", displayMode: .inline)
                 .padding(.top, 20)
                 Divider()
 
- 
                 HStack {
                     Text("My Events")
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.leading, 30)
                         .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
-
 
                     Spacer()
 
@@ -342,8 +308,6 @@ struct UserHomeView: View {
                             .padding(.trailing, 16)
                             .font(.title2)
                             .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
-
                     }
                     .sheet(isPresented: $isSeeAllPresented) {
                         SeeAllView(eventData: myEventsData)
@@ -355,13 +319,11 @@ struct UserHomeView: View {
                         ForEach(myEventsData, id: \.self) { event in
                             EventCard(event: event)
                         }
-                        .padding(.trailing,20)
-
+                        .padding(.trailing, 20)
                     }
-                    .padding(.horizontal,20)
-
+                    .padding(.horizontal, 20)
                 }
-                .padding(.trailing,10)
+                .padding(.trailing, 10)
 
                 Divider()
                 HStack {
@@ -369,10 +331,8 @@ struct UserHomeView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.leading, 16)
-                        .padding(.horizontal,20)
+                        .padding(.horizontal, 20)
                         .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
-
 
                     Spacer()
 
@@ -381,16 +341,12 @@ struct UserHomeView: View {
                     }) {
                         Text("See All")
                             .font(.title2)
-                             .padding(.trailing, 16)
-                             .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-
-
+                            .padding(.trailing, 16)
+                            .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
                     }
                     .sheet(isPresented: $isSeeAllPresented) {
                         SeeAllView(eventData: upcomingEventsData)
                             .background(Color(red: 250/225, green: 244/255, blue: 250/255))
-
-
                     }
                 }
 
@@ -399,50 +355,38 @@ struct UserHomeView: View {
                         ForEach(upcomingEventsData, id: \.self) { event in
                             EventCard(event: event)
                         }
-                        .padding(.horizontal,20)
-                        .padding(.trailing,-20)
-
+                        .padding(.horizontal, 20)
+                        .padding(.trailing, -20)
                     }
                 }
 
                 Spacer()
+                Spacer()
 
-                
-                    Spacer()
-
-                    Toolbar()
-                        .background(Color(red: 250/225, green: 244/255, blue: 250/255))
-                        .position(x: 200, y: 30)
-                        
-                        
-                
-                
+                Toolbar()
+                    .background(Color(red: 250/225, green: 244/255, blue: 250/255))
+                    .position(x: 200, y: 30)
             }
-            .frame(width:400)
+            .frame(width: 400)
             .background(Color(red: 250/225, green: 244/255, blue: 250/255))
-            //.background(.white)
             .position(CGPoint(x: 180.0, y: 350.0))
-
-                .navigationBarHidden(true)
-                            .padding(.horizontal, 16)
-                            .overlay(
-                                MenuView(isMenuExpanded: $isMenuExpanded)
-                                    .frame(width: isMenuExpanded ? UIScreen.main.bounds.width : 0)
-                                    .background(Color.white)
-                                    .offset(x: isMenuExpanded ? 0 : -UIScreen.main.bounds.width)
-                            )
-                            .overlay(
-                                CreateEvent()
-                                    .frame(width: isAddEventPresented ? UIScreen.main.bounds.width : 0)
-                                    .background(Color.white)
-                                    .offset(x: isAddEventPresented ? 0 : UIScreen.main.bounds.width)
-                            )
-                        }
-
-                    }
-
-                }
-
+            .navigationBarHidden(true)
+            .padding(.horizontal, 16)
+            .overlay(
+                MenuView(isMenuExpanded: $isMenuExpanded)
+                    .frame(width: isMenuExpanded ? UIScreen.main.bounds.width : 0)
+                    .background(Color.white)
+                    .offset(x: isMenuExpanded ? 0 : -UIScreen.main.bounds.width)
+            )
+            .overlay(
+                CreateEvent(selectedCoHosts: .constant([]))
+                    .frame(width: isAddEventPresented ? UIScreen.main.bounds.width : 0)
+                    .background(Color.white)
+                    .offset(x: isAddEventPresented ? 0 : UIScreen.main.bounds.width)
+            )
+        }
+    }
+}
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

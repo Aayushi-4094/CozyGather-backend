@@ -1,184 +1,134 @@
-// SignUpPage.swift
 import SwiftUI
 
 struct VendrSignUp: View {
+    @State private var color = Color.black.opacity(0.7)
     @State private var fullName = ""
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
+    @State private var userName = ""
     @State private var phoneNumber = ""
-    @State private var countryCode = ""
-    @State private var isVendrSignInActive = false // Add state to control navigation
-// Add state to control navigation
-    
+    @State private var email = ""
+    @State private var pass = ""
+    @State private var repass = ""
+    @State private var visible = false
+    @State private var revisible = false
+    @State private var isVendrSignInActive = false
+
     var body: some View {
-        NavigationView {
-            ZStack {
-                VStack(spacing: 30) {
-                    Text("Sign Up")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    
-                    VStack(spacing: 15) {
-                        HStack {
-                            Image("name")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .padding(.leading, 10)
-                                .foregroundColor(Color(hex: "747688"))
-                            
-                            TextField("Full Name", text: $fullName)
-                                .padding(.vertical, 12)
-                                .padding(.horizontal)
-                                .background(Color.white)
-                                .cornerRadius(5.0)
-                        }
-                        .background(Color.white)
-                        .cornerRadius(5.0)
-                        .shadow(radius: 2.0)
-                        
-                        HStack {
-                                                Image("email")
-                                                    .resizable()
-                                                    .frame(width: 20, height: 20)
-                                                    .padding(.leading, 10)
-                                                    .foregroundColor(Color(hex: "747688"))
-                                                
-                                                TextField("Email", text: .constant(""))
-                                                    .padding(.vertical, 12)
-                                                    .padding(.horizontal)
-                                                    .background(Color.white)
-                                                    .cornerRadius(5.0)
-                                            }
-                                            .background(Color.white)
-                                            .cornerRadius(5.0)
-                                            .shadow(radius: 2.0)
-                                            HStack {
-                                                Image("Password")
-                                                    .resizable()
-                                                    .frame(width: 20, height: 20)
-                                                    .padding(.leading, 10)
-                                                    .foregroundColor(Color(hex: "747688"))
-                                                
-                                                SecureField("Password", text: .constant("")) // Use SecureField for passwords
-                                                    .padding(.vertical, 12)
-                                                    .padding(.horizontal)
-                                                    .background(Color.white)
-                                                    .cornerRadius(5.0)
-                                                
-                                                Image("lock")
-                                                    .resizable()
-                                                    .frame(width: 20, height: 20)
-                                                    .padding(.trailing, 10)
-                                                    .foregroundColor(Color(hex: "747688"))
-                                            }
-                                            .background(Color.white)
-                                            .cornerRadius(5.0)
-                                            .shadow(radius: 2.0)
-                                            
-                                            
-                                            HStack {
-                                                Image("Password")
-                                                    .resizable()
-                                                    .frame(width: 20, height: 20)
-                                                    .padding(.leading, 10)
-                                                    .foregroundColor(Color(hex: "747688"))
-                                                
-                                                SecureField("Confirm Password", text: .constant("")) // Use SecureField for passwords
-                                                    .padding(.vertical, 12)
-                                                    .padding(.horizontal)
-                                                    .background(Color.white)
-                                                    .cornerRadius(5.0)
-                                                
-                                                Image("lock")
-                                                    .resizable()
-                                                    .frame(width: 20, height: 20)
-                                                    .padding(.trailing, 10)
-                                                    .foregroundColor(Color(hex: "747688"))
-                                            }
-                                            .background(Color.white)
-                                            .cornerRadius(5.0)
-                                            .shadow(radius: 2.0)
-                                            
-                                            HStack {
-                                                Image("phone")
-                                                    .resizable()
-                                                    .frame(width: 20, height: 20)
-                                                    .padding(.leading, 10)
-                                                    .foregroundColor(Color(hex: "747688"))
-                                                
-                                                TextField("Phone Number", text: .constant("")) // Use SecureField for passwords
-                                                    .padding(.vertical, 12)
-                                                    .padding(.horizontal)
-                                                    .background(Color.white)
-                                                    .cornerRadius(5.0)
-                                            }
-                                            .background(Color.white)
-                                            .cornerRadius(5.0)
-                                            .shadow(radius: 2.0)
-                                            
-                                            
-                        Button(action: {}) {
-                            Text("SIGN UP")
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.blue)
-                                .cornerRadius(5.0)
-                                .shadow(radius: 2.0)
-                        }
-                        
-                        Text("OR")
-                        
-                        VStack(spacing: 15) {
-                            Button(action: {}) {
-                                HStack {
-                                    Image("google_logo")
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                                    
-                                    //Text("Sign Up with Google")
-                                    //.font(.subheadline)
-                                    
-                                }
-                            
-                                Button(action: {}) {
-                                    
-                                    Image("apple_logo")
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                                    
-                                    //ext("Sign Up with Apple")
-                                    //.font(.subheadline)
-                                }
-                            }
-                        }
-                        .foregroundColor(.black)
-                        
-                        HStack {
-                            Text("Already have an account?")
-                                .font(.subheadline)
-                            
-                            Button(action: {
-                                withAnimation {
-                                    isVendrSignInActive.toggle()
-                                }
-                            }) {
-                                Text("Sign In")
-                                    .foregroundColor(.blue)
-                                    .font(.subheadline)
-                            }
-                            .fullScreenCover(isPresented: $isVendrSignInActive, content: {
-                                VendrSignIn()
-                            })
-                            .transition(.move(edge: .trailing))
-                        }
+        VStack(spacing: 20) {
+            Text("Sign Up")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(self.color)
+                .padding(.top, 35)
+
+            TextField("Full name", text: self.$fullName)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 8).stroke(self.fullName != "" ? Color.blue : self.color, lineWidth: 2))
+                .padding(.horizontal, 20)
+                .frame(height: 50)
+                .autocapitalization(.words)
+                .keyboardType(.default)
+
+            TextField("User Name", text: self.$userName)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 8).stroke(self.userName != "" ? Color.blue : self.color, lineWidth: 2))
+                .padding(.horizontal, 20)
+                .frame(height: 50)
+                .autocapitalization(.none)
+                .keyboardType(.default)
+
+            TextField("Phone Number", text: self.$phoneNumber)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 8).stroke(self.phoneNumber != "" ? Color.blue : self.color, lineWidth: 2))
+                .padding(.horizontal, 20)
+                .frame(height: 50)
+                .keyboardType(.phonePad)
+
+            TextField("Email", text: self.$email)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 8).stroke(self.email != "" ? Color.blue : self.color, lineWidth: 2))
+                .padding(.horizontal, 20)
+                .frame(height: 50)
+                .autocapitalization(.none)
+                .keyboardType(.emailAddress)
+
+            HStack (spacing: 15){
+                VStack{
+                    if self.visible{
+                        TextField("Password", text: self.$pass)
                     }
-                    .padding()
-                    .padding()
+                    else
+                    {
+                        SecureField("Password", text: self.$pass)
+                    }
+                }
+                Button(action: {
+                    self.visible.toggle()
+                }) {
+                    Image(systemName: self.visible ? "eye.fill" : "eye.slash.fill")
+                        .foregroundColor(self.color)
                 }
             }
-            .navigationBarHidden(true)
+            .padding()
+            .background(RoundedRectangle(cornerRadius: 8).stroke(self.pass != "" ? Color.blue : self.color, lineWidth: 2))
+            .padding(.horizontal, 20)
+            .frame(height: 50)
+            
+            
+            HStack (spacing: 15){
+                VStack{
+                    if self.revisible{
+                        TextField("Password", text: self.$repass)
+                    }
+                    else
+                    {
+                        SecureField("Password", text: self.$repass)
+                    }
+                }
+                Button(action: {
+                    self.revisible.toggle()
+                }) {
+                    Image(systemName: self.revisible ? "eye.fill" : "eye.slash.fill")
+                        .foregroundColor(self.color)
+                }
+            }
+            .padding()
+            .background(RoundedRectangle(cornerRadius: 8).stroke(self.repass != "" ? Color.blue : self.color, lineWidth: 2))
+            .padding(.horizontal, 20)
+            .frame(height: 50)
+
+            Button(action: {
+                withAnimation {
+                    isVendrSignInActive.toggle()
+                }
+            }) {
+                Text("Sign Up")
+                    .foregroundColor(.white)
+                    .padding(.vertical, 15)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(8)
+            }
+            .fullScreenCover(isPresented: $isVendrSignInActive) {
+                VendrSignIn()
+            }
+            .padding(.horizontal, 20)
+
+            HStack {
+                Text("Already have an account?")
+                Button(action: {
+                    withAnimation {
+                        isVendrSignInActive.toggle()
+                    }
+                }) {
+                    Text("Sign In")
+                        .foregroundColor(.blue)
+                        .font(.subheadline)
+                }
+                .fullScreenCover(isPresented: $isVendrSignInActive) {
+                    VendrSignIn()
+                }
+            }
+            .padding(.top)
         }
     }
 }
