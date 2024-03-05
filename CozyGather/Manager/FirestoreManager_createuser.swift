@@ -27,7 +27,27 @@ class FirestoreManager {
             }
         }
     }
+    
+    
+    func createEvent(_ event: Event) {
+        // Replace "events" with your actual Firestore collection name for events
+        db.collection("events").addDocument(data: [
+            "eventName": event.eventName,
+            "venueAddress": event.venueAddress,
+            "price": event.price,
+            "selectedDate": Timestamp(date: event.selectedDate), // Convert Date to Timestamp
+            "selectedCoHosts": event.selectedCoHosts,
+            // Add other event properties as needed
+        ]) { error in
+            if let error = error {
+                print("Error adding document: \(error)")
+            } else {
+                print("Event added to Firestore successfully")
+            }
+        }
+    }
 
     // Add additional functions as needed for fetching user information
 }
+
 
