@@ -4,10 +4,10 @@ struct CreateEvent: View {
     @State private var eventName: String = "Event name"
     @State private var venueAddress: String = "Address"
     @State private var price: String = "Price"
-    @State private var selectedDate = Date()
+    @State private var selectedDateTime = Date()
     @State private var isDateAndTimeVisible = false
     @State private var isEventDetailViewVisible = false
-    @State private var isSelectCoHostVisible = false
+    //@State private var isSelectCoHostVisible = false
     @State private var eventDate = Date()
     @State private var showInvite = false
     @Binding var selectedCoHosts: [String]
@@ -15,58 +15,49 @@ struct CreateEvent: View {
     @State private var isConfirmEventVisible = false
     @State private var isCoHostSheetPresented = false // Add this state variable
     @Environment(\.presentationMode) var presentationMode
-    @State private var selectedDateTime = Date()
     @State private var isDateAndTimeSheetPresented = false
     @State private var isAlertPresented = false
+
     var isFormValid: Bool {
-        return !eventName.isEmpty && !venueAddress.isEmpty && !price.isEmpty && !selectedCoHosts.isEmpty
+        return !eventName.isEmpty && !venueAddress.isEmpty && !price.isEmpty //&& !selectedCoHosts.isEmpty
     }
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
                     // Title Section
-                    //                    HStack {
-                    //                        Text("Create Event")
-                    //                            .font(.title)
-                    //                            .padding(.vertical, 10)
-                    //                            .padding(.horizontal, 20)
-                    //                            .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
-                    //                    }
-                    //                    .cornerRadius(10)
-                    
-                    // Image Section
                     Image("nametheevent")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(height: 200)
                         .cornerRadius(10)
                         .shadow(radius: 5)
-                    
+
                     // Event Name Section
                     SectionBox {
                         HStack {
                             Text("Event Name")
                                 .font(.headline)
                                 .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
-                            
+
                             Spacer()
-                            
+
                             TextField("Event Name", text: $eventName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal)
                         }
                     }
-                    
-                    // Co-host Section
+
+                    // Co-host Section (Commented out)
+                    /*
                     SectionBox {
                         HStack {
                             Text("Co-host")
                                 .font(.headline)
                                 .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                             Spacer()
-                            
+
                             Button(action: {
                                 isCoHostSheetPresented.toggle()
                             }) {
@@ -85,70 +76,17 @@ struct CreateEvent: View {
                             }
                         }
                     }
-                    
-                    // Date and Time Section
-                    //                    SectionBox {
-                    //                        HStack {
-                    //                            Text("Date and Time")
-                    //                                .font(.headline)
-                    //                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
-                    //                            Spacer()
-                    //                            
-                    //                            Button(action: {
-                    //                                isDateAndTimeVisible.toggle()
-                    //                            }) {
-                    //                                Text("Select Date and Time")
-                    //                                    .foregroundColor(.primary)
-                    //                                    .padding()
-                    //                                    .background(Color.white)
-                    //                                    .cornerRadius(10)
-                    //                                    .shadow(radius: 1)
-                    //                            }
-                    //                            .sheet(isPresented: $isDateAndTimeVisible) {
-                    //                                DateAndTime(selectedDate: $selectedDate) { date in
-                    //                                    // Handle Date and Time selection
-                    //                                    // Update the selected date
-                    //                                    selectedDate = date
-                    //                                }
-                    //                            }
-                    //                        }
-                    //                    }
-//                    SectionBox {
-//                        HStack {
-//                            Text("Date and Time")
-//                                .font(.headline)
-//                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
-//                            Spacer()
-//                            
-//                            Button(action: {
-//                                isDateAndTimeVisible.toggle()
-//                            }) {
-//                                Text("Select Date and Time")
-//                                    .foregroundColor(.primary)
-//                                    .padding()
-//                                    .background(Color.white)
-//                                    .cornerRadius(10)
-//                                    .shadow(radius: 1)
-//                            }
-//                            .sheet(isPresented: $isDateAndTimeVisible) {
-//                                DateAndTime(selectedDate: $selectedDateTime, onDateSelected: $isDateAndTimeVisible) { date in
-//                                    // Handle Date and Time selection
-//                                    // Update the selected date
-//                                    selectedDateTime = date
-//                                }
-//                            }
-//                        }
-//                    }
-                    
-                    
-                    // Inside the Date and Time Section
+                    */
+
+                    // Date and Time Section (Commented out)
+                    /*
                     SectionBox {
                         HStack {
                             Text("Date and Time")
                                 .font(.headline)
                                 .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                             Spacer()
-                            
+
                             Button(action: {
                                 isDateAndTimeVisible.toggle()
                             }) {
@@ -161,16 +99,39 @@ struct CreateEvent: View {
                             }
                             .sheet(isPresented: $isDateAndTimeVisible) {
                                 DateAndTime(selectedDate: $selectedDateTime, onDateSelected: { date in
-                                    // Handle Date and Time selection
-                                    // Update the selected date
                                     selectedDateTime = date
                                 }, isSheetPresented: $isDateAndTimeVisible)
                             }
                         }
                     }
+                    */
 
-                    
-                    
+                    // Inside the Date and Time Section
+//                    SectionBox {
+//                        HStack {
+//                            Text("Date and Time")
+//                                .font(.headline)
+//                                .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
+//                            Spacer()
+//
+//                            Button(action: {
+//                                isDateAndTimeVisible.toggle()
+//                            }) {
+//                                Text("Select Date and Time")
+//                                    .foregroundColor(.primary)
+//                                    .padding()
+//                                    .background(Color.white)
+//                                    .cornerRadius(10)
+//                                    .shadow(radius: 1)
+//                            }
+//                            .sheet(isPresented: $isDateAndTimeVisible) {
+//                                DateAndTime(selectedDate: $selectedDateTime, onDateSelected: { date in
+//                                    selectedDateTime = date
+//                                }, isSheetPresented: $isDateAndTimeVisible)
+//                            }
+//                        }
+//                    }
+
                     // Location Section
                     SectionBox {
                         HStack {
@@ -178,13 +139,13 @@ struct CreateEvent: View {
                                 .font(.headline)
                                 .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                             Spacer()
-                            
+
                             TextField("Location", text: $venueAddress)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal)
                         }
                     }
-                    
+
                     // Budget Section
                     SectionBox {
                         HStack {
@@ -192,13 +153,13 @@ struct CreateEvent: View {
                                 .font(.headline)
                                 .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                             Spacer()
-                            
+
                             TextField("Budget", text: $price)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal)
                         }
                     }
-                    
+
                     // Generate e-Invite Section
                     SectionBox {
                         HStack {
@@ -206,7 +167,7 @@ struct CreateEvent: View {
                                 .font(.headline)
                                 .foregroundColor(Color(red: 82/225, green: 72/255, blue: 159/255))
                             Spacer()
-                            
+
                             Button(action: {
                                 self.showInvite.toggle()
                             }) {
@@ -233,121 +194,8 @@ struct CreateEvent: View {
                             }
                         }
                     }
-                    
+
                     // Confirm Button Section
-                    //                Button(action: {
-                    //                    // Handle the logic to confirm the event
-                    //                }) {
-                    //                    Text("Confirm")
-                    //                        .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-                    //                        .font(.headline)
-                    //                        .padding()
-                    //                        .frame(maxWidth: .infinity)
-                    //                        .background(Color(red: 82/225, green: 72/255, blue: 159/255))
-                    //                        .cornerRadius(10)
-                    //                        .padding(.horizontal)
-                    //                        .shadow(radius: 1)
-                    //                }
-                    
-                    // Inside the Confirm Button Section
-                    //                Button(action: {
-                    //                    let event = Event(eventName: eventName,
-                    //                                      venueAddress: venueAddress,
-                    //                                      price: price,
-                    //                                      selectedDate: selectedDate,
-                    //                                      selectedCoHosts: selectedCoHosts)
-                    //
-                    //                    FirestoreManager.shared.createEvent(event)
-                    //                }) {
-                    //                    Text("Confirm")
-                    //                        .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-                    //                        .font(.headline)
-                    //                        .padding()
-                    //                        .frame(maxWidth: .infinity)
-                    //                        .background(Color(red: 82/225, green: 72/255, blue: 159/255))
-                    //                        .cornerRadius(10)
-                    //                        .padding(.horizontal)
-                    //                        .shadow(radius: 1)
-                    //                }
-                    //                Spacer()
-                    //            }
-                    //            .padding()
-                    //        }
-                    //        .background(Color(red: 250/225, green: 244/255, blue: 250/255))
-                    //        .navigationBarHidden(true)
-                    //    }
-                    //}
-                    //                Button(action: {
-                    //                                   let event = Event(eventName: eventName,
-                    //                                                     venueAddress: venueAddress,
-                    //                                                     price: price,
-                    //                                                     selectedDate: selectedDate,
-                    //                                                     selectedCoHosts: selectedCoHosts)
-                    //
-                    //                                   FirestoreManager.shared.createEvent(event)
-                    //                               }) {
-                    //                                   Text("Confirm")
-                    //                                       .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-                    //                                       .font(.headline)
-                    //                                       .padding()
-                    //                                       .frame(maxWidth: .infinity)
-                    //                                       .background(Color(red: 82/225, green: 72/255, blue: 159/255))
-                    //                                       .cornerRadius(10)
-                    //                                       .padding(.horizontal)
-                    //                                       .shadow(radius: 1)
-                    //                               }
-                    //                               .padding(.bottom, 20)
-                    //                    Button(action: {
-                    //                        if isFormValid {
-                    //                            let event = Event(eventName: eventName,
-                    //                                              venueAddress: venueAddress,
-                    //                                              price: price,
-                    //                                              selectedDate: selectedDate,
-                    //                                              selectedCoHosts: selectedCoHosts)
-                    //                            
-                    //                            FirestoreManager.shared.createEvent(event)
-                    //                        } else {
-                    //                            // Show an alert if the form is not valid
-                    //                            isAlertPresented.toggle()
-                    //                        }
-                    //                    }) {
-                    //                        Text("Confirm")
-                    //                            .foregroundColor(Color(red: 150/225, green: 100/225, blue: 200/225))
-                    //                            .font(.headline)
-                    //                            .padding()
-                    //                            .frame(maxWidth: .infinity)
-                    //                            .background(Color(red: 82/225, green: 72/255, blue: 159/255))
-                    //                            .cornerRadius(10)
-                    //                            .padding(.horizontal)
-                    //                            .shadow(radius: 1)
-                    //                    }
-                    //                    .padding(.bottom, 20)
-                    //                    .alert(isPresented: $isAlertPresented) {
-                    //                        Alert(
-                    //                            title: Text("Incomplete Details"),
-                    //                            message: Text("Please fill in all the details to create an event."),
-                    //                            dismissButton: .default(Text("OK"))
-                    //                        )
-                    //                    }
-                    //                }
-                    //                .padding()
-                    //            }
-                    //            .padding()
-                    //            .navigationBarTitle("Create Event", displayMode: .inline) // Add a title to the navigation bar
-                    //            .navigationBarItems(
-                    //                leading: Button(action: {
-                    //                    presentationMode.wrappedValue.dismiss() // Dismiss the current view when the back button is pressed
-                    //                }) {
-                    //                    Image(systemName: "chevron.left")
-                    //                        .foregroundColor(.primary)
-                    //                        .imageScale(.large)
-                    //                }
-                    //            )
-                    //        }
-                    //        .background(Color(red: 250/225, green: 244/255, blue: 250/255))
-                    //        .navigationBarHidden(true)
-                    //    }
-                    
                     Button(action: {
                         if isFormValid {
                             let event = Event(eventName: eventName,
@@ -355,7 +203,7 @@ struct CreateEvent: View {
                                               price: price,
                                               selectedDate: selectedDateTime,
                                               selectedCoHosts: selectedCoHosts)
-                            
+
                             FirestoreManager.shared.createEvent(event)
                         } else {
                             // Show an alert if the form is not valid
@@ -384,10 +232,10 @@ struct CreateEvent: View {
                 .padding()
             }
             .padding()
-            .navigationBarTitle("Create Event", displayMode: .inline) // Add a title to the navigation bar
+            .navigationBarTitle("Create Event", displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {
-                    presentationMode.wrappedValue.dismiss() // Dismiss the current view when the back button is pressed
+                    presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.primary)
@@ -398,15 +246,14 @@ struct CreateEvent: View {
         .background(Color(red: 250/225, green: 244/255, blue: 250/255))
         .navigationBarHidden(true)
     }
-    
 
     struct SectionBox<Content: View>: View {
         let content: Content
-        
+
         init(@ViewBuilder content: @escaping () -> Content) {
             self.content = content()
         }
-        
+
         var body: some View {
             VStack {
                 content
@@ -417,7 +264,7 @@ struct CreateEvent: View {
             .shadow(radius: 1)
         }
     }
-    
+
     struct CreateEvent_Previews: PreviewProvider {
         static var previews: some View {
             CreateEvent(selectedCoHosts: .constant([]))

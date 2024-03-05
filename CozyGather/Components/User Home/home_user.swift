@@ -232,6 +232,7 @@ struct UserHomeView: View {
     @State private var isSeeAllPresented = false
     @State private var isMenuExpanded = false
     @State private var isAddEventPresented = false
+    
 
     let myEventsData = [
         EventData(name: "Birthday Bash", imageName: "event1"),
