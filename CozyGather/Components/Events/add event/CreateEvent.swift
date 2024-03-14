@@ -50,7 +50,7 @@ struct CreateEvent: View {
                     }
 
                     // Co-host Section (Commented out)
-                    /*
+                    
                     SectionBox {
                         HStack {
                             Text("Co-host")
@@ -76,10 +76,10 @@ struct CreateEvent: View {
                             }
                         }
                     }
-                    */
+                    
 
                     // Date and Time Section (Commented out)
-                    /*
+                    
                     SectionBox {
                         HStack {
                             Text("Date and Time")
@@ -104,7 +104,7 @@ struct CreateEvent: View {
                             }
                         }
                     }
-                    */
+                    
 
                     // Inside the Date and Time Section
 //                    SectionBox {
@@ -204,7 +204,14 @@ struct CreateEvent: View {
                                               selectedDate: selectedDateTime,
                                               selectedCoHosts: selectedCoHosts)
 
-                            FirestoreManager.shared.createEvent(event)
+                            FirestoreManager.shared.createEvent(event) { success in
+                                // Handle the success or failure here
+                                if success {
+                                    // Event created successfully
+                                } else {
+                                    // Error creating event
+                                }
+                            }
                         } else {
                             // Show an alert if the form is not valid
                             isAlertPresented.toggle()
